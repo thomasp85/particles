@@ -1,7 +1,10 @@
-inflict <- function(system, force, ...) {
-  system$universe <- add_force(
-    system$universe,
-    force$new(...)
+#' @export
+inflict <- function(simulation, force, ...) {
+  stopifnot(is.simulation(simulation))
+  stopifnot(is.force(force))
+  universe(simulation) <- add_force(
+    universe(simulation),
+    train_force(force, particles(simulation), ...)
   )
-  system
+  simulation
 }
