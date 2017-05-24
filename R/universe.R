@@ -18,19 +18,6 @@ create_universe <- function(alpha = 1, alpha_min = 0.001,
 }
 is.universe <- function(x) inherits(x, 'universe')
 
-#' @importFrom igraph gorder
-#' @export
-default_genesis <- function(radius = 10, angle = pi * (3 - sqrt(5))) {
-  function(particles, ...) {
-    n_particles <- gorder(particles)
-    p_radius <- radius * sqrt(seq_len(n_particles))
-    p_angle <- angle * seq_len(n_particles)
-    pos <- cbind(p_radius * cos(p_angle), p_radius * sin(p_angle))
-    vel <- matrix(0, ncol = 2, nrow = n_particles)
-    list(position = pos, velocity = vel)
-  }
-}
-
 # Helpers -----------------------------------------------------------------
 
 init_particles <- function(universe, particles) {
