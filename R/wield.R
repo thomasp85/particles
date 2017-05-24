@@ -1,5 +1,5 @@
 #' @export
-inflict <- function(simulation, force, ...) {
+wield <- function(simulation, force, ...) {
   stopifnot(is.simulation(simulation))
   stopifnot(is.force(force))
   universe(simulation) <- add_force(
