@@ -4,9 +4,17 @@ Title: A graph based particle simulator based on d3-force
 Version: 0.1.0
 Author: Thomas Lin Pedersen
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: MIT
+Description: Simulating particle movement in 2D space has many application. The
+    `particles` package implements a particle simulator based on the ideas 
+    behind the d3-force javascript library. `particles` implements all forces
+    defined in d3-force as well as others such as vector fields, traps, and
+    attractors.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Imports: tidygraph
+Imports: tidygraph,
+    rlang,
+    igraph,
+    stats
+RoxygenNote: 6.0.1
+Remotes: thomasp85/tidygraph
