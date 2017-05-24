@@ -1,4 +1,3 @@
-#' @export
 is.force <- function(x) inherits(x, 'force')
 train_force <- function(force, particles, ...) {
   UseMethod('train_force')
