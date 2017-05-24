@@ -1,5 +1,13 @@
 #' @export
 is.simulation <- function(x) inherits(x, 'simulation')
+#' @export
+print.simulation <- function(x, ...) {
+  cat('A particle simulation:\n')
+  cat('* ', gorder(particles(x)), ' particles\n', sep = '')
+  f <- forces(x)
+  cat('* ', length(f), ' Force', if (length(f) == 1) '\n' else 's\n', sep = '')
+  lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
+}
 #' @importFrom tidygraph as_tbl_graph mutate activate
 #' @export
 as_tbl_graph.simulation <- function(simulation) {
