@@ -12,5 +12,5 @@ train_force.center_force <- function(force, particles, ...) {
 apply_force.center_force <- function(force, particles, pos, vel, alpha, ...) {
   center <- matrix(colMeans(pos), nrow = nrow(pos), ncol = ncol(pos), byrow = TRUE)
   pos <- pos - center
-  list(position = pos, velocity = velocity)
+  list(position = pos, velocity = vel)
 }
