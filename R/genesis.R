@@ -1,6 +1,6 @@
 #' @importFrom igraph gorder
 #' @export
-default_genesis <- function(radius = 10, angle = pi * (3 - sqrt(5))) {
+phyllotactic_genesis <- function(radius = 10, angle = pi * (3 - sqrt(5))) {
   function(particles, ...) {
     n_particles <- gorder(particles)
     p_radius <- radius * sqrt(seq_len(n_particles))

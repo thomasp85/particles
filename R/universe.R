@@ -1,7 +1,7 @@
 create_universe <- function(alpha = 1, alpha_min = 0.001,
                             alpha_decay = 1- alpha_min^(1/300), alpha_target = 0,
                             velocity_decay = 0.6,
-                            setup = default_genesis(), ...) {
+                            setup = phyllotactic_genesis(), ...) {
   structure(list(
     parameters = list(
       alpha = alpha,
