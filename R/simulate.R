@@ -55,12 +55,13 @@
 #'
 simulate <- function(graph, alpha = 1, alpha_min = 0.001,
                      alpha_decay = 1 - alpha_min^(1/300), alpha_target = 0,
-                     velocity_decay = 0.6, setup = phyllotactic_genesis(), ...) {
+                     velocity_decay = 0.4, setup = phyllotactic_genesis(), ...) {
   graph <- as_tbl_graph(graph)
   universe <- create_universe(alpha = alpha, alpha_min = alpha_min,
                               alpha_decay = alpha_decay,
                               alpha_target = alpha_target,
-                              velocity_decay = velocity_decay, ...)
+                              velocity_decay = velocity_decay,
+                              setup = setup, ...)
   genesis <- init_particles(universe, graph)
   structure(list(
     particles = graph,
