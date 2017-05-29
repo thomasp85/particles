@@ -10,13 +10,16 @@ Description: Simulating particle movement in 2D space has many application. The
     defined in d3-force as well as others such as vector fields, traps, and
     attractors.
 License: MIT + file LICENSE
+SystemRequirements:	C++11
 Encoding: UTF-8
 LazyData: true
 Imports: tidygraph,
     rlang,
     igraph,
     stats,
-    magrittr
+    magrittr,
+    Rcpp
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
 Remotes: thomasp85/tidygraph
+LinkingTo: Rcpp

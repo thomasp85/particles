@@ -5,8 +5,8 @@
 \title{Start a simulation based on a graph}
 \usage{
 simulate(graph, alpha = 1, alpha_min = 0.001, alpha_decay = 1 -
-  alpha_min^(1/300), alpha_target = 0, velocity_decay = 0.6,
-  setup = default_genesis(), ...)
+  alpha_min^(1/300), alpha_target = 0, velocity_decay = 0.4,
+  setup = phyllotactic_genesis(), ...)
 }
 \arguments{
 \item{graph}{A graph in a format supported by tidygraph}
@@ -23,7 +23,8 @@ terminated. See Details.}
 \item{velocity_decay}{The dampening factor of the system. See Details.}
 
 \item{setup}{A function that takes the particle graph and returns a start
-position and velocity to each particle.}
+position and velocity to each particle. \code{particles} provides a range of
+\link{genesis} functions to choose from.}
 
 \item{...}{Additional parameters for the simulation (currently ignored)}
 }
@@ -54,7 +55,7 @@ as \code{alpha}. At each step, after the new particle velocities has been
 calculated but before they have been applied to the positions, a dampening
 factor (\code{velocity_decay}) is applied in order to simulate the gradual loss
 of momentum. If this is not intended for the simulation, simply set the value
-to \code{1}.
+to \code{0}.
 }
 \examples{
 graph <- igraph::make_graph('folkman')
