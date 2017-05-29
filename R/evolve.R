@@ -13,7 +13,7 @@ evolve <- function(simulation, steps = 1, on_generation = NULL, ...) {
     evolution <- Reduce(function(l ,r) {
       apply_force(r, particles, l$position, l$velocity, alpha)
     }, forces(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
-    velocity(simulation) <- evolution$velocity * universe_def(simulation)$velocity_decay
+    velocity(simulation) <- evolution$velocity * (1 - universe_def(simulation)$velocity_decay)
     position(simulation) <- position(simulation) + velocity(simulation)
     simulation <- advance(simulation)
     if (!is.null(on_generation)) {

@@ -23,7 +23,7 @@
 #' calculated but before they have been applied to the positions, a dampening
 #' factor (`velocity_decay`) is applied in order to simulate the gradual loss
 #' of momentum. If this is not intended for the simulation, simply set the value
-#' to `1`.
+#' to `0`.
 #'
 #' @param graph A graph in a format supported by tidygraph
 #'
@@ -39,7 +39,8 @@
 #' @param velocity_decay The dampening factor of the system. See Details.
 #'
 #' @param setup A function that takes the particle graph and returns a start
-#' position and velocity to each particle.
+#' position and velocity to each particle. `particles` provides a range of
+#' [genesis] functions to choose from.
 #'
 #' @param ... Additional parameters for the simulation (currently ignored)
 #'
