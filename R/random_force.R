@@ -1,3 +1,19 @@
+#' Modify the velocity randomly at each step
+#'
+#' This force applies a random velocity modification to all particles. The
+#' moodfication is uniformly distributed and bound be the parameters provided
+#' during initialisation.
+#'
+#' @section Training parameters:
+#' The following parameters defines the training of the force and can be passed
+#' along a call to [wield()]
+#'
+#' - `xmin, xmax` : The bounds of the modification in the horizontal direction
+#' - `ymin, ymax` : The bounds of the modification in the vertical direction
+#'
+#' @family forces
+#' @usage NULL
+#' @format NULL
 #' @export
 random_force <- structure(list(
   xmin = NULL,
