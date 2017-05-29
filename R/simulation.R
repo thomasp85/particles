@@ -1,4 +1,3 @@
-#' @export
 is.simulation <- function(x) inherits(x, 'simulation')
 #' @export
 print.simulation <- function(x, ...) {
@@ -7,6 +6,7 @@ print.simulation <- function(x, ...) {
   f <- forces(x)
   cat('* ', length(f), ' Force', if (length(f) == 1) '\n' else 's\n', sep = '')
   lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
+  cat('* ', evolutions(x), ' Evolution', if (evolutions(x) == 1) '\n' else 's\n', sep = '')
 }
 #' @importFrom tidygraph as_tbl_graph mutate activate
 #' @export
@@ -86,5 +86,19 @@ velocity <- function(simulation) {
   stopifnot(is.matrix(value))
   stopifnot(dim(velocity(simulation)) == dim(value))
   simulation$velocity <- value
+  simulation
+}
+evolutions <- function(simulation) {
+  stopifnot(is.simulation(simulation))
+  simulation$evolutions
+}
+`evolutions<-` <- function(simulation, value) {
+  stopifnot(is.simulation(simulation))
+  simulation$evolutions <- value
+  simulation
+}
+advance <- function(simulation) {
+  stopifnot(is.simulation(simulation))
+  evolutions(simulation) <- evolutions(simulation) + 1
   simulation
 }

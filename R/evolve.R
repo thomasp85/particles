@@ -15,6 +15,7 @@ evolve <- function(simulation, steps = 1, on_generation = NULL, ...) {
     }, forces(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
     velocity(simulation) <- evolution$velocity * universe_def(simulation)$velocity_decay
     position(simulation) <- position(simulation) + velocity(simulation)
+    simulation <- advance(simulation)
     if (!is.null(on_generation)) {
       on_generation(
         particles(simulation),

@@ -67,6 +67,7 @@ simulate <- function(graph, alpha = 1, alpha_min = 0.001,
     particles = graph,
     position = genesis$position,
     velocity = genesis$velocity,
-    universe = universe
+    universe = universe,
+    evolutions = 0
   ), class = 'simulation')
 }
