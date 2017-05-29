@@ -18,9 +18,7 @@ evolve <- function(simulation, steps = 1, on_generation = NULL, ...) {
     simulation <- advance(simulation)
     if (!is.null(on_generation)) {
       on_generation(
-        particles(simulation),
-        position(simulation),
-        velocity(simulation),
+        simulation,
         ...
       )
     }
