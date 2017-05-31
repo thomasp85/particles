@@ -13,6 +13,7 @@
 
 #ifndef __primitives_h
 #define __primitives_h
+#include <Rcpp.h>
 #include <cmath>        // std::abs
 #include <vector>
 
@@ -119,6 +120,12 @@ struct VectorN : public IVector {
   }
   VectorN* add(const VectorN &other) {
     for (int i = 0; i < size; ++i) coord[i] += other.coord[i];
+    return this;
+  }
+  VectorN* relax() {
+    for (int i = 0; i < size; ++i) {
+      if (coord[i] == 0) coord[i] = R::runif(-0.5, 0.5) * 1e-6;
+    }
     return this;
   }
 };
@@ -235,6 +242,12 @@ struct VectorN<3> : public IVector {
     coord[2] += other.coord[2];
     return this;
   }
+  VectorN* relax() {
+    if (coord[0] == 0) coord[0] = R::runif(-0.5, 0.5) * 1e-6;
+    if (coord[1] == 0) coord[1] = R::runif(-0.5, 0.5) * 1e-6;
+    if (coord[2] == 0) coord[2] = R::runif(-0.5, 0.5) * 1e-6;
+    return this;
+  }
 };
 
 template <>
@@ -334,6 +347,11 @@ struct VectorN<2> : public IVector {
   VectorN* add(const VectorN &other) {
     coord[0] += other.coord[0];
     coord[1] += other.coord[1];
+    return this;
+  }
+  VectorN* relax() {
+    if (coord[0] == 0) coord[0] = R::runif(-0.5, 0.5) * 1e-6;
+    if (coord[1] == 0) coord[1] = R::runif(-0.5, 0.5) * 1e-6;
     return this;
   }
 };

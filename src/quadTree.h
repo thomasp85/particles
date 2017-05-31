@@ -30,11 +30,11 @@ template <size_t Dimension>
 struct Body {
   VectorN<Dimension> pos;
   VectorN<Dimension> force;
-  double mass = 1.0;
+  double strength = 0;
 
   Body() {}
 
-  Body(VectorN<Dimension> _pos): pos(_pos) { }
+  Body(VectorN<Dimension> _pos, double _strength): pos(_pos), strength(_strength) { }
 
   void setPos(const VectorN<Dimension> &_pos) {
     pos = _pos;
@@ -55,9 +55,9 @@ public:
 template <size_t N>
 struct QuadTreeNode : public IQuadTreeNode {
   std::vector<QuadTreeNode *> quads;
-  Body<N> *body;
+  std::vector<Body<N> *> bodies;
 
-  double mass;        // This is total mass of the current node;
+  double strength = 0;        // This is total strength of the current node;
   VectorN<N> massVector; // This is a center of the mass-vector for the current node;
 
   VectorN<N> minBounds;    // "left" bounds of the node.
@@ -69,15 +69,15 @@ struct QuadTreeNode : public IQuadTreeNode {
 
   void reset() {
     for(size_t i = 0; i < quads.size(); ++i) quads[i] = NULL;
-    body = NULL;
+    bodies.clear();
     massVector.reset();
-    mass = 0;
+    strength = 0;
     minBounds.set(0);
     maxBounds.set(0);
   }
 
   bool isLeaf() const {
-    return body != NULL;
+    return !bodies.empty();
   }
 
   virtual IVector *getMin() {
@@ -149,12 +149,14 @@ public:
 template<size_t N>
 class QuadTree : public IQuadTree {
   double _theta;
-  double _gravity;
+  double _mindist;
+  double _maxdist;
+  double _alpha;
 
   NodePool<N> treeNodes;
   QuadTreeNode<N> *root;
 
-  QuadTreeNode<N> *createRootNode(const std::vector<Body<N> *> &bodies) {
+  QuadTreeNode<N> *createRootNode(const std::deque<Body<N> *> &bodies) {
     QuadTreeNode<N> *root = treeNodes.get();
     VectorN<N> &min = root->minBounds;
     VectorN<N> &max = root->maxBounds;
@@ -191,45 +193,31 @@ class QuadTree : public IQuadTree {
   }
   void insert(Body<N> *body, QuadTreeNode<N> *node) {
     if (node->isLeaf()) {
-      // We are trying to add to the leaf node.
-      // We have to convert current leaf into "internal node"
-      // and continue adding two nodes.
-      Body<N> *oldBody = node->body;
+      if (node->bodies[0]->pos.sameAs(body->pos)) {
+        // Stack it together with the other coincident bodies
+        node->bodies.push_back(body);
+        node->strength += body->strength;
+      } else {
+        // We are trying to add to the leaf node.
+        // We have to convert current leaf into "internal node"
+        // and continue adding two nodes.
+        std::vector<Body<N> *> oldBodies = node->bodies;
 
-      // Node is not considered a leaf it has no body:
-      node->body = NULL;
-
-      if (oldBody->pos.sameAs(body->pos)) {
-        // Ugh, both bodies are at the same position. Let's try to
-        // bump them within the quadrant:
-        int retriesCount = 3;
-        do {
-          double offset = R::runif(min_double, max_double);
-          VectorN<N> diff = node->maxBounds - node->minBounds;
-          diff.multiplyScalar(offset)->add(node->minBounds);
-
-          oldBody->pos.set(diff);
-          retriesCount -= 1;
-          // Make sure we don't bump it out of the box. If we do, next iteration should fix it
-        } while (retriesCount > 0 && oldBody->pos.sameAs(body->pos));
-
-        if (retriesCount == 0 && oldBody->pos.sameAs(body->pos)) {
-          // This is very bad, we ran out of precision.
-          // We cannot proceed under current root's constraints, so let's
-          // throw - this will cause parent to give bigger space for the root
-          // node, and hopefully we can fit on the subsequent iteration.
-          NotEnoughQuadSpaceException  _NotEnoughQuadSpaceException;
-          throw _NotEnoughQuadSpaceException;
+        // Node is not considered a leaf it has no body:
+        node->bodies.clear();
+        node->strength = 0;
+        // Insert all bodies into a node that is no longer a leaf:
+        insert(body, node);
+        // TODO: improve perf by not inserting all coincident bodies one by one
+        for (size_t i = 0; i < oldBodies.size(); ++i) {
+          insert(oldBodies[i], node);
         }
       }
-      // Insert both bodies into a node that is no longer a leaf:
-      insert(oldBody, node);
-      insert(body, node);
     } else {
       // This is internal node. Update the total mass of the node and center-of-mass.
       VectorN<N>& pos = body->pos;
-      node->mass += body->mass;
-      node->massVector.addScaledVector(pos, body->mass);
+      node->strength += body->strength;
+      node->massVector.addScaledVector(pos, body->strength);
 
       // Recursively insert the body in the appropriate quadrant.
       // But first find the appropriate quadrant.
@@ -255,23 +243,25 @@ class QuadTree : public IQuadTree {
         child = treeNodes.get();
         child->minBounds.set(tempMin);
         child->maxBounds.set(tempMax);
-        child->body = body;
+        child->bodies.push_back(body);
+        child->strength += body->strength;
         node->quads[quadIdx] = child;
       }
     }
   }
 
 public:
-  QuadTree() : QuadTree(-1.2, 0.8) {}
-  QuadTree(const double &gravity, const double &theta) : _theta(theta), _gravity(gravity) {}
+  QuadTree() : QuadTree(0.9) {}
+  QuadTree(const double &theta, const double &mindist, const double &maxdist, const double &alpha) : _theta(theta), _mindist(mindist), _maxdist(maxdist), _alpha(alpha) {}
 
-  void insertBodies(const std::vector<Body<N> *> &bodies) {
+  void insertBodies(const std::deque<Body<N> *> &bodies) {
     for (int attempt = 0; attempt < 3; ++attempt) {
       try {
         treeNodes.reset();
         root = createRootNode(bodies);
         if (bodies.size() > 0) {
-          root->body = bodies[0];
+          root->bodies.push_back(bodies[0]);
+          root->strength = bodies[0]->strength;
         }
 
         for (size_t i = 1; i < bodies.size(); ++i) {
@@ -287,20 +277,23 @@ public:
   }
   void updateBodyForce(Body<N> *sourceBody) {
     VectorN<N> force;
+    force.reset();
 
     auto visitNode = [&](const QuadTreeNode<N> *node) -> bool {
-      Body<N> *body = node->body;
-      if (node->body == sourceBody) return false; // no need to traverse: This is current body
+      std::vector<Body<N> *> bodies = node->bodies;
+      if (std::find(bodies.begin(), bodies.end(), sourceBody) != bodies.end()) return false; // no need to traverse: This is current body
 
       if (node->isLeaf()) {
-        VectorN<N> dt = body->pos - sourceBody->pos;
+        VectorN<N> dt = bodies[0]->pos - sourceBody->pos;
+        dt.relax();
         auto dist = dt.length();
-        if (dist == 0) {
-          dist = 0.1;
+        if (_maxdist <= 0 || dist < _maxdist) {
+          if (dist < _mindist) {
+            dist = std::sqrt(std::sqrt(float(dist * dist * _mindist * _mindist)));
+          }
+          auto v = node->strength * _alpha / (dist * dist);
+          force.addScaledVector(dt, v);
         }
-        auto v = _gravity * body->mass * sourceBody->mass / (dist * dist * dist);
-        force.addScaledVector(dt, v);
-
         return false; // no need to traverse this route;
       }
 
@@ -310,14 +303,11 @@ public:
       // and the node's center-of-mass
 
       VectorN<N> centerOfMass(node->massVector);
-      centerOfMass.multiplyScalar(1./node->mass);
+      centerOfMass.multiplyScalar(1./node->strength);
 
       VectorN<N> dt = centerOfMass - sourceBody->pos;
+      dt.relax();
       auto distanceToCenterOfMass = dt.length();
-
-      if (distanceToCenterOfMass == 0) {
-        distanceToCenterOfMass = 0.1;
-      }
 
       auto regionWidth = node->maxBounds.coord[0] - node->minBounds.coord[0];
       // If s / r < θ, treat this entire node as a single body, and calculate the
@@ -326,8 +316,13 @@ public:
         // in the if statement above we consider node's width only
         // because the region was squarified during tree creation.
         // Thus there is no difference between using width or height.
-        auto v = _gravity * node->mass * sourceBody->mass / (distanceToCenterOfMass * distanceToCenterOfMass * distanceToCenterOfMass);
-        force.addScaledVector(dt, v);
+        if (_maxdist <= 0 || distanceToCenterOfMass < _maxdist) {
+          if (distanceToCenterOfMass < _mindist) {
+            distanceToCenterOfMass = std::sqrt(std::sqrt(float(distanceToCenterOfMass * distanceToCenterOfMass * _mindist * _mindist)));
+          }
+          auto v = node->strength * _alpha / (distanceToCenterOfMass * distanceToCenterOfMass);
+          force.addScaledVector(dt, v);
+        }
         return false;
       }
 
