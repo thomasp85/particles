@@ -20,6 +20,7 @@ along a call to \code{\link[=wield]{wield()}}
 }
 
 \seealso{
-Other forces: \code{\link{mean_force}}
+Other forces: \code{\link{manybody_force}},
+  \code{\link{mean_force}}
 }
 \keyword{datasets}
