@@ -1,3 +1,15 @@
+#' Center all particles around the origin without affecting velocity
+#'
+#' This force repositions the particles at each generation so they are centered
+#' around (0,0). It does not affect the velocity of the particles and are thus
+#' mainly a guard against the whole body of particles drifting off.
+#'
+#' @section Training parameters:
+#' There are no parameters for this force.
+#'
+#' @family forces
+#' @usage NULL
+#' @format NULL
 #' @export
 center_force <- structure(list(
 ), class = c('center_force', 'force'))

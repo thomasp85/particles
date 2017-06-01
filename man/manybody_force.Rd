@@ -3,26 +3,36 @@
 \docType{data}
 \name{manybody_force}
 \alias{manybody_force}
-\title{Apply the mean velocity of all the neighbors to a particle}
+\title{Model attraction or repulsion between all particles in the system}
 \description{
-This force takes the mean of all the neighbors (in the graph sense) of a
-particle (and optionally itself) and applies it to itself.
+This force implements a n-body simulation using the Barnes-Hut approximation
+for improved performance. An n-body simulation calculates attraction or
+repulsion between all particles in a system based on their relative distances
+and each particles capacity and can thus mimick gravity or electrostatic
+repulsion.
 }
 \section{Training parameters}{
 
 The following parameters defines the training of the force and can be passed
 along a call to \code{\link[=wield]{wield()}}
 \itemize{
-\item \code{include_self} : Should the velocity of itself be included in the mean
-calculation
-\item \code{mode} : How should neighbors be found? \code{'all'} uses all edges. \code{'out'}
-only uses outbound edges, and \code{'in'} only uses inbound edges. Ignored for
-undirected particle graphs
+\item \code{strength} : The attractive or repulsive force of the particles. If
+positive the particle attracts, if negative the particle repulses. The
+default is -30.
+\item \code{theta} : The Barnes-Hut criterion governing the precision of the
+approximation. If 0, no approximation is made. Defaults to 0.9.
+\item \code{min_dist} : A lower distance threshold below which the forces will be
+damped, in order to avoid explosive forces when two particles gets very
+near each other.
+\item \code{max_dist} : A distance threshold above which the forces between particles
+are ignored. Using this will result in more local changes.
 }
 }
 
 \seealso{
-Other forces: \code{\link{mean_force}},
-  \code{\link{random_force}}
+Other forces: \code{\link{center_force}},
+  \code{\link{collision_force}}, \code{\link{link_force}},
+  \code{\link{mean_force}}, \code{\link{random_force}},
+  \code{\link{x_force}}, \code{\link{y_force}}
 }
 \keyword{datasets}

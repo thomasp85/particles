@@ -1,3 +1,18 @@
+#' Attrack particles towards a vertical position
+#'
+#' This force simply pulls particles towards a fixed position on the y-axis.
+#'
+#' @section Training parameters:
+#' The following parameters defines the training of the force and can be passed
+#' along a call to [wield()]
+#'
+#' - `strength` : The strength with which the attraction occurs
+#' - `y` : The position on the y-axis to pull towards.
+#'
+#' @family forces
+#' @usage NULL
+#' @format NULL
+#' @export
 #' @export
 y_force <- structure(list(
   y = NULL,

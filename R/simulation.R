@@ -1,3 +1,7 @@
+#' @rdname simulate
+#' @aliases simulation
+#' @param x,simulation A simulation object
+#' @export
 is.simulation <- function(x) inherits(x, 'simulation')
 #' @export
 print.simulation <- function(x, ...) {
@@ -39,6 +43,8 @@ universe_def <- function(simulation) {
   universe(simulation)$parameters <- value
   simulation
 }
+#' @describeIn simulate Extract the particle graph from a simulation
+#' @export
 particles <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$particles
@@ -66,6 +72,8 @@ forces <- function(simulation) {
   stopifnot(is.simulation(simulation))
   universe(simulation)$forces
 }
+#' @describeIn simulate Extract the position coordinates from a simulation
+#' @export
 position <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$position
@@ -77,6 +85,8 @@ position <- function(simulation) {
   simulation$position <- value
   simulation
 }
+#' @describeIn simulate Extract the velocity verlets from a simulation
+#' @export
 velocity <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$velocity
@@ -88,6 +98,8 @@ velocity <- function(simulation) {
   simulation$velocity <- value
   simulation
 }
+#' @describeIn simulate Get the number of generations the simulation has undergone
+#' @export
 evolutions <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$evolutions

@@ -1,3 +1,17 @@
+#' Attrack particles towards a horizontal position
+#'
+#' This force simply pulls particles towards a fixed position on the x-axis.
+#'
+#' @section Training parameters:
+#' The following parameters defines the training of the force and can be passed
+#' along a call to [wield()]
+#'
+#' - `strength` : The strength with which the attraction occurs
+#' - `x` : The position on the x-axis to pull towards.
+#'
+#' @family forces
+#' @usage NULL
+#' @format NULL
 #' @export
 x_force <- structure(list(
   x = NULL,

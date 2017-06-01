@@ -1,3 +1,26 @@
+#' Attract or repel linked particles
+#'
+#' This force works between linked particles and either attracts or repel them
+#' from each other depending on the value of the strength and distance
+#' parameters. The force is stronger the longer the linked particles are from
+#' each other, mimicking the mechanics of a rubber band.
+#'
+#' @section Training parameters:
+#' The following parameters defines the training of the force and can be passed
+#' along a call to [wield()]
+#'
+#' - `strength` : The attractive force between the linked particles. The default
+#'   weighs edges from low-degree particles higher (`strength = 1 / (min(degree(from), degree(to)))`).
+#' - `distance` : The desired distance between linked particles. Defaults to
+#'   `30`
+#' - `n_iter` : The number of iteration towards the optimal solution per
+#'   generation. Higher values leads to faster convergence (measured in number
+#'   of generations) at the expense of longer computation time per generation.
+#'   Defaults to `1`.
+#'
+#' @family forces
+#' @usage NULL
+#' @format NULL
 #' @export
 link_force <- structure(list(
   strength = NULL,
