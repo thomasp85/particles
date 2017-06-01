@@ -5,6 +5,20 @@
 
 using namespace Rcpp;
 
+// collision
+NumericMatrix collision(NumericMatrix pos, NumericMatrix vel, NumericVector radii, double strength);
+RcppExport SEXP particles_collision(SEXP posSEXP, SEXP velSEXP, SEXP radiiSEXP, SEXP strengthSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type pos(posSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type vel(velSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type radii(radiiSEXP);
+    Rcpp::traits::input_parameter< double >::type strength(strengthSEXP);
+    rcpp_result_gen = Rcpp::wrap(collision(pos, vel, radii, strength));
+    return rcpp_result_gen;
+END_RCPP
+}
 // nbody
 NumericMatrix nbody(NumericMatrix pos, NumericVector strength, double theta, double min_dist, double max_dist, double alpha);
 RcppExport SEXP particles_nbody(SEXP posSEXP, SEXP strengthSEXP, SEXP thetaSEXP, SEXP min_distSEXP, SEXP max_distSEXP, SEXP alphaSEXP) {
@@ -23,6 +37,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"particles_collision", (DL_FUNC) &particles_collision, 4},
     {"particles_nbody", (DL_FUNC) &particles_nbody, 6},
     {NULL, NULL, 0}
 };

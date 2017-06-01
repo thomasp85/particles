@@ -29,8 +29,11 @@ const double max_double = std::numeric_limits<double>::max();
 template <size_t Dimension>
 struct Body {
   VectorN<Dimension> pos;
+  VectorN<Dimension> vel;
   VectorN<Dimension> force;
   double strength = 0;
+  double radius = 0;
+  bool collided = false;
 
   Body() {}
 
@@ -58,6 +61,7 @@ struct QuadTreeNode : public IQuadTreeNode {
   std::vector<Body<N> *> bodies;
 
   double strength = 0;        // This is total strength of the current node;
+  double radius = 0;
   VectorN<N> massVector; // This is a center of the mass-vector for the current node;
 
   VectorN<N> minBounds;    // "left" bounds of the node.
@@ -192,6 +196,8 @@ class QuadTree : public IQuadTree {
     return root;
   }
   void insert(Body<N> *body, QuadTreeNode<N> *node) {
+    if (node->radius < body->radius) node->radius = body->radius;
+
     if (node->isLeaf()) {
       if (node->bodies[0]->pos.sameAs(body->pos)) {
         // Stack it together with the other coincident bodies
@@ -251,7 +257,7 @@ class QuadTree : public IQuadTree {
   }
 
 public:
-  QuadTree() : QuadTree(0.9) {}
+  QuadTree() {}
   QuadTree(const double &theta, const double &mindist, const double &maxdist, const double &alpha) : _theta(theta), _mindist(mindist), _maxdist(maxdist), _alpha(alpha) {}
 
   void insertBodies(const std::deque<Body<N> *> &bodies) {
@@ -333,6 +339,39 @@ public:
     traverse<N>(root, visitNode);
 
     sourceBody->force.add(force);
+  }
+
+  void collideBodies(Body<N> *sourceBody) {
+    VectorN<N> posi = sourceBody->pos + sourceBody->vel;
+    double ri2 = sourceBody->radius * sourceBody->radius;
+
+    auto visitNode = [&](const QuadTreeNode<N> *node) -> bool {
+      double r_sum = sourceBody->radius + node->radius;
+      if (node->isLeaf()) {
+        if (!node->bodies[0]->collided) {
+          VectorN<N> dt = posi - node->bodies[0]->pos - node->bodies[0]->vel;
+          dt.relax();
+          auto dist = dt.length();
+          if (r_sum > dist) {
+            dist = sourceBody->strength * (r_sum - dist) / dist;
+            double r_mod = (node->radius * node->radius) / (ri2 + (node->radius * node->radius));
+            dt.multiplyScalar(dist);
+            VectorN<N> dt_rev(dt);
+            dt.multiplyScalar(r_mod);
+            dt_rev.multiplyScalar(1 - r_mod);
+            sourceBody->force.add(dt);
+            node->bodies[0]->force.sub(dt_rev);
+          }
+        }
+        return false;
+      }
+      for (size_t i = 0; i < posi.size; ++i) {
+        if (node->minBounds.coord[i] > posi.coord[i] + r_sum) return false;
+        if (node->maxBounds.coord[i] < posi.coord[i] - r_sum) return false;
+      }
+      return true;
+    };
+    traverse<N>(root, visitNode);
   }
 
   virtual QuadTreeNode<N>* getRoot() {

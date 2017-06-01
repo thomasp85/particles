@@ -48,6 +48,12 @@ struct VectorN : public IVector {
     return result;
   }
 
+  friend VectorN operator+(VectorN left, const VectorN& right) {
+    VectorN result(left);
+    result.add(right);
+    return result;
+  }
+
   bool isZero() {
     for (int i = 0; i < size; ++i) {
       if (coord[i] != 0) return false;
@@ -152,6 +158,12 @@ struct VectorN<3> : public IVector {
   friend VectorN operator-(VectorN left, const VectorN& right) {
     VectorN result(left);
     result.sub(right);
+    return result;
+  }
+
+  friend VectorN operator+(VectorN left, const VectorN& right) {
+    VectorN result(left);
+    result.add(right);
     return result;
   }
 
@@ -271,6 +283,12 @@ struct VectorN<2> : public IVector {
   friend VectorN operator-(VectorN left, const VectorN& right) {
     VectorN result(left);
     result.sub(right);
+    return result;
+  }
+
+  friend VectorN operator+(VectorN left, const VectorN& right) {
+    VectorN result(left);
+    result.add(right);
     return result;
   }
 
