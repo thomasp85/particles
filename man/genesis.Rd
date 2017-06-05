@@ -11,7 +11,7 @@
 \usage{
 phyllotactic_genesis(radius = 10, angle = pi * (3 - sqrt(5)))
 
-predefined_genesis(x = x, y = y, x_vel = 0, y_vel = 0)
+predefined_genesis(x, y, x_vel = 0, y_vel = 0)
 
 bigbang_genesis(vel_min = 0, vel_max = 1)
 

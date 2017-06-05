@@ -45,7 +45,7 @@ phyllotactic_genesis <- function(radius = 10, angle = pi * (3 - sqrt(5))) {
 #' @param x,y The columns holding (or value of) the position coordinates
 #' @param x_vel,y_vel The columns holding (or value of) the velocity verlets
 #' @export
-predefined_genesis <- function(x = x, y = y, x_vel = 0, y_vel = 0) {
+predefined_genesis <- function(x, y, x_vel = 0, y_vel = 0) {
   x <- enquo(x)
   y <- enquo(y)
   x_vel <- enquo(x_vel)
