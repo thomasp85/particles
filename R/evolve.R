@@ -46,7 +46,7 @@
 #' # Run evolution until alpha_min is reached
 #' sim %>% evolve(NULL)
 #'
-evolve <- function(simulation, steps = 1, on_generation = NULL, ...) {
+evolve <- function(simulation, steps = NULL, on_generation = NULL, ...) {
   stopifnot(is.simulation(simulation))
   while (TRUE) {
     if (!is.null(steps)) {

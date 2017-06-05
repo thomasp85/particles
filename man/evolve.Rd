@@ -4,7 +4,7 @@
 \alias{evolve}
 \title{Move the simulation forward one or more steps}
 \usage{
-evolve(simulation, steps = 1, on_generation = NULL, ...)
+evolve(simulation, steps = NULL, on_generation = NULL, ...)
 }
 \arguments{
 \item{simulation}{A simulation object}
