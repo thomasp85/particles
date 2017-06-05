@@ -76,6 +76,7 @@ struct QuadTreeNode : public IQuadTreeNode {
     bodies.clear();
     massVector.reset();
     strength = 0;
+    radius = 0;
     minBounds.set(0);
     maxBounds.set(0);
   }
@@ -251,6 +252,7 @@ class QuadTree : public IQuadTree {
         child->maxBounds.set(tempMax);
         child->bodies.push_back(body);
         child->strength += body->strength;
+        child->radius = body->radius;
         node->quads[quadIdx] = child;
       }
     }
@@ -346,6 +348,8 @@ public:
     double ri2 = sourceBody->radius * sourceBody->radius;
 
     auto visitNode = [&](const QuadTreeNode<N> *node) -> bool {
+      if (std::find(node->bodies.begin(), node->bodies.end(), sourceBody) != node->bodies.end()) return false;
+
       double r_sum = sourceBody->radius + node->radius;
       if (node->isLeaf()) {
         if (!node->bodies[0]->collided) {
@@ -354,7 +358,7 @@ public:
           auto dist = dt.length();
           if (r_sum > dist) {
             dist = sourceBody->strength * (r_sum - dist) / dist;
-            double r_mod = (node->radius * node->radius) / (ri2 + (node->radius * node->radius));
+            double r_mod = (node->radius * node->radius) / (ri2 + node->radius);
             dt.multiplyScalar(dist);
             VectorN<N> dt_rev(dt);
             dt.multiplyScalar(r_mod);
@@ -372,6 +376,7 @@ public:
       return true;
     };
     traverse<N>(root, visitNode);
+    sourceBody->collided = true;
   }
 
   virtual QuadTreeNode<N>* getRoot() {
