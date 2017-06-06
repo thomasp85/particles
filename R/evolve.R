@@ -16,8 +16,8 @@
 #' 4. Apply the forces on the current particle positions and velocities in the
 #' order they have been added
 #' 5. Reduce the velocity according to the given `velocity_decay`
-#' 6. Calculate the new particle positions based on the new velocity
-#' 7. Update the position and velocity based on any provided constraints
+#' 6. Update the position and velocity based on any provided constraints
+#' 7. Calculate the new particle positions based on the new velocity
 #' 8. If given, call the `on_generation` function.
 #'
 #' @param simulation A simulation object
@@ -63,13 +63,14 @@ evolve <- function(simulation, steps = NULL, on_generation = NULL, ...) {
       apply_force(r, particles, l$position, l$velocity, alpha)
     }, forces(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
     velocity(simulation) <- evolution$velocity * (1 - universe_def(simulation)$velocity_decay)
-    position(simulation) <- position(simulation) + velocity(simulation)
 
     constrained_evolution <- Reduce(function(l ,r) {
       apply_constraint(r, particles, l$position, l$velocity, alpha)
     }, constraints(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
     velocity(simulation) <- constrained_evolution$velocity
     position(simulation) <- constrained_evolution$position
+
+    position(simulation) <- position(simulation) + velocity(simulation)
 
     simulation <- advance(simulation)
     if (!is.null(on_generation)) {

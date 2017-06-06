@@ -44,8 +44,8 @@ train_constraint.y_constraint <- function(constraint, particles, y = NULL, ymin 
   constraint
 }
 apply_constraint.y_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
-  min_constrained <- !(is.na(constraint$ymin) | pos[, 2] > constraint$ymin)
-  max_constrained <- !(is.na(constraint$ymax) | pos[, 2] < constraint$ymax)
+  min_constrained <- !(is.na(constraint$ymin) | pos[, 2] + vel[, 2] > constraint$ymin)
+  max_constrained <- !(is.na(constraint$ymax) | pos[, 2] + vel[, 2] < constraint$ymax)
   pos[, 2] <- ifelse(min_constrained, constraint$ymin, pos[, 2])
   pos[, 2] <- ifelse(max_constrained, constraint$ymax, pos[, 2])
   vel[, 2] <- ifelse(min_constrained | max_constrained, 0, vel[, 2])
