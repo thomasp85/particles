@@ -39,6 +39,7 @@ Each generation in the simulation progress in the following manner:
 order they have been added
 \item Reduce the velocity according to the given \code{velocity_decay}
 \item Calculate the new particle positions based on the new velocity
+\item Update the position and velocity based on any provided constraints
 \item If given, call the \code{on_generation} function.
 }
 }

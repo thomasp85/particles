@@ -29,3 +29,9 @@ add_force <- function(universe, force) {
   universe$forces <- append(universe$forces, list(force))
   universe
 }
+add_constraint <- function(universe, constraint) {
+  stopifnot(is.universe(universe))
+  stopifnot(is.constraint(constraint))
+  universe$constraints <- append(universe$constraints, list(constraint))
+  universe
+}

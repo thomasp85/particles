@@ -72,6 +72,10 @@ forces <- function(simulation) {
   stopifnot(is.simulation(simulation))
   universe(simulation)$forces
 }
+constraints <- function(simulation) {
+  stopifnot(is.simulation(simulation))
+  universe(simulation)$constraints
+}
 #' @describeIn simulate Extract the position coordinates from a simulation
 #' @export
 position <- function(simulation) {
