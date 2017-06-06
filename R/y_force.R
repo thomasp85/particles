@@ -13,7 +13,6 @@
 #' @usage NULL
 #' @format NULL
 #' @export
-#' @export
 y_force <- structure(list(
   y = NULL,
   strength = NULL,
