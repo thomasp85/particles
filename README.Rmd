@@ -29,11 +29,6 @@ knitr::opts_knit$set(animation.fun = function(x, options, format = "gif") {
   unlink(figs)
   sprintf("![%s](%s)", options$label, paste0(knitr::opts_knit$get("base.url"), mov.fname))
 })
-
-library(tidyverse)
-library(ggraph)
-library(tidygraph)
-library(particles)
 ```
 
 # particles
@@ -75,6 +70,14 @@ and adds a set of verbs that defines the simulation:
 
 ### Example
 A recreation of the Les Miserable network in <https://bl.ocks.org/mbostock/4062045>
+
+```{r, message=FALSE}
+library(tidyverse)
+library(ggraph)
+library(tidygraph)
+library(particles)
+```
+
 ```{r}
 
 # Data preparation
@@ -123,7 +126,7 @@ If you intend to follow the steps of the simulation it is possible to attach an
 event handler that gets called ofter each generation of the simulation. If the
 handler produces a plot the result will be an animation of the simulation:
 
-```{r, fig.show='animate'}
+```{r, fig.show='animate', results='hide'}
 # Random overlapping circles
 graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) %>% 
   mutate(x = runif(100) - 0.5, 

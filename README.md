@@ -26,6 +26,13 @@ Usage
 A recreation of the Les Miserable network in <https://bl.ocks.org/mbostock/4062045>
 
 ``` r
+library(tidyverse)
+library(ggraph)
+library(tidygraph)
+library(particles)
+```
+
+``` r
 
 # Data preparation
 d3_col <- c(
@@ -69,7 +76,7 @@ ggraph(mis_graph, 'manual', node.position = as_tibble(mis_graph)) +
   theme_graph()
 ```
 
-![](README-unnamed-chunk-2-1.png)
+![](README-unnamed-chunk-3-1.png)
 
 If you intend to follow the steps of the simulation it is possible to attach an event handler that gets called ofter each generation of the simulation. If the handler produces a plot the result will be an animation of the simulation:
 
@@ -98,15 +105,7 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
-![unnamed-chunk-3](README-unnamed-chunk-3-.gif)
-
-    #> A particle simulation:
-    #> * 100 particles
-    #> * 3 Forces
-    #>   - collision_force
-    #>   - x_force
-    #>   - y_force
-    #> * 300 Evolutions
+![unnamed-chunk-4](README-unnamed-chunk-4-.gif)
 
 Installation
 ------------
