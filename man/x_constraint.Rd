@@ -22,6 +22,7 @@ passed along a call to \code{\link[=impose]{impose()}}
 }
 
 \seealso{
-Other constraints: \code{\link{y_constraint}}
+Other constraints: \code{\link{velocity_constraint}},
+  \code{\link{y_constraint}}
 }
 \keyword{datasets}
