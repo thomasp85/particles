@@ -71,6 +71,43 @@ ggraph(mis_graph, 'manual', node.position = as_tibble(mis_graph)) +
 
 ![](README-unnamed-chunk-2-1.png)
 
+If you intend to follow the steps of the simulation it is possible to attach an event handler that gets called ofter each generation of the simulation. If the handler produces a plot the result will be an animation of the simulation:
+
+``` r
+# Random overlapping circles
+graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) %>% 
+  mutate(x = runif(100) - 0.5, 
+         y = runif(100) - 0.5, 
+         radius = runif(100, min = 0.1, 0.2))
+
+# Plotting function
+graph_plot <- . %>% {
+  gr <- as_tbl_graph(.)
+  p <- ggraph(gr, 'manual', node.position = as_tibble(gr)) +
+    geom_node_circle(aes(r = radius), fill = 'forestgreen', alpha = 0.5) + 
+    coord_fixed(xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5)) + 
+    theme_graph()
+  plot(p)
+}
+
+# Simulation
+graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>% 
+  wield(collision_force, radius = radius, n_iter = 2) %>% 
+  wield(x_force, x = 0, strength = 0.002) %>% 
+  wield(y_force, y = 0, strength = 0.002) %>% 
+  evolve(on_generation = graph_plot)
+```
+
+![unnamed-chunk-3](README-unnamed-chunk-3-.gif)
+
+    #> A particle simulation:
+    #> * 100 particles
+    #> * 3 Forces
+    #>   - collision_force
+    #>   - x_force
+    #>   - y_force
+    #> * 300 Evolutions
+
 Installation
 ------------
 
