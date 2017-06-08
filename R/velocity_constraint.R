@@ -52,9 +52,9 @@ apply_constraint.velocity_constraint <- function(constraint, particles, pos, vel
   max_constrained <- !(is.na(constraint$vmax) | vel_strength < constraint$vmax)
   problems <- vel_strength == 0 & (min_constrained || max_constrained)
   vel_strength[problems] <- sqrt(rowSums(vel_tmp[problems, ]^2))
-  vel[problems, ] <- vel_tmp[problems, ]
-  vel_modmin <- ifelse(min_constrained, constraint$ymin/vel_strength, 1)
-  vel_modmax <- ifelse(max_constrained, constraint$ymax/vel_strength, 1)
+  vel[problems, ] <- vel_tmp[problems, , drop = FALSE]
+  vel_modmin <- ifelse(min_constrained, constraint$vmin/vel_strength, 1)
+  vel_modmax <- ifelse(max_constrained, constraint$vmax/vel_strength, 1)
   vel <- vel * cbind(vel_modmin, vel_modmin) * cbind(vel_modmax, vel_modmax)
   list(position = pos, velocity = vel)
 }
