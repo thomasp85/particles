@@ -134,6 +134,17 @@ struct VectorN : public IVector {
     }
     return this;
   }
+  double distSquared(const VectorN &other) {
+    VectorN norm = *(this) - other;
+    double sum = 0;
+    for (int i = 0; i < size; ++i) sum += norm.coord[i] * norm.coord[i];
+    return sum;
+  }
+  double dot(const VectorN &other) {
+    double dot = 0;
+    for (int i = 0; i < size; ++i) dot += coord[i] * other.coord[i];
+    return dot;
+  }
 };
 
 template <>
@@ -260,6 +271,14 @@ struct VectorN<3> : public IVector {
     if (coord[2] == 0) coord[2] = R::runif(-0.5, 0.5) * 1e-6;
     return this;
   }
+  double distSquared(const VectorN &other) {
+    VectorN norm = *(this) - other;
+    double sum = norm.coord[0] * norm.coord[0] + norm.coord[1] * norm.coord[1] + norm.coord[2] * norm.coord[2];
+    return sum;
+  }
+  double dot(const VectorN &other) {
+    return coord[0] * other.coord[0] + coord[1] * other.coord[1] + coord[2] * other.coord[2];
+  }
 };
 
 template <>
@@ -371,6 +390,14 @@ struct VectorN<2> : public IVector {
     if (coord[0] == 0) coord[0] = R::runif(-0.5, 0.5) * 1e-6;
     if (coord[1] == 0) coord[1] = R::runif(-0.5, 0.5) * 1e-6;
     return this;
+  }
+  double distSquared(const VectorN &other) {
+    VectorN norm = *(this) - other;
+    double sum = norm.coord[0] * norm.coord[0] + norm.coord[1] * norm.coord[1];
+    return sum;
+  }
+  double dot(const VectorN &other) {
+    return coord[0] * other.coord[0] + coord[1] * other.coord[1];
   }
 };
 

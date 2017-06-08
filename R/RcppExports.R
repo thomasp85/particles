@@ -9,3 +9,11 @@ nbody <- function(pos, strength, theta, min_dist, max_dist, alpha) {
     .Call('particles_nbody', PACKAGE = 'particles', pos, strength, theta, min_dist, max_dist, alpha)
 }
 
+points_to_path <- function(pos, path) {
+    .Call('particles_points_to_path', PACKAGE = 'particles', pos, path)
+}
+
+angle_diff <- function(a, b) {
+    .Call('particles_angle_diff', PACKAGE = 'particles', a, b)
+}
+
