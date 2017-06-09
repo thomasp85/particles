@@ -1,4 +1,4 @@
-#' Reset the velocity of particles to a fixed value
+#' Reset the velocity verlet of particles to a fixed value
 #'
 #' This force resets the velocity of particles at each generation. It can be
 #' used if each generation should start from the same foundation rather than
@@ -39,7 +39,7 @@ train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, 
   force$yvel <- rep(y, length.out = nrow(nodes))
   force
 }
-apply_force.x_force <- function(force, particles, pos, vel, alpha, ...) {
+apply_force.reset_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[!is.na(force$xvel), 1] <- na.omit(force$xvel)
   vel[!is.na(force$yvel), 2] <- na.omit(force$yvel)
   list(position = pos, velocity = vel)
