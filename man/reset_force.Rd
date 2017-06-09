@@ -3,7 +3,7 @@
 \docType{data}
 \name{reset_force}
 \alias{reset_force}
-\title{Reset the velocity of particles to a fixed value}
+\title{Reset the velocity verlet of particles to a fixed value}
 \description{
 This force resets the velocity of particles at each generation. It can be
 used if each generation should start from the same foundation rather than
@@ -22,9 +22,10 @@ along a call to \code{\link[=wield]{wield()}}
 
 \seealso{
 Other forces: \code{\link{center_force}},
-  \code{\link{collision_force}}, \code{\link{link_force}},
-  \code{\link{manybody_force}}, \code{\link{mean_force}},
-  \code{\link{random_force}}, \code{\link{trap_force}},
-  \code{\link{x_force}}, \code{\link{y_force}}
+  \code{\link{collision_force}}, \code{\link{field_force}},
+  \code{\link{link_force}}, \code{\link{manybody_force}},
+  \code{\link{mean_force}}, \code{\link{random_force}},
+  \code{\link{trap_force}}, \code{\link{x_force}},
+  \code{\link{y_force}}
 }
 \keyword{datasets}

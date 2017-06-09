@@ -31,9 +31,10 @@ are ignored. Using this will result in more local changes.
 
 \seealso{
 Other forces: \code{\link{center_force}},
-  \code{\link{collision_force}}, \code{\link{link_force}},
-  \code{\link{mean_force}}, \code{\link{random_force}},
-  \code{\link{reset_force}}, \code{\link{trap_force}},
-  \code{\link{x_force}}, \code{\link{y_force}}
+  \code{\link{collision_force}}, \code{\link{field_force}},
+  \code{\link{link_force}}, \code{\link{mean_force}},
+  \code{\link{random_force}}, \code{\link{reset_force}},
+  \code{\link{trap_force}}, \code{\link{x_force}},
+  \code{\link{y_force}}
 }
 \keyword{datasets}
