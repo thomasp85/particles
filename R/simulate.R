@@ -69,6 +69,7 @@ simulate <- function(graph, alpha = 1, alpha_min = 0.001,
     position = genesis$position,
     velocity = genesis$velocity,
     universe = universe,
-    evolutions = 0
+    evolutions = 0,
+    history = list()
   ), class = 'simulation')
 }

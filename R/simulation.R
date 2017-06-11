@@ -24,6 +24,18 @@ as_tbl_graph.simulation <- function(simulation) {
          x_vel = vel[, 1],
          y_vel = vel[, 2])
 }
+#' @export
+record <- function(simulation, ...) {
+  history <- list(
+    particles = particles(simulation),
+    position = position(simulation),
+    velocity = velocity(simulation),
+    generation = evolutions(simulation),
+    alpha = alpha(simulation)
+  )
+  simulation$history <- append(simulation$history, list(history))
+  simulation
+}
 universe <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$universe
