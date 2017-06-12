@@ -5,9 +5,9 @@
 \alias{wield}
 \title{Assign a force or constraint to a simulation}
 \usage{
-impose(simulation, constraint, ...)
+impose(simulation, constraint, ..., name, include = TRUE)
 
-wield(simulation, force, ...)
+wield(simulation, force, ..., name, include = TRUE)
 }
 \arguments{
 \item{simulation}{A simulation object}
@@ -15,6 +15,12 @@ wield(simulation, force, ...)
 \item{constraint}{A constraint object}
 
 \item{...}{Parameters passed on to the training of the force or constraint}
+
+\item{name}{The name of the force. For use when accessing the force at a
+later stage.}
+
+\item{include}{The particles to be affected by this force. Defaults to every
+particle in the simulation}
 
 \item{force}{A force object}
 }
