@@ -4,6 +4,10 @@
 \alias{simulate}
 \alias{is.simulation}
 \alias{simulation}
+\alias{record}
+\alias{clear_history}
+\alias{get_history}
+\alias{history_length}
 \alias{particles}
 \alias{position}
 \alias{velocity}
@@ -15,6 +19,14 @@ simulate(graph, alpha = 1, alpha_min = 0.001, alpha_decay = 1 -
   setup = phyllotactic_genesis(), ...)
 
 is.simulation(x)
+
+record(simulation, ...)
+
+clear_history(simulation)
+
+get_history(simulation, age = -1)
+
+history_length(simulation)
 
 particles(simulation)
 
@@ -45,6 +57,10 @@ position and velocity to each particle. \code{particles} provides a range of
 \item{...}{Additional parameters for the simulation (currently ignored)}
 
 \item{x, simulation}{A simulation object}
+
+\item{age}{The version to retrieve. Positive numbers count from the
+beginning, while negative numbers counts backwards from current version.
+Defaults to \code{-1}.}
 }
 \value{
 A simulation object
@@ -77,6 +93,14 @@ to \code{0}.
 }
 \section{Functions}{
 \itemize{
+\item \code{record}: Save the current state in the simulation's history
+
+\item \code{clear_history}: Clear the current history from the simulation
+
+\item \code{get_history}: Retrieve a simulation from the history
+
+\item \code{history_length}: Get the number of versions stored in the history of the simulation
+
 \item \code{particles}: Extract the particle graph from a simulation
 
 \item \code{position}: Extract the position coordinates from a simulation

@@ -24,6 +24,7 @@ as_tbl_graph.simulation <- function(simulation) {
          x_vel = vel[, 1],
          y_vel = vel[, 2])
 }
+#' @describeIn simulate Save the current state in the simulation's history
 #' @export
 record <- function(simulation, ...) {
   history <- simulation
@@ -31,11 +32,16 @@ record <- function(simulation, ...) {
   simulation$history <- append(simulation$history, list(history))
   simulation
 }
+#' @describeIn simulate Clear the current history from the simulation
 #' @export
 clear_history <- function(simulation) {
   simulation$history <- list()
   simulation
 }
+#' @describeIn simulate Retrieve a simulation from the history
+#' @param age The version to retrieve. Positive numbers count from the
+#' beginning, while negative numbers counts backwards from current version.
+#' Defaults to `-1`.
 #' @export
 get_history <- function(simulation, age = -1) {
   if (age <= 0) {
@@ -47,6 +53,7 @@ get_history <- function(simulation, age = -1) {
   state$history <- simulation$history[seq_len(age)]
   state
 }
+#' @describeIn simulate Get the number of versions stored in the history of the simulation
 #' @export
 history_length <- function(simulation) {
   length(simulation$history)
