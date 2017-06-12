@@ -26,15 +26,26 @@ as_tbl_graph.simulation <- function(simulation) {
 }
 #' @export
 record <- function(simulation, ...) {
-  history <- list(
-    particles = particles(simulation),
-    position = position(simulation),
-    velocity = velocity(simulation),
-    generation = evolutions(simulation),
-    alpha = alpha(simulation)
-  )
+  history <- simulation
+  history$history <- list()
   simulation$history <- append(simulation$history, list(history))
   simulation
+}
+#' @export
+clear_history <- function(simulation) {
+  simulation$history <- list()
+  simulation
+}
+#' @export
+get_history <- function(simulation, age = -1) {
+  if (age <= 0) {
+    age <- length(simulation$history) + age
+    if (age <= 0) stop('Can\'t go back that far', call. = FALSE)
+  }
+  if (age > length(simulation$history)) stop('Not that many records in the simulation', call. = TRUE)
+  state <- simulation$history[[age]]
+  state$history <- simulation$history[seq_len(age)]
+  state
 }
 universe <- function(simulation) {
   stopifnot(is.simulation(simulation))
