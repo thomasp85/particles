@@ -19,6 +19,7 @@ print.center_force <- function(x, ...) {
   cat('* A force that keeps all particles centered around the origin\n')
 }
 train_force.center_force <- function(force, particles, ...) {
+  force <- NextMethod()
   force
 }
 apply_force.center_force <- function(force, particles, pos, vel, alpha, ...) {

@@ -27,6 +27,7 @@ print.mean_force <- function(x, ...) {
   cat('* A force that applies the mean velocity of a particle neighbours to itself\n')
 }
 train_force.mean_force <- function(force, particles, include_self = FALSE, mode = 'all', ...) {
+  force <- NextMethod()
   force$include_self <- include_self
   force$mode <- mode
   force

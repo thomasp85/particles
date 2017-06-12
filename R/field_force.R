@@ -36,6 +36,7 @@ print.field_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_force.field_force <- function(force, particles, x, y, angle, vel, xlim = c(-10, 10), ylim = xlim, ...) {
+  force <- NextMethod()
   if (missing(x) && missing(y)) {
     if (!is.matrix(vel)) vel <- matrix(vel, ncol = ncol(angle), nrow = nrow(angle))
     stopifnot(all(dim(angle) == dim(vel)))

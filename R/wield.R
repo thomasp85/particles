@@ -19,8 +19,15 @@
 #'
 #' @param ... Parameters passed on to the training of the force or constraint
 #'
+#' @param name The name of the force. For use when accessing the force at a
+#' later stage.
+#'
+#' @param include The particles to be affected by this force. Defaults to every
+#' particle in the simulation
+#'
 #' @return A simulation with the force or constraint added
 #'
+#' @importFrom rlang enquo
 #' @export
 #'
 #' @examples
@@ -29,12 +36,14 @@
 #'   simulate() %>%
 #'   wield(link_force)
 #'
-wield <- function(simulation, force, ...) {
+wield <- function(simulation, force, ..., name, include = TRUE) {
   stopifnot(is.simulation(simulation))
   stopifnot(is.force(force))
+  include <- enquo(include)
   universe(simulation) <- add_force(
     universe(simulation),
-    train_force(force, particles(simulation), ...)
+    name = name,
+    train_force(force, particles(simulation), ..., include = include)
   )
   simulation
 }

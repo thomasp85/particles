@@ -5,8 +5,12 @@ train_constraint <- function(constraint, particles, ...) {
 train_constraint.default <- function(constraint, particles, ...) {
   stop('The provided object is not a constraint', call. = FALSE)
 }
-train_constraint.constraint <- function(constraint, particles, ...) {
-  stop('The provided constraint does not implement a training method', call. = FALSE)
+train_constraint.constraint <- function(constraint, particles, include, ...) {
+  constraint$include_quo <- enquo(include)
+  nodes <- as_tibble(particles, active = 'nodes')
+  include <- eval_tidy(constraint$include_quo, nodes) %||% TRUE
+  constraint$include <- rep(include, length.out = nrow(nodes))
+  constraint
 }
 apply_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   UseMethod('apply_constraint')

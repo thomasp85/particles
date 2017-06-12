@@ -30,6 +30,7 @@ print.reset_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, ...) {
+  force <- NextMethod()
   force$xvel_quo <- enquo(xvel)
   force$yvel_quo <- enquo(yvel)
   nodes <- as_tibble(particles, active = 'nodes')

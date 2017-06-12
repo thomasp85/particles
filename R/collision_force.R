@@ -33,6 +33,7 @@ print.collision_force <- function(x, ...) {
 #' @importFrom tidygraph as_tibble
 #' @importFrom rlang enquo eval_tidy %||%
 train_force.collision_force <- function(force, particles, radius = NULL, strength = NULL, n_iter = 1, ...) {
+  force <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
   force$radius_quo <- enquo(radius)
   radius <- eval_tidy(force$radius_quo, nodes) %||% 1

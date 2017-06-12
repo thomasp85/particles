@@ -27,6 +27,7 @@ print.y_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_force.y_force <- function(force, particles, y = NULL, strength = NULL, ...) {
+  force <- NextMethod()
   force$y_quo <- enquo(y)
   force$strength_quo <- enquo(strength)
   nodes <- as_tibble(particles, active = 'nodes')

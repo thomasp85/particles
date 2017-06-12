@@ -32,6 +32,7 @@ print.y_constraint <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_constraint.y_constraint <- function(constraint, particles, y = NULL, ymin = NULL, ymax = NULL, ...) {
+  constraint <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
   constraint$y_quo <- enquo(y)
   constraint$ymin_quo <- enquo(ymin)

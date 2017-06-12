@@ -40,6 +40,7 @@ print.manybody_force <- function(x, ...) {
 #' @importFrom tidygraph as_tibble
 #' @importFrom rlang enquo eval_tidy %||%
 train_force.manybody_force <- function(force, particles, strength = NULL, theta = NULL, min_dist = NULL, max_dist = NULL, ...) {
+  force <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
   force$strength_quo <- enquo(strength)
   strength <- eval_tidy(force$strength_quo, nodes) %||% -30

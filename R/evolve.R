@@ -60,12 +60,20 @@ evolve <- function(simulation, steps = NULL, on_generation = NULL, ...) {
     alpha(simulation) <- alpha
 
     evolution <- Reduce(function(l ,r) {
-      apply_force(r, particles, l$position, l$velocity, alpha)
+      res <- apply_force(r, particles, l$position, l$velocity, alpha)
+      if (all(r$include)) return(res)
+      l$position[r$include, ] <- res$position[r$include, , drop = FALSE]
+      l$velocity[r$include, ] <- res$velocity[r$include, , drop = FALSE]
+      l
     }, forces(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
     velocity(simulation) <- evolution$velocity * (1 - universe_def(simulation)$velocity_decay)
 
     constrained_evolution <- Reduce(function(l ,r) {
-      apply_constraint(r, particles, l$position, l$velocity, alpha)
+      res <- apply_constraint(r, particles, l$position, l$velocity, alpha)
+      if (all(r$include)) return(res)
+      l$position[r$include, ] <- res$position[r$include, , drop = FALSE]
+      l$velocity[r$include, ] <- res$velocity[r$include, , drop = FALSE]
+      l
     }, constraints(simulation), init = list(position = position(simulation), velocity = velocity(simulation)))
     velocity(simulation) <- constrained_evolution$velocity
     position(simulation) <- constrained_evolution$position

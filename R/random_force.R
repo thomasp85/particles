@@ -29,6 +29,7 @@ print.random_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_force.random_force <- function(force, particles, xmin = -1, xmax = 1, ymin = -1, ymax = 1, ...) {
+  force <- NextMethod()
   force$xmin <- xmin
   force$xmax <- xmax
   force$ymin <- ymin

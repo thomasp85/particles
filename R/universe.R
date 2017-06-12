@@ -23,15 +23,17 @@ is.universe <- function(x) inherits(x, 'universe')
 init_particles <- function(universe, particles) {
   universe$genesis(particles, universe$parameters)
 }
-add_force <- function(universe, force) {
+add_force <- function(universe, name, force) {
   stopifnot(is.universe(universe))
   stopifnot(is.force(force))
-  universe$forces <- append(universe$forces, list(force))
+  if (missing(name)) name <- NULL
+  universe$forces <- append(universe$forces, setNames(list(force), name))
   universe
 }
-add_constraint <- function(universe, constraint) {
+add_constraint <- function(universe, name, constraint) {
   stopifnot(is.universe(universe))
   stopifnot(is.constraint(constraint))
-  universe$constraints <- append(universe$constraints, list(constraint))
+  if (missing(name)) name <- NULL
+  universe$constraints <- append(universe$constraints, setNames(list(constraint), name))
   universe
 }

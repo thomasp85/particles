@@ -28,6 +28,7 @@ print.infinity_constraint <- function(x, ...) {
   cat('* A constraint forces particles to be inside a canvas by wrapping them around it.\n')
 }
 train_constraint.infinity_constraint <- function(constraint, particles, xlim = c(-5, 5), ylim = xlim, ...) {
+  constraint <- NextMethod()
   constraint$xmin <- xlim[1]
   constraint$xmax <- xlim[2]
   constraint$ymin <- ylim[1]

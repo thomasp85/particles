@@ -42,6 +42,7 @@ print.trap_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_force.trap_force <- function(force, particles, polygon = NULL, strength = NULL, min_dist = 1, ...) {
+  force <- NextMethod()
   if (is.matrix(polygon)) polygon <- list(polygon)
   if (!all(vapply(polygon, inherits, logical(1), 'matrix'))) {
     stop('Polygon must be provided as a matrix or a list of matrices', call. = FALSE)

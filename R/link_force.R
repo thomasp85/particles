@@ -40,6 +40,7 @@ print.link_force <- function(x, ...) {
 #' @importFrom tidygraph as_tibble
 #' @importFrom igraph degree
 train_force.link_force <- function(force, particles, strength = NULL, distance = NULL, n_iter = 1, ...) {
+  force <- NextMethod()
   force$strength_quo <- enquo(strength)
   force$distance_quo <- enquo(distance)
   edges <- as_tibble(particles, 'edges')

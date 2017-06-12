@@ -32,6 +32,7 @@ print.velocity_constraint <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 train_constraint.velocity_constraint <- function(constraint, particles, v = NULL, vmin = NULL, vmax = NULL, ...) {
+  constraint <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
   constraint$v_quo <- enquo(v)
   constraint$vmin_quo <- enquo(vmin)
