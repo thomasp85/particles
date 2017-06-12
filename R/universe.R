@@ -23,6 +23,7 @@ is.universe <- function(x) inherits(x, 'universe')
 init_particles <- function(universe, particles) {
   universe$genesis(particles, universe$parameters)
 }
+#' @importFrom stats setNames
 add_force <- function(universe, name, force) {
   stopifnot(is.universe(universe))
   stopifnot(is.force(force))
@@ -30,6 +31,7 @@ add_force <- function(universe, name, force) {
   universe$forces <- append(universe$forces, setNames(list(force), name))
   universe
 }
+#' @importFrom stats setNames
 add_constraint <- function(universe, name, constraint) {
   stopifnot(is.universe(universe))
   stopifnot(is.constraint(constraint))

@@ -40,6 +40,7 @@ train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, 
   force$yvel <- rep(y, length.out = nrow(nodes))
   force
 }
+#' @importFrom stats na.omit
 apply_force.reset_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[!is.na(force$xvel), 1] <- na.omit(force$xvel)
   vel[!is.na(force$yvel), 2] <- na.omit(force$yvel)
