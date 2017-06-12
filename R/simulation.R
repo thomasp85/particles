@@ -42,10 +42,14 @@ get_history <- function(simulation, age = -1) {
     age <- length(simulation$history) + age
     if (age <= 0) stop('Can\'t go back that far', call. = FALSE)
   }
-  if (age > length(simulation$history)) stop('Not that many records in the simulation', call. = TRUE)
+  if (age > history_length(simulation)) stop('Not that many records in the simulation', call. = TRUE)
   state <- simulation$history[[age]]
   state$history <- simulation$history[seq_len(age)]
   state
+}
+#' @export
+history_length <- function(simulation) {
+  length(simulation$history)
 }
 universe <- function(simulation) {
   stopifnot(is.simulation(simulation))
