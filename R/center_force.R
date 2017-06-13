@@ -22,6 +22,17 @@ train_force.center_force <- function(force, particles, ...) {
   force <- NextMethod()
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.center_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force
+}
 apply_force.center_force <- function(force, particles, pos, vel, alpha, ...) {
   center <- matrix(colMeans(pos), nrow = nrow(pos), ncol = ncol(pos), byrow = TRUE)
   pos <- pos - center

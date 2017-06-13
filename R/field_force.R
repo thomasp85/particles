@@ -23,10 +23,10 @@
 #' @format NULL
 #' @export
 field_force <- structure(list(
-  xmin = NULL,
-  xmax = NULL,
-  ymin = NULL,
-  ymax = NULL
+  x = NULL,
+  y = NULL,
+  x_breaks = NULL,
+  y_breaks = NULL
 ), class = c('field_force', 'force'))
 #' @export
 print.field_force <- function(x, ...) {
@@ -49,6 +49,39 @@ train_force.field_force <- function(force, particles, x, y, angle, vel, xlim = c
   force$y_breaks <- seq(ylim[1], ylim[2], length.out = dims[1])
   force$x <- x
   force$y <- y
+  force
+}
+#' @importFrom rlang quos eval_tidy
+#' @importFrom digest digest
+retrain_force.field_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  if (any(c('x', 'y') %in% names(dots))) {
+    force <- update_unquo(force, 'x', dots)
+    force <- update_unquo(force, 'y', dots)
+  } else {
+    if (sum(c('angle', 'vel') %in% names(dots)) == 1) {
+      stop('angle and vel must be supplied together', call. = FALSE)
+    }
+    if ('angle' %in% names(dots)) {
+      angle <- eval_tidy(dots$angle)
+      vel <- eval_tidy(dots$vel)
+      if (!is.matrix(vel)) vel <- matrix(vel, ncol = ncol(angle), nrow = nrow(angle))
+      stopifnot(all(dim(angle) == dim(vel)))
+      force$x <- cos(angle) * vel
+      force$y <- sin(angle) * vel
+    }
+  }
+  dims <- dim(force$x)
+  stopifnot(all(dims == dim(force$y)))
+  xlim <- if ('xlim' %in% names(dots)) eval_tidy(dots$xlim) else range(force$x_breaks)
+  force$x_breaks <- seq(xlim[1], xlim[2], length.out = dims[2])
+  ylim <- if ('ylim' %in% names(dots)) eval_tidy(dots$ylim) else range(force$y_breaks)
+  force$y_breaks <- seq(ylim[1], ylim[2], length.out = dims[1])
   force
 }
 #' @importFrom akima bilinear

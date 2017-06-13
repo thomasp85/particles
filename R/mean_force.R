@@ -32,6 +32,19 @@ train_force.mean_force <- function(force, particles, include_self = FALSE, mode 
   force$mode <- mode
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.mean_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_unquo(force, 'include_self', dots)
+  force <- update_unquo(force, 'mode', dots)
+  force
+}
 #' @importFrom igraph ego
 apply_force.mean_force <- function(force, particles, pos, vel, alpha, ...) {
   neighbors <- ego(particles, order = 1, mode = force$mode, mindist = if (force$include_self) 0 else 1)

@@ -40,6 +40,19 @@ train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, 
   force$yvel <- rep(y, length.out = nrow(nodes))
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.reset_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_quo(force, 'xvel', dots, nodes, new_particles, 0)
+  force <- update_quo(force, 'yvel', dots, nodes, new_particles, 0)
+  force
+}
 #' @importFrom stats na.omit
 apply_force.reset_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[!is.na(force$xvel), 1] <- na.omit(force$xvel)

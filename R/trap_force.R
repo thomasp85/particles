@@ -60,6 +60,32 @@ train_force.trap_force <- function(force, particles, polygon = NULL, strength = 
   force$strength <- rep(strength, length.out = nrow(nodes))
   force
 }
+#' @importFrom rlang quos eval_tidy
+#' @importFrom digest digest
+retrain_force.trap_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_quo(force, 'strength', dots, nodes, new_particles, 1)
+  force <- update_unquo(force, 'min_dist', dots)
+  if ('polygon' %in% names(dots)) {
+    polygon <- eval_tidy(dots$polygon)
+    if (is.matrix(polygon)) polygon <- list(polygon)
+    if (!all(vapply(polygon, inherits, logical(1), 'matrix'))) {
+      stop('Polygon must be provided as a matrix or a list of matrices', call. = FALSE)
+    }
+    if (!all(vapply(polygon, ncol, integer(1)) == 2)) {
+      stop('Polygon matrices must contain two columns', call. = FALSE)
+    }
+    force$polygon <- polygon
+    polygon_closed = do.call(rbind, lapply(polygon, rbind, matrix(NA, ncol = 2)))
+    force$polygon_closed <- polygon_closed[-nrow(polygon_closed), ]
+  }
+  force
+}
 #' @importFrom mgcv in.out
 apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
   particle_outside <- !in.out(force$polygon_closed, pos)

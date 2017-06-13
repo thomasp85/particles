@@ -38,6 +38,19 @@ train_force.y_force <- function(force, particles, y = NULL, strength = NULL, ...
   force$strength <- rep(strength, length.out = nrow(nodes))
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.y_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_quo(force, 'y', dots, nodes, new_particles, 0)
+  force <- update_quo(force, 'strength', dots, nodes, new_particles, 0.1)
+  force
+}
 apply_force.y_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[, 2] <- vel[, 2] + (force$y - pos[, 2]) * force$strength * alpha
   list(position = pos, velocity = vel)

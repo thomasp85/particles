@@ -17,7 +17,8 @@ wield(simulation, force, ..., name, include = TRUE)
 \item{...}{Parameters passed on to the training of the force or constraint}
 
 \item{name}{The name of the force. For use when accessing the force at a
-later stage.}
+later stage. If no name is given the force is accessible by its index in the
+stack.}
 
 \item{include}{The particles to be affected by this force. Defaults to every
 particle in the simulation}

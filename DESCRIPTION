@@ -20,7 +20,8 @@ Imports: tidygraph,
     magrittr,
     Rcpp,
     mgcv,
-    akima
+    akima,
+    digest
 RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
 Remotes: thomasp85/tidygraph

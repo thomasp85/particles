@@ -42,6 +42,20 @@ train_force.collision_force <- function(force, particles, radius = NULL, strengt
   force$n_iter <- n_iter %||% 1
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.collision_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_quo(force, 'radius', dots, nodes, new_particles, 1)
+  force <- update_unquo(force, 'strength', dots)
+  force <- update_unquo(force, 'n_iter', dots)
+  force
+}
 apply_force.collision_force <- function(force, particles, pos, vel, alpha, ...) {
   for (i in seq_len(force$n_iter)) {
     vel <- vel + collision(pos, vel, force$radius, force$strength)

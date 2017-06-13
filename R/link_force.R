@@ -55,6 +55,25 @@ train_force.link_force <- function(force, particles, strength = NULL, distance =
   force$count <- count
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_force.link_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  edges <- as_tibble(particles, active = 'edges')
+  if (new_particles) {
+    force$count <- degree(particles)
+    force$bias <- force$count[edges$from] / (force$count[edges$from] + force$count[edges$to])
+  }
+  force <- update_quo(force, 'strength', dots, edges, new_particles, 1 / pmin(force$count[edges$from], force$count[edges$to]))
+  force <- update_quo(force, 'distance', dots, edges, new_particles, 30)
+  force <- update_unquo(force, 'n_iter', dots)
+  force
+}
 #' @importFrom tidygraph as_tibble
 #' @importFrom stats runif
 apply_force.link_force <- function(force, particles, pos, vel, alpha, ...) {

@@ -20,7 +20,8 @@
 #' @param ... Parameters passed on to the training of the force or constraint
 #'
 #' @param name The name of the force. For use when accessing the force at a
-#' later stage.
+#' later stage. If no name is given the force is accessible by its index in the
+#' stack.
 #'
 #' @param include The particles to be affected by this force. Defaults to every
 #' particle in the simulation
@@ -45,5 +46,18 @@ wield <- function(simulation, force, ..., name, include = TRUE) {
     name = name,
     train_force(force, particles(simulation), ..., include = include)
   )
+  simulation
+}
+rewield <- function(simulation, name, ...) {
+  stopifnot(is.simulation(simulation))
+  universe(simulation) <- modify_force(
+    universe(simulation),
+    name = name,
+    retrain_force(get_force(universe(simulation), name), particles(simulation), ...)
+  )
+}
+unwield <- function(simulation, name) {
+  stopifnot(is.simulation(simulation))
+  universe(simulation) <- remove_force(universe(simulation), name)
   simulation
 }
