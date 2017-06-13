@@ -106,9 +106,23 @@ forces <- function(simulation) {
   stopifnot(is.simulation(simulation))
   universe(simulation)$forces
 }
+`forces<-` <- function(simulation, value) {
+  stopifnot(is.simulation(simulation))
+  stopifnot(is.list(value))
+  stopifnot(all(vapply(value, inherits, logical(1), 'force')))
+  universe(simulation)$forces <- value
+  simulation
+}
 constraints <- function(simulation) {
   stopifnot(is.simulation(simulation))
   universe(simulation)$constraints
+}
+`constraints<-` <- function(simulation, value) {
+  stopifnot(is.simulation(simulation))
+  stopifnot(is.list(value))
+  stopifnot(all(vapply(value, inherits, logical(1), 'constraint')))
+  universe(simulation)$constraints <- value
+  simulation
 }
 #' @describeIn simulate Extract the position coordinates from a simulation
 #' @export
@@ -150,5 +164,11 @@ evolutions <- function(simulation) {
 advance <- function(simulation) {
   stopifnot(is.simulation(simulation))
   evolutions(simulation) <- evolutions(simulation) + 1
+  simulation
+}
+retrain <- function(simulation) {
+  stopifnot(is.simulation(simulation))
+  forces(simulation) <- lapply(forces(simulation), retrain_force, particles = particles(simulation))
+  constraints(simulation) <- lapply(constraints(simulation), retrain_constraint, particles = particles(simulation))
   simulation
 }
