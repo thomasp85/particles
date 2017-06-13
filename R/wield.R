@@ -13,6 +13,12 @@
 #' modify position and velocity directly, but this difference is not in any way
 #' enforced.
 #'
+#' @details
+#' `wield()` and `impose()` adds forces and constraints to the simulation
+#' respectively. `unwield()` and `unimpose()` removes forces and constraints
+#' based on name or index. `rewield()` and `reimpose()` modifies existing forces
+#' and constraints based on name or index and retrains them.
+#'
 #' @param simulation A simulation object
 #'
 #' @param force A force object
@@ -48,6 +54,8 @@ wield <- function(simulation, force, ..., name, include = TRUE) {
   )
   simulation
 }
+#' @rdname wield
+#' @export
 rewield <- function(simulation, name, ...) {
   stopifnot(is.simulation(simulation))
   universe(simulation) <- modify_force(
@@ -56,6 +64,8 @@ rewield <- function(simulation, name, ...) {
     retrain_force(get_force(universe(simulation), name), particles(simulation), ...)
   )
 }
+#' @rdname wield
+#' @export
 unwield <- function(simulation, name) {
   stopifnot(is.simulation(simulation))
   universe(simulation) <- remove_force(universe(simulation), name)

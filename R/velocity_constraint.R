@@ -44,6 +44,22 @@ train_constraint.velocity_constraint <- function(constraint, particles, v = NULL
   constraint$vmax <- rep(vmax, length.out = nrow(nodes))
   constraint
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_constraint.velocity_constraint <- function(constraint, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  constraint$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  constraint <- update_quo(constraint, 'include', dots, nodes, new_particles, TRUE)
+  new_v <- 'v' %in% names(dots)
+  if (new_v) constraint$v_quo <- dots$v
+  v <- eval_tidy(constraint$v_quo, nodes)
+  constraint <- update_quo(constraint, 'vmin', dots, nodes, new_particles || new_v, v %||% NA)
+  constraint <- update_quo(constraint, 'vmax', dots, nodes, new_particles || new_v, v %||% NA)
+  constraint
+}
 apply_constraint.velocity_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   vel_tmp <- vel
   zeroes <- rowSums(vel_tmp) == 0

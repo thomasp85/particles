@@ -44,6 +44,22 @@ train_constraint.x_constraint <- function(constraint, particles, x = NULL, xmin 
   constraint$xmax <- rep(xmax, length.out = nrow(nodes))
   constraint
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+retrain_constraint.x_constraint <- function(constraint, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  constraint$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  constraint <- update_quo(constraint, 'include', dots, nodes, new_particles, TRUE)
+  new_x <- 'x' %in% names(dots)
+  if (new_x) constraint$x_quo <- dots$x
+  x <- eval_tidy(constraint$x_quo, nodes)
+  constraint <- update_quo(constraint, 'xmin', dots, nodes, new_particles || new_x, x %||% NA)
+  constraint <- update_quo(constraint, 'xmax', dots, nodes, new_particles || new_x, x %||% NA)
+  constraint
+}
 apply_constraint.x_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   min_constrained <- !(is.na(constraint$xmin) | pos[, 1] + vel[, 1] > constraint$xmin)
   max_constrained <- !(is.na(constraint$xmax) | pos[, 1] + vel[, 1] < constraint$xmax)

@@ -62,6 +62,29 @@ add_constraint <- function(universe, name, constraint) {
   universe$constraints <- append(universe$constraints, setNames(list(constraint), name))
   universe
 }
+remove_constraint <- function(universe, name) {
+  stopifnot(is.universe(universe))
+  check_name(universe, 'constraints', name)
+  if (is.character(name)) {
+    name <- names(universe$constraints) != name
+  } else if (is.numeric(name)) {
+    name <- seq_along(universe$constraints) != name
+  }
+  universe$constraints <- universe$constraints[name]
+  universe
+}
+modify_constraint <- function(universe, name, force) {
+  stopifnot(is.universe(universe))
+  stopifnot(is.constraint(force))
+  check_name(universe, 'constraints', name)
+  universe$constraints[[name]] <- force
+  universe
+}
+get_constraint <- function(universe, name) {
+  stopifnot(is.universe(universe))
+  check_name(universe, 'constraints', name)
+  universe$constraints[[name]]
+}
 
 check_name <- function(universe, type, name) {
   if (name == '') stop('Name cannot be empty', call. = FALSE)

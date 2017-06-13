@@ -2,12 +2,24 @@
 % Please edit documentation in R/impose.R, R/wield.R
 \name{impose}
 \alias{impose}
+\alias{reimpose}
+\alias{unimpose}
 \alias{wield}
+\alias{rewield}
+\alias{unwield}
 \title{Assign a force or constraint to a simulation}
 \usage{
 impose(simulation, constraint, ..., name, include = TRUE)
 
+reimpose(simulation, name, ...)
+
+unimpose(simulation, name)
+
 wield(simulation, force, ..., name, include = TRUE)
+
+rewield(simulation, name, ...)
+
+unwield(simulation, name)
 }
 \arguments{
 \item{simulation}{A simulation object}
@@ -41,6 +53,12 @@ applied. After this operation any constraint is imposed on the results. In
 general, forces tends to calculate velocity adjustments, while constraints
 modify position and velocity directly, but this difference is not in any way
 enforced.
+}
+\details{
+\code{wield()} and \code{impose()} adds forces and constraints to the simulation
+respectively. \code{unwield()} and \code{unimpose()} removes forces and constraints
+based on name or index. \code{rewield()} and \code{reimpose()} modifies existing forces
+and constraints based on name or index and retrains them.
 }
 \examples{
 graph <- igraph::make_graph('folkman')

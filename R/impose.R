@@ -16,3 +16,20 @@ impose <- function(simulation, constraint, ..., name, include = TRUE) {
   )
   simulation
 }
+#' @rdname wield
+#' @export
+reimpose <- function(simulation, name, ...) {
+  stopifnot(is.simulation(simulation))
+  universe(simulation) <- modify_constraint(
+    universe(simulation),
+    name = name,
+    retrain_constraint(get_constraint(universe(simulation), name), particles(simulation), ...)
+  )
+}
+#' @rdname wield
+#' @export
+unimpose <- function(simulation, name) {
+  stopifnot(is.simulation(simulation))
+  universe(simulation) <- remove_constraint(universe(simulation), name)
+  simulation
+}
