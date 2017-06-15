@@ -18,6 +18,11 @@ as_tbl_graph.simulation <- function(simulation) {
   graph <- particles(simulation)
   pos <- position(simulation)
   vel <- velocity(simulation)
+  if (gorder(graph) > nrow(pos)) {
+    fill <- matrix(NA, ncol = 2, nrow = gorder(graph) - nrow(pos))
+    pos <- rbind(pos, fill)
+    vel <- rbind(vel, fill)
+  }
   mutate(activate(graph, 'nodes'),
          x = pos[, 1],
          y = pos[, 2],

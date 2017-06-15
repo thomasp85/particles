@@ -18,6 +18,16 @@
 #'
 #' @param ... Parameters passed on to the main verbs in tidygraph/dplyr
 #'
+#' @param interactions A data.frame of interactions/edges to add along with the
+#' particles
+#'
+#' @param setup A function to calculate the starting conditions for the
+#' particles. It recieves all particles with the current position and
+#' velocity encoded in the `x`, `y`, `x_vel`, and `y_vel` columns. New particle
+#' will have NA. The function must return a position and velocity for all
+#' particles even though the values for the current particles will be discarded.
+#' If NULL it will use the genesis function used when creating the simulation.
+#'
 #' @return A simulation object
 #'
 #' @seealso [dplyr::mutate()], [dplyr::mutate_at()], [dplyr::mutate_all()],
@@ -29,32 +39,55 @@
 NULL
 
 #' @rdname simulation_modification
-#' @importFrom tidygraph bind_nodes
+#' @importFrom tidygraph bind_nodes bind_edges
+#' @importFrom igraph gorder
 #' @export
-add_particles <- function(.data, ...) {
+add_particles <- function(.data, ..., interactions = NULL, setup = NULL) {
+  stopifnot(is.simulation(.data))
+  n_particles <- gorder(particles(.data))
+  setup <- setup %||% universe(.data)$genesis
   particles(.data) <- bind_nodes(particles(.data), ...)
+  particles(.data) <- bind_edges(particles(.data), interactions)
+  genesis <- setup(as_tbl_graph(.data), universe(.data)$parameters)
+  position(.data) <- rbind(position(.data), genesis$position[-seq_len(n_particles), , drop = FALSE])
+  velocity(.data) <- rbind(velocity(.data), genesis$velocity[-seq_len(n_particles), , drop = FALSE])
   retrain(.data)
 }
 #' @rdname simulation_modification
 #' @importFrom tidygraph bind_edges
 add_interaction <- function(.data, ...) {
+  stopifnot(is.simulation(.data))
   particles(.data) <- bind_edges(particles(.data), ...)
   retrain(.data)
 }
-#' @importFrom tidygraph filter
+#' @importFrom tidygraph filter active
 #' @export
 filter.simulation <- function(.data, ...) {
-  particles(.data) <- filter(particles(.data), ...)
+  par <- mutate(particles(.data), .particle_index = seq_len(n()))
+  par <- filter(par, ...)
+  remain <- as_tibble(par)$.particle_index
+  particles(.data) <- mutate(par, .particle_index = NULL)
+  if (active(par) == 'nodes') {
+    position(.data) <- position(.data)[remain, , drop = FALSE]
+    velocity(.data) <- velocity(.data)[remain, , drop = FALSE]
+  }
   retrain(.data)
 }
 #' @rdname simulation_modification
 #' @importFrom tidygraph filter
 #' @export
 tidygraph::filter
-#' @importFrom tidygraph slice
+#' @importFrom tidygraph slice active
 #' @export
 slice.simulation <- function(.data, ...) {
-  particles(.data) <- slice(particles(.data), ...)
+  par <- mutate(particles(.data), .particle_index = seq_len(n()))
+  par <- slice(par, ...)
+  remain <- as_tibble(par)$.particle_index
+  particles(.data) <- mutate(par, .particle_index = NULL)
+  if (active(par) == 'nodes') {
+    position(.data) <- position(.data)[remain, , drop = FALSE]
+    velocity(.data) <- velocity(.data)[remain, , drop = FALSE]
+  }
   retrain(.data)
 }
 #' @rdname simulation_modification

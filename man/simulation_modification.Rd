@@ -19,7 +19,7 @@
 \alias{activate}
 \title{Modify the particles in a simulation}
 \usage{
-add_particles(.data, ...)
+add_particles(.data, ..., interactions = NULL, setup = NULL)
 
 add_interaction(.data, ...)
 }
@@ -27,6 +27,16 @@ add_interaction(.data, ...)
 \item{.data}{A simulation object}
 
 \item{...}{Parameters passed on to the main verbs in tidygraph/dplyr}
+
+\item{interactions}{A data.frame of interactions/edges to add along with the
+particles}
+
+\item{setup}{A function to calculate the starting conditions for the
+particles. It recieves all particles with the current position and
+velocity encoded in the \code{x}, \code{y}, \code{x_vel}, and \code{y_vel} columns. New particle
+will have NA. The function must return a position and velocity for all
+particles even though the values for the current particles will be discarded.
+If NULL it will use the genesis function used when creating the simulation.}
 
 \item{what}{Either \code{"particles"} or \code{"interactions"} to specify the data that
 should be active (standard tidygraph names are also supported).}
