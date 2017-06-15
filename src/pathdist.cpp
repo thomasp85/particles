@@ -13,7 +13,7 @@ VectorN<2> projection(VectorN<2> a, VectorN<2> b, VectorN<2> p) {
   norm.multiplyScalar(t);
   return a + norm;
 }
-void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<double> &res) {
+void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<double> &res, bool closed_poly) {
   int i, j, k;
   double dist, shortest_dist = -1;
   VectorN<2> point, a, b, close, closest;
@@ -21,6 +21,7 @@ void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<do
   point.coord[1] = y;
   for (i = 0; i < path.size(); ++i) {
     for (j = 0; j < path[i].nrow(); ++j) {
+      if (j == path[i].nrow() && !closed_poly) break;
       a.coord[0] = path[i](j, 0);
       a.coord[1] = path[i](j, 1);
       k = j == path[i].nrow() - 1 ? 0 : j + 1;
@@ -41,12 +42,12 @@ void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<do
 }
 
 //[[Rcpp::export]]
-List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path) {
+List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path, bool close) {
   std::vector<double> res_container;
   NumericMatrix proj(pos.nrow(), 2);
   NumericVector dist(pos.nrow());
   for (int i = 0; i < pos.nrow(); ++i) {
-    dist_to_path(pos(i, 0), pos(i, 1), path, res_container);
+    dist_to_path(pos(i, 0), pos(i, 1), path, res_container, close);
     proj(i, 0) = res_container[0];
     proj(i, 1) = res_container[1];
     dist[i] = res_container[2];

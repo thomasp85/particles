@@ -23,6 +23,7 @@ passed along a call to \code{\link[=impose]{impose()}}
 
 \seealso{
 Other constraints: \code{\link{infinity_constraint}},
+  \code{\link{path_constraint}},
   \code{\link{x_constraint}}, \code{\link{y_constraint}}
 }
 \keyword{datasets}

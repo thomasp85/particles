@@ -92,7 +92,7 @@ apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
   if (any(particle_outside)) {
     particle_sub <- pos[particle_outside, , drop = FALSE]
     vel_sub <- vel[particle_outside, , drop = FALSE]
-    attraction <- points_to_path(particle_sub, force$polygon)
+    attraction <- points_to_path(particle_sub, force$polygon, TRUE)
     direction <- (attraction$projection - particle_sub) / cbind(attraction$distance, attraction$distance)
     distance <- ifelse(
       attraction$distance < force$min_dist,

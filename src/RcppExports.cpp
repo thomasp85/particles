@@ -36,14 +36,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // points_to_path
-List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path);
-RcppExport SEXP particles_points_to_path(SEXP posSEXP, SEXP pathSEXP) {
+List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path, bool close);
+RcppExport SEXP particles_points_to_path(SEXP posSEXP, SEXP pathSEXP, SEXP closeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericMatrix >::type pos(posSEXP);
     Rcpp::traits::input_parameter< ListOf<NumericMatrix> >::type path(pathSEXP);
-    rcpp_result_gen = Rcpp::wrap(points_to_path(pos, path));
+    Rcpp::traits::input_parameter< bool >::type close(closeSEXP);
+    rcpp_result_gen = Rcpp::wrap(points_to_path(pos, path, close));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -63,7 +64,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"particles_collision", (DL_FUNC) &particles_collision, 4},
     {"particles_nbody", (DL_FUNC) &particles_nbody, 6},
-    {"particles_points_to_path", (DL_FUNC) &particles_points_to_path, 2},
+    {"particles_points_to_path", (DL_FUNC) &particles_points_to_path, 3},
     {"particles_angle_diff", (DL_FUNC) &particles_angle_diff, 2},
     {NULL, NULL, 0}
 };
