@@ -9,12 +9,17 @@ evolve(simulation, steps = NULL, on_generation = NULL, ...)
 \arguments{
 \item{simulation}{A simulation object}
 
-\item{steps}{The number of generations to progress. If \code{NULL} the simulation
-will run until \code{alpha_min} has been reached.}
+\item{steps}{The number of generations to progress or a function getting the
+simulation object and returns \code{TRUE} if the simulation should proceed and
+\code{FALSE} if it should stop. If \code{NULL} the simulation will run until
+\code{alpha_min} has been reached.}
 
 \item{on_generation}{A function to be called after each generation has been
 progressed. The function will get the current state of the simulation as the
-first argument.}
+first argument. If the function returns a simulation object it will replace
+the current simulation from the next generation. In the case of any other
+return type the return will be discarded and the function will have no effect
+outside its side-effects.}
 
 \item{...}{Additional arguments to \code{on_generation}}
 }
