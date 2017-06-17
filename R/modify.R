@@ -13,9 +13,6 @@
 #'
 #' @param .data A simulation object
 #'
-#' @param what Either `"particles"` or `"interactions"` to specify the data that
-#' should be active (standard tidygraph names are also supported).
-#'
 #' @param ... Parameters passed on to the main verbs in tidygraph/dplyr
 #'
 #' @param interactions A data.frame of interactions/edges to add along with the
@@ -73,7 +70,6 @@ filter.simulation <- function(.data, ...) {
   }
   retrain(.data)
 }
-#' @rdname simulation_modification
 #' @importFrom tidygraph filter
 #' @export
 tidygraph::filter
@@ -90,7 +86,6 @@ slice.simulation <- function(.data, ...) {
   }
   retrain(.data)
 }
-#' @rdname simulation_modification
 #' @importFrom tidygraph slice
 #' @export
 tidygraph::slice
@@ -100,15 +95,12 @@ mutate.simulation <- function(.data, ...) {
   particles(.data) <- mutate(particles(.data), ...)
   retrain(.data)
 }
-#' @rdname simulation_modification
 #' @importFrom tidygraph mutate
 #' @export
 tidygraph::mutate
-#' @rdname simulation_modification
 #' @importFrom tidygraph mutate_at
 #' @export
 tidygraph::mutate_at
-#' @rdname simulation_modification
 #' @importFrom tidygraph mutate_all
 #' @export
 tidygraph::mutate_all
@@ -124,7 +116,6 @@ activate.simulation <- function(.data, what) {
   }
   .data
 }
-#' @rdname simulation_modification
 #' @importFrom tidygraph activate
 #' @export
 tidygraph::activate

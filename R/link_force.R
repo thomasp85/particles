@@ -45,7 +45,7 @@ train_force.link_force <- function(force, particles, strength = NULL, distance =
   force$distance_quo <- enquo(distance)
   edges <- as_tibble(particles, 'edges')
   count <- degree(particles)
-  strength <- eval_tidy(force$strength_quo, edges) %||% 1 / pmin(count[edges$from], count[edges$to])
+  strength <- eval_tidy(force$strength_quo, edges) %||% (1 / pmin(count[edges$from], count[edges$to]))
   distance <- eval_tidy(force$distance_quo, edges) %||% 30
 
   force$n_iter <- n_iter

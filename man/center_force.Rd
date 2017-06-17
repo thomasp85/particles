@@ -17,9 +17,9 @@ There are no parameters for this force.
 \seealso{
 Other forces: \code{\link{collision_force}},
   \code{\link{field_force}}, \code{\link{link_force}},
-  \code{\link{manybody_force}}, \code{\link{mean_force}},
-  \code{\link{random_force}}, \code{\link{reset_force}},
-  \code{\link{trap_force}}, \code{\link{x_force}},
-  \code{\link{y_force}}
+  \code{\link{manybody_force}}, \code{\link{map_force}},
+  \code{\link{mean_force}}, \code{\link{random_force}},
+  \code{\link{reset_force}}, \code{\link{trap_force}},
+  \code{\link{x_force}}, \code{\link{y_force}}
 }
 \keyword{datasets}
