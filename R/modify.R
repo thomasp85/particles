@@ -80,7 +80,7 @@ tidygraph::filter
 #' @importFrom tidygraph slice active
 #' @export
 slice.simulation <- function(.data, ...) {
-  par <- mutate(particles(.data), .particle_index = seq_len(n()))
+  par <- mutate(particles(.data), .particle_index = seq_len(dplyr::n()))
   par <- slice(par, ...)
   remain <- as_tibble(par)$.particle_index
   particles(.data) <- mutate(par, .particle_index = NULL)
