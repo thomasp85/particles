@@ -8,7 +8,10 @@ print.simulation <- function(x, ...) {
   cat('A particle simulation:\n')
   cat('* ', gorder(particles(x)), ' particles\n', sep = '')
   f <- forces(x)
+  cn <- constraints(x)
   cat('* ', length(f), ' Force', if (length(f) == 1) '\n' else 's\n', sep = '')
+  lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
+  cat('* ', length(cn), ' Constraint', if (length(f) == 1) '\n' else 's\n', sep = '')
   lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
   cat('* ', evolutions(x), ' Evolution', if (evolutions(x) == 1) '\n' else 's\n', sep = '')
 }
