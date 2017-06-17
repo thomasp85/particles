@@ -4,12 +4,14 @@
 
 using namespace Rcpp;
 
-VectorN<2> projection(VectorN<2> a, VectorN<2> b, VectorN<2> p) {
+VectorN<2> projection(VectorN<2> a, VectorN<2> b, VectorN<2> p, bool clamp) {
   if (a.sameAs(b)) return a;
   double length2 = a.distSquared(b);
   VectorN<2> norm = b - a;
   double t = norm.dot(p - a) / length2;
-  t = std::max(0.0, std::min(1.0, t));
+  if (clamp) {
+    t = std::max(0.0, std::min(1.0, t));
+  }
   norm.multiplyScalar(t);
   return a + norm;
 }
@@ -27,7 +29,7 @@ void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<do
       k = j == path[i].nrow() - 1 ? 0 : j + 1;
       b.coord[0] = path[i](k, 0);
       b.coord[1] = path[i](k, 1);
-      close = projection(a, b, point);
+      close = projection(a, b, point, true);
       dist = std::sqrt(point.distSquared(close));
       if (shortest_dist < 0 || dist < shortest_dist) {
         shortest_dist = dist;
@@ -51,6 +53,32 @@ List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path, bool close) {
     proj(i, 0) = res_container[0];
     proj(i, 1) = res_container[1];
     dist[i] = res_container[2];
+  }
+  return List::create(
+    _["projection"] = proj,
+    _["distance"] = dist
+  );
+}
+
+//[[Rcpp::export]]
+List points_to_lines(NumericMatrix line1, NumericMatrix line2, NumericMatrix point) {
+  if (point.nrow() != line1.nrow() || point.nrow() != line2.nrow()) {
+    stop("Line and point matrices must have same dimensions");
+  }
+  NumericMatrix proj(point.nrow(), 2);
+  NumericVector dist(point.nrow());
+  VectorN<2> p, a, b, project;
+  for (int i = 0; i < point.nrow(); ++i) {
+    a.coord[0] = line1(i, 0);
+    a.coord[1] = line1(i, 1);
+    b.coord[0] = line2(i, 0);
+    b.coord[1] = line2(i, 1);
+    p.coord[0] = point(i, 0);
+    p.coord[1] = point(i, 1);
+    project = projection(a, b, p, false);
+    proj(i, 0) = project.coord[0];
+    proj(i, 1) = project.coord[1];
+    dist[i] = std::sqrt(p.distSquared(project));
   }
   return List::create(
     _["projection"] = proj,

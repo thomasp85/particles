@@ -13,6 +13,10 @@ points_to_path <- function(pos, path, close) {
     .Call('particles_points_to_path', PACKAGE = 'particles', pos, path, close)
 }
 
+points_to_lines <- function(line1, line2, point) {
+    .Call('particles_points_to_lines', PACKAGE = 'particles', line1, line2, point)
+}
+
 angle_diff <- function(a, b) {
     .Call('particles_angle_diff', PACKAGE = 'particles', a, b)
 }

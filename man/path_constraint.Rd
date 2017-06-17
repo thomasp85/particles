@@ -20,7 +20,8 @@ list of matrices to use multiple disconnected paths.
 }
 
 \seealso{
-Other constraints: \code{\link{infinity_constraint}},
+Other constraints: \code{\link{dominator_constraint}},
+  \code{\link{infinity_constraint}},
   \code{\link{velocity_constraint}},
   \code{\link{x_constraint}}, \code{\link{y_constraint}}
 }

@@ -48,6 +48,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// points_to_lines
+List points_to_lines(NumericMatrix line1, NumericMatrix line2, NumericMatrix point);
+RcppExport SEXP particles_points_to_lines(SEXP line1SEXP, SEXP line2SEXP, SEXP pointSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type line1(line1SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type line2(line2SEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type point(pointSEXP);
+    rcpp_result_gen = Rcpp::wrap(points_to_lines(line1, line2, point));
+    return rcpp_result_gen;
+END_RCPP
+}
 // angle_diff
 NumericVector angle_diff(NumericMatrix a, NumericMatrix b);
 RcppExport SEXP particles_angle_diff(SEXP aSEXP, SEXP bSEXP) {
@@ -65,6 +78,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"particles_collision", (DL_FUNC) &particles_collision, 4},
     {"particles_nbody", (DL_FUNC) &particles_nbody, 6},
     {"particles_points_to_path", (DL_FUNC) &particles_points_to_path, 3},
+    {"particles_points_to_lines", (DL_FUNC) &particles_points_to_lines, 3},
     {"particles_angle_diff", (DL_FUNC) &particles_angle_diff, 2},
     {NULL, NULL, 0}
 };
