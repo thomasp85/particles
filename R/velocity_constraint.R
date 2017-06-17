@@ -49,7 +49,7 @@ train_constraint.velocity_constraint <- function(constraint, particles, v = NULL
 retrain_constraint.velocity_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
-  new_particles <- particle_hash != force$particle_hash
+  new_particles <- particle_hash != constraint$particle_hash
   constraint$particle_hash <- particle_hash
   nodes <- as_tibble(particles, active = 'nodes')
   constraint <- update_quo(constraint, 'include', dots, nodes, new_particles, TRUE)

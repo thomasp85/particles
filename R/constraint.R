@@ -7,7 +7,7 @@ train_constraint.default <- function(constraint, particles, ...) {
 }
 #' @importFrom digest digest
 train_constraint.constraint <- function(constraint, particles, include, ...) {
-  constraint$include_quo <- enquo(include)
+  constraint$include_quo <- include
   nodes <- as_tibble(particles, active = 'nodes')
   include <- eval_tidy(constraint$include_quo, nodes) %||% TRUE
   constraint$include <- rep(include, length.out = nrow(nodes))
