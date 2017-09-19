@@ -2,22 +2,22 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 collision <- function(pos, vel, radii, strength) {
-    .Call('particles_collision', PACKAGE = 'particles', pos, vel, radii, strength)
+    .Call('_particles_collision', PACKAGE = 'particles', pos, vel, radii, strength)
 }
 
 nbody <- function(pos, strength, theta, min_dist, max_dist, alpha) {
-    .Call('particles_nbody', PACKAGE = 'particles', pos, strength, theta, min_dist, max_dist, alpha)
+    .Call('_particles_nbody', PACKAGE = 'particles', pos, strength, theta, min_dist, max_dist, alpha)
 }
 
 points_to_path <- function(pos, path, close) {
-    .Call('particles_points_to_path', PACKAGE = 'particles', pos, path, close)
+    .Call('_particles_points_to_path', PACKAGE = 'particles', pos, path, close)
 }
 
 points_to_lines <- function(line1, line2, point) {
-    .Call('particles_points_to_lines', PACKAGE = 'particles', line1, line2, point)
+    .Call('_particles_points_to_lines', PACKAGE = 'particles', line1, line2, point)
 }
 
 angle_diff <- function(a, b) {
-    .Call('particles_angle_diff', PACKAGE = 'particles', a, b)
+    .Call('_particles_angle_diff', PACKAGE = 'particles', a, b)
 }
 

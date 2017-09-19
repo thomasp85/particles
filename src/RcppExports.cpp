@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // collision
 NumericMatrix collision(NumericMatrix pos, NumericMatrix vel, NumericVector radii, double strength);
-RcppExport SEXP particles_collision(SEXP posSEXP, SEXP velSEXP, SEXP radiiSEXP, SEXP strengthSEXP) {
+RcppExport SEXP _particles_collision(SEXP posSEXP, SEXP velSEXP, SEXP radiiSEXP, SEXP strengthSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // nbody
 NumericMatrix nbody(NumericMatrix pos, NumericVector strength, double theta, double min_dist, double max_dist, double alpha);
-RcppExport SEXP particles_nbody(SEXP posSEXP, SEXP strengthSEXP, SEXP thetaSEXP, SEXP min_distSEXP, SEXP max_distSEXP, SEXP alphaSEXP) {
+RcppExport SEXP _particles_nbody(SEXP posSEXP, SEXP strengthSEXP, SEXP thetaSEXP, SEXP min_distSEXP, SEXP max_distSEXP, SEXP alphaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -37,7 +37,7 @@ END_RCPP
 }
 // points_to_path
 List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path, bool close);
-RcppExport SEXP particles_points_to_path(SEXP posSEXP, SEXP pathSEXP, SEXP closeSEXP) {
+RcppExport SEXP _particles_points_to_path(SEXP posSEXP, SEXP pathSEXP, SEXP closeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -50,7 +50,7 @@ END_RCPP
 }
 // points_to_lines
 List points_to_lines(NumericMatrix line1, NumericMatrix line2, NumericMatrix point);
-RcppExport SEXP particles_points_to_lines(SEXP line1SEXP, SEXP line2SEXP, SEXP pointSEXP) {
+RcppExport SEXP _particles_points_to_lines(SEXP line1SEXP, SEXP line2SEXP, SEXP pointSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -63,7 +63,7 @@ END_RCPP
 }
 // angle_diff
 NumericVector angle_diff(NumericMatrix a, NumericMatrix b);
-RcppExport SEXP particles_angle_diff(SEXP aSEXP, SEXP bSEXP) {
+RcppExport SEXP _particles_angle_diff(SEXP aSEXP, SEXP bSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -75,11 +75,11 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"particles_collision", (DL_FUNC) &particles_collision, 4},
-    {"particles_nbody", (DL_FUNC) &particles_nbody, 6},
-    {"particles_points_to_path", (DL_FUNC) &particles_points_to_path, 3},
-    {"particles_points_to_lines", (DL_FUNC) &particles_points_to_lines, 3},
-    {"particles_angle_diff", (DL_FUNC) &particles_angle_diff, 2},
+    {"_particles_collision", (DL_FUNC) &_particles_collision, 4},
+    {"_particles_nbody", (DL_FUNC) &_particles_nbody, 6},
+    {"_particles_points_to_path", (DL_FUNC) &_particles_points_to_path, 3},
+    {"_particles_points_to_lines", (DL_FUNC) &_particles_points_to_lines, 3},
+    {"_particles_angle_diff", (DL_FUNC) &_particles_angle_diff, 2},
     {NULL, NULL, 0}
 };
 
