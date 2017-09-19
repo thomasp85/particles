@@ -8,10 +8,9 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-"
 )
-library(animation)
-ani.options(autobrowse = FALSE, interval = 1/15)
+library(magick)
 knitr::opts_knit$set(animation.fun = function(x, options, format = "gif") {
   x = c(knitr:::sans_ext(x), knitr:::file_ext(x))
   fig.num = options$fig.num
@@ -24,14 +23,15 @@ knitr::opts_knit$set(animation.fun = function(x, options, format = "gif") {
   # order correctly
   figs <- Sys.glob(fig.fname)
   figs <- figs[order(as.numeric(stringr::str_match(figs, paste0("(\\d+)\\.", x[2]))[, 2]))]
-
-  animation::im.convert(figs, output = mov.fname)
+  mov <- image_read(figs)
+  mov <- image_animate(mov, fps = 25)
+  image_write(mov, paste0(knitr::opts_knit$get("base.url"), mov.fname))
   unlink(figs)
   sprintf("![%s](%s)", options$label, paste0(knitr::opts_knit$get("base.url"), mov.fname))
 })
 ```
 
-# particles
+# particles <img src="man/figures/particles_logo.jpg" align="right" />
 
 [![Travis-CI Build Status](https://travis-ci.org/thomasp85/particles.svg?branch=master)](https://travis-ci.org/thomasp85/particles)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/thomasp85/particles?branch=master&svg=true)](https://ci.appveyor.com/project/thomasp85/particles)

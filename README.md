@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-particles
-=========
+particles <img src="man/figures/particles_logo.jpg" align="right" />
+====================================================================
 
 [![Travis-CI Build Status](https://travis-ci.org/thomasp85/particles.svg?branch=master)](https://travis-ci.org/thomasp85/particles) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/thomasp85/particles?branch=master&svg=true)](https://ci.appveyor.com/project/thomasp85/particles) [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
 
@@ -76,7 +76,7 @@ ggraph(mis_graph, 'manual', node.position = as_tibble(mis_graph)) +
   theme_graph()
 ```
 
-![](README-unnamed-chunk-3-1.png)
+![](man/figures/README-unnamed-chunk-3-1.png)
 
 If you intend to follow the steps of the simulation it is possible to attach an event handler that gets called ofter each generation of the simulation. If the handler produces a plot the result will be an animation of the simulation:
 
@@ -105,7 +105,7 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
-![unnamed-chunk-4](README-unnamed-chunk-4-.gif)
+![unnamed-chunk-4](man/figures/README-unnamed-chunk-4-.gif)
 
 Installation
 ------------
