@@ -28,4 +28,5 @@ Other forces: \code{\link{center_force}},
   \code{\link{random_force}}, \code{\link{trap_force}},
   \code{\link{x_force}}, \code{\link{y_force}}
 }
+\concept{forces}
 \keyword{datasets}

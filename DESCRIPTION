@@ -23,7 +23,7 @@ Imports: tidygraph,
     akima,
     digest,
     dplyr
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE)
 Remotes: thomasp85/tidygraph
 LinkingTo: Rcpp

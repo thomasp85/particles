@@ -4,17 +4,11 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
 \alias{filter}
-\alias{reexports}
 \alias{slice}
-\alias{reexports}
 \alias{mutate}
-\alias{reexports}
 \alias{mutate_at}
-\alias{reexports}
 \alias{mutate_all}
-\alias{reexports}
 \alias{activate}
 \title{Objects exported from other packages}
 \keyword{internal}

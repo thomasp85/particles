@@ -1,3 +1,3 @@
 #' @useDynLib particles
 #' @importFrom Rcpp sourceCpp
-NULL
+'_PACKAGE'

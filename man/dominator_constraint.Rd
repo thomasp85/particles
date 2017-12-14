@@ -25,7 +25,9 @@ their parent. Defaults to \code{-pi/2} which is eqivalent to down.
 \seealso{
 Other constraints: \code{\link{infinity_constraint}},
   \code{\link{path_constraint}},
+  \code{\link{polygon_constraint}},
   \code{\link{velocity_constraint}},
   \code{\link{x_constraint}}, \code{\link{y_constraint}}
 }
+\concept{constraints}
 \keyword{datasets}

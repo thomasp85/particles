@@ -22,4 +22,5 @@ Other forces: \code{\link{collision_force}},
   \code{\link{reset_force}}, \code{\link{trap_force}},
   \code{\link{x_force}}, \code{\link{y_force}}
 }
+\concept{forces}
 \keyword{datasets}
