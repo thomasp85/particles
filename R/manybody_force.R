@@ -51,7 +51,7 @@ train_force.manybody_force <- function(force, particles, strength = NULL, theta 
   force
 }
 apply_force.manybody_force <- function(force, particles, pos, vel, alpha, ...) {
-  vel_mod <- nbody(pos, force$strength, force$theta, force$min_dist, force$max_dist, alpha)
-  vel <- vel + vel_mod
+  vel_mod <- nbody(pos[force$include, , drop = FALSE], force$strength[force$include], force$theta, force$min_dist, force$max_dist, alpha)
+  vel[force$include, ] <- vel[force$include, , drop = FALSE] + vel_mod
   list(position = pos, velocity = vel)
 }
