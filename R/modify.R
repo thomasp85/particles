@@ -60,7 +60,8 @@ add_interaction <- function(.data, ...) {
 #' @importFrom tidygraph filter active
 #' @export
 filter.simulation <- function(.data, ...) {
-  par <- mutate(particles(.data), .particle_index = seq_len(n()))
+  par <- particles(.data)
+  par <- mutate(par, .particle_index = seq_len(nrow(par)))
   par <- filter(par, ...)
   remain <- as_tibble(par)$.particle_index
   particles(.data) <- mutate(par, .particle_index = NULL)
@@ -76,7 +77,8 @@ tidygraph::filter
 #' @importFrom tidygraph slice active
 #' @export
 slice.simulation <- function(.data, ...) {
-  par <- mutate(particles(.data), .particle_index = seq_len(dplyr::n()))
+  par <- particles(.data)
+  par <- mutate(par, .particle_index = seq_len(nrow(par)))
   par <- slice(par, ...)
   remain <- as_tibble(par)$.particle_index
   particles(.data) <- mutate(par, .particle_index = NULL)
