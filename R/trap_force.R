@@ -32,7 +32,8 @@ trap_force <- structure(list(
   polygon_closed = NULL,
   strength = NULL,
   strength_quo = NULL,
-  min_dist = NULL
+  min_dist = NULL,
+  distance_falloff = NULL
 ), class = c('trap_force', 'force'))
 #' @export
 print.trap_force <- function(x, ...) {
@@ -41,7 +42,7 @@ print.trap_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
-train_force.trap_force <- function(force, particles, polygon = NULL, strength = NULL, min_dist = 1, ...) {
+train_force.trap_force <- function(force, particles, polygon = NULL, strength = NULL, min_dist = 1, distance_falloff = NULL, ...) {
   force <- NextMethod()
   if (is.matrix(polygon)) polygon <- list(polygon)
   if (!all(vapply(polygon, inherits, logical(1), 'matrix'))) {
@@ -58,6 +59,9 @@ train_force.trap_force <- function(force, particles, polygon = NULL, strength = 
   force$strength_quo <- enquo(strength)
   strength <- eval_tidy(force$strength_quo, nodes) %||% 1
   force$strength <- rep(strength, length.out = nrow(nodes))
+  force$distance_falloff_quo <- enquo(distance_falloff)
+  distance_falloff <- eval_tidy(force$distance_falloff_quo, nodes) %||% 2
+  force$distance_falloff <- rep(distance_falloff, length.out = nrow(nodes))
   force
 }
 #' @importFrom rlang quos eval_tidy
@@ -70,6 +74,7 @@ retrain_force.trap_force <- function(force, particles, ...) {
   nodes <- as_tibble(particles, active = 'nodes')
   force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
   force <- update_quo(force, 'strength', dots, nodes, new_particles, 1)
+  force <- update_quo(force, 'distance_falloff', dots, nodes, new_particles, 2)
   force <- update_unquo(force, 'min_dist', dots)
   if ('polygon' %in% names(dots)) {
     polygon <- eval_tidy(dots$polygon)
@@ -100,9 +105,8 @@ apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
       attraction$distance
     )
     angle_mod <- angle_diff(vel_sub, direction) / pi + 1
-    full_mod <- angle_mod * force$strength[particle_outside] / distance^2
+    full_mod <- angle_mod * force$strength[particle_outside] / distance^force$distance_falloff[particle_outside]
     vel[particle_outside, ] <- vel_sub + direction * cbind(full_mod, full_mod)
-    if (any(is.na(vel))) browser()
   }
   list(position = pos, velocity = vel)
 }
