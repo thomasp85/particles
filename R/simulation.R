@@ -12,15 +12,15 @@ print.simulation <- function(x, ...) {
   cat('* ', length(f), ' Force', if (length(f) == 1) '\n' else 's\n', sep = '')
   lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
   cat('* ', length(cn), ' Constraint', if (length(f) == 1) '\n' else 's\n', sep = '')
-  lapply(f, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
+  lapply(cn, function(ff) cat('  - ', class(ff)[1], '\n', sep = ''))
   cat('* ', evolutions(x), ' Evolution', if (evolutions(x) == 1) '\n' else 's\n', sep = '')
 }
 #' @importFrom tidygraph as_tbl_graph mutate activate
 #' @export
-as_tbl_graph.simulation <- function(simulation) {
-  graph <- particles(simulation)
-  pos <- position(simulation)
-  vel <- velocity(simulation)
+as_tbl_graph.simulation <- function(x, ...) {
+  graph <- particles(x)
+  pos <- position(x)
+  vel <- velocity(x)
   if (gorder(graph) > nrow(pos)) {
     fill <- matrix(NA, ncol = 2, nrow = gorder(graph) - nrow(pos))
     pos <- rbind(pos, fill)
@@ -31,6 +31,11 @@ as_tbl_graph.simulation <- function(simulation) {
          y = pos[, 2],
          x_vel = vel[, 1],
          y_vel = vel[, 2])
+}
+#' @importFrom tidygraph as_tibble
+#' @export
+as_tibble.simulation <- function(x, ...) {
+  as_tibble(as_tbl_graph(x))
 }
 #' @describeIn simulate Save the current state in the simulation's history
 #' @export
