@@ -33,11 +33,11 @@ print.dominator_constraint <- function(x, ...) {
   cat('* A constraint requiring children to be positioned to a certain side of their parent\n')
 }
 #' @importFrom rlang enquo eval_tidy %||%
-#' @importFrom tidygraph as_tibble is_dag
+#' @importFrom tidygraph as_tibble with_graph graph_is_dag
 #' @importFrom igraph neighborhood
 train_constraint.dominator_constraint <- function(constraint, particles, distance = NULL, angle = NULL, ...) {
   constraint <- NextMethod()
-  stopifnot(is_dag(particles))
+  stopifnot(with_graph(particles, graph_is_dag()))
   constraint$distance_quo <- enquo(distance)
   constraint$angle_quo <- enquo(angle)
   nodes <- as_tibble(particles, 'nodes')
