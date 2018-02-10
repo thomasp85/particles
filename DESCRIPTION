@@ -5,9 +5,9 @@ Version: 0.1.0
 Author: Thomas Lin Pedersen
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
 Description: Simulating particle movement in 2D space has many application. The
-    `particles` package implements a particle simulator based on the ideas 
-    behind the d3-force javascript library. `particles` implements all forces
-    defined in d3-force as well as others such as vector fields, traps, and
+    'particles' package implements a particle simulator based on the ideas 
+    behind the 'd3-force' javascript library. 'particles' implements all forces
+    defined in 'd3-force' as well as others such as vector fields, traps, and
     attractors.
 License: MIT + file LICENSE
 SystemRequirements: C++11
