@@ -25,6 +25,7 @@ reimpose <- function(simulation, name, ...) {
     name = name,
     retrain_constraint(get_constraint(universe(simulation), name), particles(simulation), ...)
   )
+  simulation
 }
 #' @rdname wield
 #' @export

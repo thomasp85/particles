@@ -63,6 +63,7 @@ rewield <- function(simulation, name, ...) {
     name = name,
     retrain_force(get_force(universe(simulation), name), particles(simulation), ...)
   )
+  simulation
 }
 #' @rdname wield
 #' @export
