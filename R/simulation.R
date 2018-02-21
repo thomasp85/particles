@@ -71,6 +71,14 @@ get_history <- function(simulation, age = -1) {
 history_length <- function(simulation) {
   length(simulation$history)
 }
+#' @describeIn simulate set the cooling of the simulation to a new value
+#' @export
+reheat <- function(simulation, alpha) {
+  stopifnot(is.simulation(simulation))
+  stopifnot(is.numeric(alpha) && length(alpha) == 1)
+  alpha(simulation) <- alpha
+  simulation
+}
 universe <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$universe

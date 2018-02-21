@@ -8,6 +8,7 @@
 \alias{clear_history}
 \alias{get_history}
 \alias{history_length}
+\alias{reheat}
 \alias{particles}
 \alias{position}
 \alias{velocity}
@@ -27,6 +28,8 @@ clear_history(simulation)
 get_history(simulation, age = -1)
 
 history_length(simulation)
+
+reheat(simulation, alpha)
 
 particles(simulation)
 
@@ -100,6 +103,8 @@ to \code{0}.
 \item \code{get_history}: Retrieve a simulation from the history
 
 \item \code{history_length}: Get the number of versions stored in the history of the simulation
+
+\item \code{reheat}: set the cooling of the simulation to a new value
 
 \item \code{particles}: Extract the particle graph from a simulation
 
