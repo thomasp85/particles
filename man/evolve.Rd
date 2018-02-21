@@ -49,7 +49,7 @@ order they have been added
 }
 }
 \examples{
-graph <- igraph::make_graph('folkman')
+graph <- tidygraph::create_notable('folkman')
 sim <- graph \%>\%
   simulate() \%>\%
   wield(link_force) \%>\%

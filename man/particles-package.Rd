@@ -5,7 +5,7 @@
 \alias{particles-package}
 \alias{_PACKAGE}
 \alias{particles_package}
-\title{particles: A graph based particle simulator based on d3-force}
+\title{particles: A Graph Based Particle Simulator Based on D3-Force}
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 

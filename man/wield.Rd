@@ -33,7 +33,7 @@ later stage. If no name is given the force is accessible by its index in the
 stack.}
 
 \item{include}{The particles to be affected by this force. Defaults to every
-particle in the simulation}
+particle in the simulation (\emph{tidy eval})}
 
 \item{force}{A force object}
 }
@@ -61,7 +61,7 @@ based on name or index. \code{rewield()} and \code{reimpose()} modifies existing
 and constraints based on name or index and retrains them.
 }
 \examples{
-graph <- igraph::make_graph('folkman')
+graph <- tidygraph::create_notable('folkman')
 graph \%>\%
   simulate() \%>\%
   wield(link_force)

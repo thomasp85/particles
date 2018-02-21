@@ -116,7 +116,7 @@ to \code{0}.
 }}
 
 \examples{
-graph <- igraph::make_graph('folkman')
+graph <- tidygraph::create_notable('folkman')
 graph \%>\%
   simulate()
 

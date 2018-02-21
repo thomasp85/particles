@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' # A contrieved example
-#' graph <- igraph::make_graph('bull')
+#' graph <- tidygraph::create_notable('bull')
 #' genesis <- phyllotactic_genesis()
 #' genesis(graph)
 #'

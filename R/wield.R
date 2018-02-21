@@ -30,7 +30,7 @@
 #' stack.
 #'
 #' @param include The particles to be affected by this force. Defaults to every
-#' particle in the simulation
+#' particle in the simulation (*tidy eval*)
 #'
 #' @return A simulation with the force or constraint added
 #'
@@ -38,7 +38,7 @@
 #' @export
 #'
 #' @examples
-#' graph <- igraph::make_graph('folkman')
+#' graph <- tidygraph::create_notable('folkman')
 #' graph %>%
 #'   simulate() %>%
 #'   wield(link_force)
