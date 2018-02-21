@@ -39,6 +39,7 @@ print.manybody_force <- function(x, ...) {
 }
 #' @importFrom tidygraph as_tibble
 #' @importFrom rlang enquo eval_tidy %||%
+#' @export
 train_force.manybody_force <- function(force, particles, strength = NULL, theta = NULL, min_dist = NULL, max_dist = NULL, ...) {
   force <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
@@ -50,6 +51,9 @@ train_force.manybody_force <- function(force, particles, strength = NULL, theta 
   force$max_dist <- max_dist %||% -1
   force
 }
+#' @importFrom rlang quos
+#' @importFrom digest digest
+#' @export
 retrain_force.manybody_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -63,6 +67,7 @@ retrain_force.manybody_force <- function(force, particles, ...) {
   force <- update_unquo(force, 'max_dist', dots)
   force
 }
+#' @export
 apply_force.manybody_force <- function(force, particles, pos, vel, alpha, ...) {
   vel_mod <- nbody(pos[force$include, , drop = FALSE], force$strength[force$include], force$theta, force$min_dist, force$max_dist, alpha)
   vel[force$include, ] <- vel[force$include, , drop = FALSE] + vel_mod

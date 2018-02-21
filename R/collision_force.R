@@ -32,6 +32,7 @@ print.collision_force <- function(x, ...) {
 }
 #' @importFrom tidygraph as_tibble
 #' @importFrom rlang enquo eval_tidy %||%
+#' @export
 train_force.collision_force <- function(force, particles, radius = NULL, strength = NULL, n_iter = 1, ...) {
   force <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
@@ -44,6 +45,7 @@ train_force.collision_force <- function(force, particles, radius = NULL, strengt
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.collision_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -56,6 +58,7 @@ retrain_force.collision_force <- function(force, particles, ...) {
   force <- update_unquo(force, 'n_iter', dots)
   force
 }
+#' @export
 apply_force.collision_force <- function(force, particles, pos, vel, alpha, ...) {
   for (i in seq_len(force$n_iter)) {
     vel <- vel + collision(pos, vel, force$radius, force$strength)

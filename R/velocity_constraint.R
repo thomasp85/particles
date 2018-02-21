@@ -31,6 +31,7 @@ print.velocity_constraint <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_constraint.velocity_constraint <- function(constraint, particles, v = NULL, vmin = NULL, vmax = NULL, ...) {
   constraint <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
@@ -46,6 +47,7 @@ train_constraint.velocity_constraint <- function(constraint, particles, v = NULL
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_constraint.velocity_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -60,6 +62,7 @@ retrain_constraint.velocity_constraint <- function(constraint, particles, ...) {
   constraint <- update_quo(constraint, 'vmax', dots, nodes, new_particles || new_v, v %||% NA)
   constraint
 }
+#' @export
 apply_constraint.velocity_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   vel_tmp <- vel
   zeroes <- rowSums(vel_tmp) == 0

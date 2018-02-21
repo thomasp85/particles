@@ -29,6 +29,7 @@ print.reset_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, ...) {
   force <- NextMethod()
   force$xvel_quo <- enquo(xvel)
@@ -42,6 +43,7 @@ train_force.reset_force <- function(force, particles, xvel = NULL, yvel = NULL, 
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.reset_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -54,6 +56,7 @@ retrain_force.reset_force <- function(force, particles, ...) {
   force
 }
 #' @importFrom stats na.omit
+#' @export
 apply_force.reset_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[!is.na(force$xvel), 1] <- na.omit(force$xvel)
   vel[!is.na(force$yvel), 2] <- na.omit(force$yvel)

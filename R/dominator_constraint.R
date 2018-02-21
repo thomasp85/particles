@@ -35,6 +35,7 @@ print.dominator_constraint <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble with_graph graph_is_dag
 #' @importFrom igraph neighborhood
+#' @export
 train_constraint.dominator_constraint <- function(constraint, particles, distance = NULL, angle = NULL, ...) {
   constraint <- NextMethod()
   stopifnot(with_graph(particles, graph_is_dag()))
@@ -54,6 +55,7 @@ train_constraint.dominator_constraint <- function(constraint, particles, distanc
 #' @importFrom rlang quos
 #' @importFrom digest digest
 #' @importFrom igraph neighborhood
+#' @export
 retrain_constraint.dominator_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -73,6 +75,7 @@ retrain_constraint.dominator_constraint <- function(constraint, particles, ...) 
 }
 #' @importFrom tidygraph as_tibble
 #' @importFrom stats runif
+#' @export
 apply_constraint.dominator_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   front_pos <- pos + constraint$vec
   parent_ind <- rep(seq_along(constraint$children), lengths(constraint$children))

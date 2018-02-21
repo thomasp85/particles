@@ -42,6 +42,7 @@ print.trap_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_force.trap_force <- function(force, particles, polygon = NULL, strength = NULL, min_dist = 1, distance_falloff = NULL, ...) {
   force <- NextMethod()
   if (is.matrix(polygon)) polygon <- list(polygon)
@@ -66,6 +67,7 @@ train_force.trap_force <- function(force, particles, polygon = NULL, strength = 
 }
 #' @importFrom rlang quos eval_tidy
 #' @importFrom digest digest
+#' @export
 retrain_force.trap_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -92,6 +94,7 @@ retrain_force.trap_force <- function(force, particles, ...) {
   force
 }
 #' @importFrom mgcv in.out
+#' @export
 apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
   particle_outside <- !in.out(force$polygon_closed, pos)
   if (any(particle_outside)) {

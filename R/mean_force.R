@@ -26,6 +26,7 @@ print.mean_force <- function(x, ...) {
   cat('Mean Force:\n')
   cat('* A force that applies the mean velocity of a particle neighbours to itself\n')
 }
+#' @export
 train_force.mean_force <- function(force, particles, include_self = FALSE, mode = 'all', ...) {
   force <- NextMethod()
   force$include_self <- include_self
@@ -34,6 +35,7 @@ train_force.mean_force <- function(force, particles, include_self = FALSE, mode 
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.mean_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -46,6 +48,7 @@ retrain_force.mean_force <- function(force, particles, ...) {
   force
 }
 #' @importFrom igraph ego
+#' @export
 apply_force.mean_force <- function(force, particles, pos, vel, alpha, ...) {
   neighbors <- ego(particles, order = 1, mode = force$mode, mindist = if (force$include_self) 0 else 1)
   vel_mod <- do.call(rbind, lapply(neighbors, function(i) {

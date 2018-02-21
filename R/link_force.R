@@ -39,6 +39,7 @@ print.link_force <- function(x, ...) {
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
 #' @importFrom igraph degree
+#' @export
 train_force.link_force <- function(force, particles, strength = NULL, distance = NULL, n_iter = 1, ...) {
   force <- NextMethod()
   force$strength_quo <- enquo(strength)
@@ -57,6 +58,7 @@ train_force.link_force <- function(force, particles, strength = NULL, distance =
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.link_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -76,6 +78,7 @@ retrain_force.link_force <- function(force, particles, ...) {
 }
 #' @importFrom tidygraph as_tibble
 #' @importFrom stats runif
+#' @export
 apply_force.link_force <- function(force, particles, pos, vel, alpha, ...) {
   edges <- as_tibble(particles, 'edges')
   for (i in seq_len(force$n_iter)) {

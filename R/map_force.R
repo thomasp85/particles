@@ -33,6 +33,7 @@ print.map_force <- function(x, ...) {
   cat('Map Force:\n')
   cat('* A force that applies an evolution function to the particles\n')
 }
+#' @export
 train_force.map_force <- function(force, particles, map, fixed = FALSE, ...) {
   force <- NextMethod()
   force$map <- map
@@ -41,6 +42,7 @@ train_force.map_force <- function(force, particles, map, fixed = FALSE, ...) {
 }
 #' @importFrom rlang quos eval_tidy
 #' @importFrom digest digest
+#' @export
 retrain_force.map_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -52,6 +54,7 @@ retrain_force.map_force <- function(force, particles, ...) {
   force <- update_unquo(force, 'fixed', ...)
   force
 }
+#' @export
 apply_force.map_force <- function(force, particles, pos, vel, alpha, ...) {
   new_pos <- force$map(pos)
   if (force$fixed) {

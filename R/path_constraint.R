@@ -26,6 +26,7 @@ print.path_constraint <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_constraint.path_constraint <- function(constraint, particles, path = NULL, closed = FALSE, ...) {
   constraint <- NextMethod()
   if (is.matrix(path)) path <- list(path)
@@ -41,6 +42,7 @@ train_constraint.path_constraint <- function(constraint, particles, path = NULL,
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_constraint.path_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -62,6 +64,7 @@ retrain_constraint.path_constraint <- function(constraint, particles, ...) {
   constraint <- update_unquo(constraint, 'closed', dots)
   constraint
 }
+#' @export
 apply_constraint.path_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   pos <- points_to_path(pos, constraint$path, constraint$closed)
   vel[] <- 0

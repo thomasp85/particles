@@ -23,6 +23,7 @@ print.center_force <- function(x, ...) {
   cat('Center Force:\n')
   cat('* A force that keeps all particles centered around the origin\n')
 }
+#' @export
 train_force.center_force <- function(force, particles, x = NULL, y = NULL, ...) {
   force <- NextMethod()
   force$x_quo <- enquo(x)
@@ -37,6 +38,7 @@ train_force.center_force <- function(force, particles, x = NULL, y = NULL, ...) 
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.center_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -51,6 +53,7 @@ retrain_force.center_force <- function(force, particles, ...) {
   }
   force
 }
+#' @export
 apply_force.center_force <- function(force, particles, pos, vel, alpha, ...) {
   for (i in force$center_groups) {
     adjust <- colMeans(pos[i, , drop = FALSE]) - c(force$x[i[1]], force$y[i[1]])

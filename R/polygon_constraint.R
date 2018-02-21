@@ -28,6 +28,7 @@ print.polygon_constraint <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_constraint.polygon_constraint <- function(constraint, particles, polygon, ...) {
   constraint <- NextMethod()
   if (is.matrix(polygon)) polygon <- list(polygon)
@@ -44,6 +45,7 @@ train_constraint.polygon_constraint <- function(constraint, particles, polygon, 
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_constraint.polygon_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -66,6 +68,7 @@ retrain_constraint.polygon_constraint <- function(constraint, particles, ...) {
   }
   constraint
 }
+#' @export
 apply_constraint.polygon_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   particle_outside <- !in.out(constraint$polygon_closed, pos)
   if (any(particle_outside)) {

@@ -35,6 +35,7 @@ print.field_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_force.field_force <- function(force, particles, x, y, angle, vel, xlim = c(-10, 10), ylim = xlim, ...) {
   force <- NextMethod()
   if (missing(x) && missing(y)) {
@@ -53,6 +54,7 @@ train_force.field_force <- function(force, particles, x, y, angle, vel, xlim = c
 }
 #' @importFrom rlang quos eval_tidy
 #' @importFrom digest digest
+#' @export
 retrain_force.field_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -85,6 +87,7 @@ retrain_force.field_force <- function(force, particles, ...) {
   force
 }
 #' @importFrom akima bilinear
+#' @export
 apply_force.field_force <- function(force, particles, pos, vel, alpha, ...) {
   vel_x <- bilinear(force$x_breaks, force$y_breaks, t(force$x), pos[, 1], pos[, 2])
   vel_y <- bilinear(force$x_breaks, force$y_breaks, t(force$y), pos[, 1], pos[, 2])

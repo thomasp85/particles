@@ -27,6 +27,7 @@ print.infinity_constraint <- function(x, ...) {
   cat('Infinity Constraint:\n')
   cat('* A constraint forces particles to be inside a canvas by wrapping them around it.\n')
 }
+#' @export
 train_constraint.infinity_constraint <- function(constraint, particles, xlim = c(-5, 5), ylim = xlim, ...) {
   constraint <- NextMethod()
   constraint$xmin <- xlim[1]
@@ -37,6 +38,7 @@ train_constraint.infinity_constraint <- function(constraint, particles, xlim = c
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_constraint.infinity_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -56,6 +58,7 @@ retrain_constraint.infinity_constraint <- function(constraint, particles, ...) {
   }
   constraint
 }
+#' @export
 apply_constraint.infinity_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   next_pos <- pos + vel
   l <- next_pos[, 1] < constraint$xmin

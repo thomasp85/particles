@@ -28,6 +28,7 @@ print.random_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_force.random_force <- function(force, particles, xmin = -1, xmax = 1, ymin = -1, ymax = 1, ...) {
   force <- NextMethod()
   force$xmin <- xmin
@@ -38,6 +39,7 @@ train_force.random_force <- function(force, particles, xmin = -1, xmax = 1, ymin
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.random_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -51,6 +53,7 @@ retrain_force.random_force <- function(force, particles, ...) {
   force <- update_unquo(force, 'ymax', dots)
   force
 }
+#' @export
 apply_force.random_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[, 1] <- vel[, 1] + runif(nrow(vel), force$xmin, force$xmax) * alpha
   vel[, 2] <- vel[, 2] + runif(nrow(vel), force$ymin, force$ymax) * alpha
