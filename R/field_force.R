@@ -86,8 +86,8 @@ retrain_force.field_force <- function(force, particles, ...) {
 }
 #' @importFrom akima bilinear
 apply_force.field_force <- function(force, particles, pos, vel, alpha, ...) {
-  vel_x <- bilinear(force$x_breaks, force$y_breaks, force$x, pos[, 1], pos[, 2])
-  vel_y <- bilinear(force$x_breaks, force$y_breaks, force$y, pos[, 1], pos[, 2])
+  vel_x <- bilinear(force$x_breaks, force$y_breaks, t(force$x), pos[, 1], pos[, 2])
+  vel_y <- bilinear(force$x_breaks, force$y_breaks, t(force$y), pos[, 1], pos[, 2])
   vel <- vel + cbind(vel_x$z, vel_y$z)
   list(position = pos, velocity = vel)
 }
