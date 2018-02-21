@@ -1,4 +1,4 @@
-#' Attrack particles towards a horizontal position
+#' Attract particles towards a horizontal position
 #'
 #' This force simply pulls particles towards a fixed position on the x-axis.
 #'

@@ -76,7 +76,7 @@ how fast the velocity decays over time, as well how particles should be
 initialised. We use the `petridish_genesis()` to place the particles randomly on
 a disc. Then we begin to define the forces that makes up the simulation using 
 the `wield()` function. We first add a link force that makes connected particles
-attrack each other, and then a manybody force that pushes particles away from 
+attract each other, and then a manybody force that pushes particles away from 
 each others (unless the strength is set to a positive value in which case it
 works like gravity, attracting particles to each other). We also adds a 
 constraint to the system using the `impose()` function. Here we defines that 

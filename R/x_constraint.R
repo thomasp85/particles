@@ -10,8 +10,8 @@
 #' passed along a call to [impose()]
 #'
 #' - `x` : The position on the x-axis to fix to. (*tidy eval*)
-#' - `xmin` : The lowest permissable x-value. If `NULL` then `x` will be used. (*tidy eval*)
-#' - `xmax` : The highest permissable x-value. If `NULL` then `x` will be used. (*tidy eval*)
+#' - `xmin` : The lowest permissible x-value. If `NULL` then `x` will be used. (*tidy eval*)
+#' - `xmax` : The highest permissible x-value. If `NULL` then `x` will be used. (*tidy eval*)
 #'
 #' @family constraints
 #' @usage NULL

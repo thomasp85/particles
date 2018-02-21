@@ -3,7 +3,7 @@
 \docType{data}
 \name{y_force}
 \alias{y_force}
-\title{Attrack particles towards a vertical position}
+\title{Attract particles towards a vertical position}
 \description{
 This force simply pulls particles towards a fixed position on the y-axis.
 }

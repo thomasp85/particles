@@ -12,7 +12,7 @@
 #'   meaning that children are only required to be positioned to the specific
 #'   side of their parent. (*tidy eval*)
 #' - `angle` : The direction the children should be enforced to be relative to
-#'   their parent. Defaults to `-pi/2` which is eqivalent to down. (*tidy eval*)
+#'   their parent. Defaults to `-pi/2` which is equivalent to down. (*tidy eval*)
 #'
 #' @family constraints
 #' @usage NULL

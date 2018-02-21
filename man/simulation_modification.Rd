@@ -19,7 +19,7 @@ add_interaction(.data, ...)
 particles}
 
 \item{setup}{A function to calculate the starting conditions for the
-particles. It recieves all particles with the current position and
+particles. It receives all particles with the current position and
 velocity encoded in the \code{x}, \code{y}, \code{x_vel}, and \code{y_vel} columns. New particle
 will have NA. The function must return a position and velocity for all
 particles even though the values for the current particles will be discarded.

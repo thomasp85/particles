@@ -19,7 +19,7 @@
 #' particles
 #'
 #' @param setup A function to calculate the starting conditions for the
-#' particles. It recieves all particles with the current position and
+#' particles. It receives all particles with the current position and
 #' velocity encoded in the `x`, `y`, `x_vel`, and `y_vel` columns. New particle
 #' will have NA. The function must return a position and velocity for all
 #' particles even though the values for the current particles will be discarded.

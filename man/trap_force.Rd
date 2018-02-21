@@ -20,7 +20,7 @@ along a call to \code{\link[=wield]{wield()}}
 list of matrices to use multiple polygons. If multiple polygons are
 overlapping it is considered a hole.
 \item \code{strength} : The attractive force applied to the particle. Particles are
-attractet towards the closest part of the polygon, rather than the center,
+attracted towards the closest part of the polygon, rather than the center,
 and the attraction is stronger for particles moving away from the polygon
 than for those moving towards it. (\emph{tidy eval})
 \item \code{min_dist} : A lower distance threshold below which the strength is not

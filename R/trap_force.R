@@ -14,7 +14,7 @@
 #'   list of matrices to use multiple polygons. If multiple polygons are
 #'   overlapping it is considered a hole.
 #' - `strength` : The attractive force applied to the particle. Particles are
-#'   attractet towards the closest part of the polygon, rather than the center,
+#'   attracted towards the closest part of the polygon, rather than the center,
 #'   and the attraction is stronger for particles moving away from the polygon
 #'   than for those moving towards it. (*tidy eval*)
 #' - `min_dist` : A lower distance threshold below which the strength is not

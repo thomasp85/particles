@@ -3,7 +3,7 @@
 \docType{data}
 \name{x_force}
 \alias{x_force}
-\title{Attrack particles towards a horizontal position}
+\title{Attract particles towards a horizontal position}
 \description{
 This force simply pulls particles towards a fixed position on the x-axis.
 }

@@ -16,7 +16,7 @@
 #' `alpha_min` (defaults to `0.001`) the simulation seizes to take additional
 #' steps. The default values is adapted from the d3-force implementation and
 #' corresponds to 300 steps. Conceptually the `alpha` progression can be seen
-#' as a cooling off of the system as the value decreases quiclky in the
+#' as a cooling off of the system as the value decreases quickly in the
 #' beginning and then slowly reach the target value. If it is not intended to
 #' have a system that cools off, simply set the `alpha_target` value to the same
 #' as `alpha`. At each step, after the new particle velocities has been

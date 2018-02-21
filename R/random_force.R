@@ -1,7 +1,7 @@
 #' Modify the velocity randomly at each step
 #'
 #' This force applies a random velocity modification to all particles. The
-#' moodfication is uniformly distributed and bound be the parameters provided
+#' modification is uniformly distributed and bound be the parameters provided
 #' during initialisation.
 #'
 #' @section Training parameters:

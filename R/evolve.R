@@ -2,15 +2,15 @@
 #'
 #' This is the function that move the simulation forward in time. It is possible
 #' to either specify the number of steps that should be simulated or let the
-#' smulation terminate as `alpha_min` is reached. Note that some values of
+#' simulation terminate as `alpha_min` is reached. Note that some values of
 #' `alpha` and `alpha_target` does not allow alpha to converge to `alpha_min` so
-#' letting the simulation self-terminate can result in an infinete loop. The
+#' letting the simulation self-terminate can result in an infinite loop. The
 #' default settings will result in `alpha_min` being reached in 300 generations.
 #'
 #' @details
 #' Each generation in the simulation progress in the following manner:
 #'
-#' 1. Check whether the speficied number of generations has been reached
+#' 1. Check whether the specified number of generations has been reached
 #' 2. Check whether `alpha_min` has been reached
 #' 3. If either 1. or 2. is true, terminate the simulation
 #' 4. Apply the forces on the current particle positions and velocities in the

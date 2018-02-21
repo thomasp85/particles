@@ -1,4 +1,4 @@
-#' Attrack particles towards a vertical position
+#' Attract particles towards a vertical position
 #'
 #' This force simply pulls particles towards a fixed position on the y-axis.
 #'

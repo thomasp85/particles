@@ -85,7 +85,7 @@ and \code{alpha_decay} (defaults to ~\code{0.023}). Once the alpha value gets be
 \code{alpha_min} (defaults to \code{0.001}) the simulation seizes to take additional
 steps. The default values is adapted from the d3-force implementation and
 corresponds to 300 steps. Conceptually the \code{alpha} progression can be seen
-as a cooling off of the system as the value decreases quiclky in the
+as a cooling off of the system as the value decreases quickly in the
 beginning and then slowly reach the target value. If it is not intended to
 have a system that cools off, simply set the \code{alpha_target} value to the same
 as \code{alpha}. At each step, after the new particle velocities has been

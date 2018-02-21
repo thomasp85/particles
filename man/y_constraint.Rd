@@ -16,8 +16,8 @@ The following parameters defines the training of the constraint and can be
 passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
 \item \code{y} : The position on the y-axis to fix to. (\emph{tidy eval})
-\item \code{ymin} : The lowest permissable y-value. If \code{NULL} then \code{y} will be used. (\emph{tidy eval})
-\item \code{ymax} : The highest permissable y-value. If \code{NULL} then \code{y} will be used. (\emph{tidy eval})
+\item \code{ymin} : The lowest permissible y-value. If \code{NULL} then \code{y} will be used. (\emph{tidy eval})
+\item \code{ymax} : The highest permissible y-value. If \code{NULL} then \code{y} will be used. (\emph{tidy eval})
 }
 }
 

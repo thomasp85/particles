@@ -16,8 +16,8 @@ The following parameters defines the training of the constraint and can be
 passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
 \item \code{v} : The velocity allowed for the particle. (\emph{tidy eval})
-\item \code{vmin} : The lowest permissable velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
-\item \code{vmax} : The highest permissable velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
+\item \code{vmin} : The lowest permissible velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
+\item \code{vmax} : The highest permissible velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
 }
 }
 

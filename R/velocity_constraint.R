@@ -10,8 +10,8 @@
 #' passed along a call to [impose()]
 #'
 #' - `v` : The velocity allowed for the particle. (*tidy eval*)
-#' - `vmin` : The lowest permissable velocity. If `NULL` then `v` will be used. (*tidy eval*)
-#' - `vmax` : The highest permissable velocity. If `NULL` then `v` will be used. (*tidy eval*)
+#' - `vmin` : The lowest permissible velocity. If `NULL` then `v` will be used. (*tidy eval*)
+#' - `vmax` : The highest permissible velocity. If `NULL` then `v` will be used. (*tidy eval*)
 #'
 #' @family constraints
 #' @usage NULL
