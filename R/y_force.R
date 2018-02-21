@@ -26,6 +26,7 @@ print.y_force <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_force.y_force <- function(force, particles, y = NULL, strength = NULL, ...) {
   force <- NextMethod()
   force$y_quo <- enquo(y)
@@ -40,6 +41,7 @@ train_force.y_force <- function(force, particles, y = NULL, strength = NULL, ...
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_force.y_force <- function(force, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -51,6 +53,7 @@ retrain_force.y_force <- function(force, particles, ...) {
   force <- update_quo(force, 'strength', dots, nodes, new_particles, 0.1)
   force
 }
+#' @export
 apply_force.y_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[, 2] <- vel[, 2] + (force$y - pos[, 2]) * force$strength * alpha
   list(position = pos, velocity = vel)

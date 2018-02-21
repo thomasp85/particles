@@ -31,6 +31,7 @@ print.y_constraint <- function(x, ...) {
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble
+#' @export
 train_constraint.y_constraint <- function(constraint, particles, y = NULL, ymin = NULL, ymax = NULL, ...) {
   constraint <- NextMethod()
   nodes <- as_tibble(particles, active = 'nodes')
@@ -46,6 +47,7 @@ train_constraint.y_constraint <- function(constraint, particles, y = NULL, ymin 
 }
 #' @importFrom rlang quos
 #' @importFrom digest digest
+#' @export
 retrain_constraint.y_constraint <- function(constraint, particles, ...) {
   dots <- quos(...)
   particle_hash <- digest(particles)
@@ -60,6 +62,7 @@ retrain_constraint.y_constraint <- function(constraint, particles, ...) {
   constraint <- update_quo(constraint, 'ymax', dots, nodes, new_particles || new_y, y %||% NA)
   constraint
 }
+#' @export
 apply_constraint.y_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
   min_constrained <- !(is.na(constraint$ymin) | pos[, 2] + vel[, 2] > constraint$ymin)
   max_constrained <- !(is.na(constraint$ymax) | pos[, 2] + vel[, 2] < constraint$ymax)
