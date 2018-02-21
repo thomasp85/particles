@@ -15,8 +15,8 @@ to \code{NA} will ignore this force.
 The following parameters defines the training of the force and can be passed
 along a call to \code{\link[=wield]{wield()}}
 \itemize{
-\item \code{xvel} : The x-velocity to reset to at each generation
-\item \code{yvel} : The y-velocity to reset to at each generation
+\item \code{xvel} : The x-velocity to reset to at each generation (\emph{tidy eval})
+\item \code{yvel} : The y-velocity to reset to at each generation (\emph{tidy eval})
 }
 }
 

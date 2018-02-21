@@ -11,7 +11,12 @@ mainly a guard against the whole body of particles drifting off.
 }
 \section{Training parameters}{
 
-There are no parameters for this force.
+The following parameters defines the training of the force and can be passed
+along a call to \code{\link[=wield]{wield()}}
+\itemize{
+\item \code{x} : The x position to center around (\emph{tidy eval})
+\item \code{y} : The y position to center around (\emph{tidy eval})
+}
 }
 
 \seealso{

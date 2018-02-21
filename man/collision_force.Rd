@@ -17,7 +17,7 @@ along a call to \code{\link[=wield]{wield()}}
 \item \code{strength} : A dampening of the repulsion between overlapping circles. This
 allows the force to iterate towards the optimal solution through iterative
 relaxation. Should be a number between 0 and 1. Defaults to 0.7
-\item \code{radius} : The radius of each particle. Defaults to 1
+\item \code{radius} : The radius of each particle. Defaults to 1 (\emph{tidy eval})
 \item \code{n_iter} : The number of iterations to perform in the iterative relaxation.
 Defaults to 1.
 }

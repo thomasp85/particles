@@ -12,7 +12,7 @@
 #'
 #' - `strength` : The attractive or repulsive force of the particles. If
 #'   positive the particle attracts, if negative the particle repulses. The
-#'   default is -30.
+#'   default is -30. (*tidy eval*)
 #' - `theta` : The Barnes-Hut criterion governing the precision of the
 #'   approximation. If 0, no approximation is made. Defaults to 0.9.
 #' - `min_dist` : A lower distance threshold below which the forces will be

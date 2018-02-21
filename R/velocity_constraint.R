@@ -1,4 +1,4 @@
-#' Fixes particles to a specific velocity range
+#' Limits particles to a specific velocity range
 #'
 #' This constraint puts bounds on the magnitude of velocity a particle can have.
 #' Particles where either end of the bound is NA ignores the constraint. If a
@@ -9,9 +9,9 @@
 #' The following parameters defines the training of the constraint and can be
 #' passed along a call to [impose()]
 #'
-#' - `v` : The velocity allowed for the particle.
-#' - `vmin` : The lowest permissable velocity. If `NULL` then `v` will be used.
-#' - `vmax` : The highest permissable velocity. If `NULL` then `v` will be used.
+#' - `v` : The velocity allowed for the particle. (*tidy eval*)
+#' - `vmin` : The lowest permissable velocity. If `NULL` then `v` will be used. (*tidy eval*)
+#' - `vmax` : The highest permissable velocity. If `NULL` then `v` will be used. (*tidy eval*)
 #'
 #' @family constraints
 #' @usage NULL
@@ -27,7 +27,7 @@ velocity_constraint <- structure(list(
 #' @export
 print.velocity_constraint <- function(x, ...) {
   cat('Velocity Constraint:\n')
-  cat('* A constraint that fixes particle velocity to a given range\n')
+  cat('* A constraint that limits particle velocity to a given range\n')
 }
 #' @importFrom rlang enquo eval_tidy %||%
 #' @importFrom tidygraph as_tibble

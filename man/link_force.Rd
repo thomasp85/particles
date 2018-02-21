@@ -16,9 +16,10 @@ The following parameters defines the training of the force and can be passed
 along a call to \code{\link[=wield]{wield()}}
 \itemize{
 \item \code{strength} : The attractive force between the linked particles. The default
-weighs edges from low-degree particles higher (\code{strength = 1 / (min(degree(from), degree(to)))}).
+weighs edges from low-degree particles higher
+(\code{strength = 1 / (min(degree(from), degree(to)))}). (\emph{tidy eval})
 \item \code{distance} : The desired distance between linked particles. Defaults to
-\code{30}
+\code{30} (\emph{tidy eval})
 \item \code{n_iter} : The number of iteration towards the optimal solution per
 generation. Higher values leads to faster convergence (measured in number
 of generations) at the expense of longer computation time per generation.

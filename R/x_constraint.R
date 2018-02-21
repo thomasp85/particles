@@ -9,9 +9,9 @@
 #' The following parameters defines the training of the constraint and can be
 #' passed along a call to [impose()]
 #'
-#' - `x` : The position on the x-axis to fix to.
-#' - `xmin` : The lowest permissable x-value. If `NULL` then `x` will be used.
-#' - `xmax` : The highest permissable x-value. If `NULL` then `x` will be used.
+#' - `x` : The position on the x-axis to fix to. (*tidy eval*)
+#' - `xmin` : The lowest permissable x-value. If `NULL` then `x` will be used. (*tidy eval*)
+#' - `xmax` : The highest permissable x-value. If `NULL` then `x` will be used. (*tidy eval*)
 #'
 #' @family constraints
 #' @usage NULL

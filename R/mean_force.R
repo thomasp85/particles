@@ -24,7 +24,7 @@ mean_force <- structure(list(
 #' @export
 print.mean_force <- function(x, ...) {
   cat('Mean Force:\n')
-  cat('* A force that applies the mean velocity of a particle neighbours to itself\n')
+  cat('* A force that applies the mean velocity of a particle connected to itself\n')
 }
 #' @export
 train_force.mean_force <- function(force, particles, include_self = FALSE, mode = 'all', ...) {

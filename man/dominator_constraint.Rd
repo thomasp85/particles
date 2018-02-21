@@ -16,9 +16,9 @@ passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
 \item \code{distance} : The minimum orthogonal distance to the parent. Default to \code{0},
 meaning that children are only required to be positioned to the specific
-side of their parent.
+side of their parent. (\emph{tidy eval})
 \item \code{angle} : The direction the children should be enforced to be relative to
-their parent. Defaults to \code{-pi/2} which is eqivalent to down.
+their parent. Defaults to \code{-pi/2} which is eqivalent to down. (\emph{tidy eval})
 }
 }
 

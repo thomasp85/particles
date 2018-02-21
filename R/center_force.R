@@ -5,7 +5,11 @@
 #' mainly a guard against the whole body of particles drifting off.
 #'
 #' @section Training parameters:
-#' There are no parameters for this force.
+#' The following parameters defines the training of the force and can be passed
+#' along a call to [wield()]
+#'
+#' - `x` : The x position to center around (*tidy eval*)
+#' - `y` : The y position to center around (*tidy eval*)
 #'
 #' @family forces
 #' @usage NULL

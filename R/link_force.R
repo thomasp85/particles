@@ -10,9 +10,10 @@
 #' along a call to [wield()]
 #'
 #' - `strength` : The attractive force between the linked particles. The default
-#'   weighs edges from low-degree particles higher (`strength = 1 / (min(degree(from), degree(to)))`).
+#'   weighs edges from low-degree particles higher
+#'   (`strength = 1 / (min(degree(from), degree(to)))`). (*tidy eval*)
 #' - `distance` : The desired distance between linked particles. Defaults to
-#'   `30`
+#'   `30` (*tidy eval*)
 #' - `n_iter` : The number of iteration towards the optimal solution per
 #'   generation. Higher values leads to faster convergence (measured in number
 #'   of generations) at the expense of longer computation time per generation.

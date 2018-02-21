@@ -6,8 +6,8 @@
 #' The following parameters defines the training of the force and can be passed
 #' along a call to [wield()]
 #'
-#' - `strength` : The strength with which the attraction occurs
-#' - `x` : The position on the x-axis to pull towards.
+#' - `strength` : The strength with which the attraction occurs (*tidy eval*)
+#' - `x` : The position on the x-axis to pull towards. (*tidy eval*)
 #'
 #' @family forces
 #' @usage NULL

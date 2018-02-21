@@ -12,8 +12,8 @@ This force simply pulls particles towards a fixed position on the y-axis.
 The following parameters defines the training of the force and can be passed
 along a call to \code{\link[=wield]{wield()}}
 \itemize{
-\item \code{strength} : The strength with which the attraction occurs
-\item \code{y} : The position on the y-axis to pull towards.
+\item \code{strength} : The strength with which the attraction occurs (\emph{tidy eval})
+\item \code{y} : The position on the y-axis to pull towards. (\emph{tidy eval})
 }
 }
 

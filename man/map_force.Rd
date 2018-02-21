@@ -7,9 +7,7 @@
 \description{
 In mathematics, maps are a functions that translates its input into new
 values. In the context of particles a map is a translation function that
-translates the current particle positions to a new one and can e.g. be a
-strange attractor such as the Lorentz attractor. The particles packages comes
-with a range of map constructors to facilitate experimentation.
+translates the current particle positions to a new one
 }
 \details{
 Normally a map has no notion of velocity — it simply translates positions. In

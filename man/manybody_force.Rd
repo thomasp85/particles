@@ -18,7 +18,7 @@ along a call to \code{\link[=wield]{wield()}}
 \itemize{
 \item \code{strength} : The attractive or repulsive force of the particles. If
 positive the particle attracts, if negative the particle repulses. The
-default is -30.
+default is -30. (\emph{tidy eval})
 \item \code{theta} : The Barnes-Hut criterion governing the precision of the
 approximation. If 0, no approximation is made. Defaults to 0.9.
 \item \code{min_dist} : A lower distance threshold below which the forces will be

@@ -3,7 +3,7 @@
 \docType{data}
 \name{velocity_constraint}
 \alias{velocity_constraint}
-\title{Fixes particles to a specific velocity range}
+\title{Limits particles to a specific velocity range}
 \description{
 This constraint puts bounds on the magnitude of velocity a particle can have.
 Particles where either end of the bound is NA ignores the constraint. If a
@@ -15,9 +15,9 @@ random.
 The following parameters defines the training of the constraint and can be
 passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
-\item \code{v} : The velocity allowed for the particle.
-\item \code{vmin} : The lowest permissable velocity. If \code{NULL} then \code{v} will be used.
-\item \code{vmax} : The highest permissable velocity. If \code{NULL} then \code{v} will be used.
+\item \code{v} : The velocity allowed for the particle. (\emph{tidy eval})
+\item \code{vmin} : The lowest permissable velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
+\item \code{vmax} : The highest permissable velocity. If \code{NULL} then \code{v} will be used. (\emph{tidy eval})
 }
 }
 

@@ -19,15 +19,18 @@ along a call to \code{\link[=wield]{wield()}}
 \item \code{polygon} : A two column matrix giving the corners of the polygon, or a
 list of matrices to use multiple polygons. If multiple polygons are
 overlapping it is considered a hole.
-\item \code{strength} : The attractive force of the trap. Particles are attractet
-towards the closest part of the polygon, rather than the center, and the
-attraction is stronger for particles moving away from the polygon than for
-those moving towards it.
+\item \code{strength} : The attractive force applied to the particle. Particles are
+attractet towards the closest part of the polygon, rather than the center,
+and the attraction is stronger for particles moving away from the polygon
+than for those moving towards it. (\emph{tidy eval})
 \item \code{min_dist} : A lower distance threshold below which the strength is not
 increased. The attraction of the trap falls of with the square of the
 distance to the particle, so particles close by can get an enormous
 attraction unless this threshold is set (so much that the shoot out of the
 other side of the trap).
+\item \code{distance_falloff} : How should the attractive force deteriorate with the
+distance between the polygon and the particle. Defaults to 2 (quadratic
+falloff) (\emph{tidy eval})
 }
 }
 

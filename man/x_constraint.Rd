@@ -15,9 +15,9 @@ If the constraint is enforced the velocity in the x direction will be set to
 The following parameters defines the training of the constraint and can be
 passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
-\item \code{x} : The position on the x-axis to fix to.
-\item \code{xmin} : The lowest permissable x-value. If \code{NULL} then \code{x} will be used.
-\item \code{xmax} : The highest permissable x-value. If \code{NULL} then \code{x} will be used.
+\item \code{x} : The position on the x-axis to fix to. (\emph{tidy eval})
+\item \code{xmin} : The lowest permissable x-value. If \code{NULL} then \code{x} will be used. (\emph{tidy eval})
+\item \code{xmax} : The highest permissable x-value. If \code{NULL} then \code{x} will be used. (\emph{tidy eval})
 }
 }
 

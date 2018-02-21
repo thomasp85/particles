@@ -9,8 +9,8 @@
 #' The following parameters defines the training of the force and can be passed
 #' along a call to [wield()]
 #'
-#' - `xvel` : The x-velocity to reset to at each generation
-#' - `yvel` : The y-velocity to reset to at each generation
+#' - `xvel` : The x-velocity to reset to at each generation (*tidy eval*)
+#' - `yvel` : The y-velocity to reset to at each generation (*tidy eval*)
 #'
 #' @family forces
 #' @usage NULL

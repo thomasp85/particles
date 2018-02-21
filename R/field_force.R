@@ -11,9 +11,9 @@
 #'
 #' - `x` : A matrix giving the velocity in the x direction at each grid point
 #' - `y` : A matrix giving the velocity in the y direction at each grid point
-#' - 'angle' : A matrix giving the direction of the velocity at each grid point.
+#' - `angle` : A matrix giving the direction of the velocity at each grid point.
 #'   Will only be considered if `x` and `y` are missing.
-#' - 'vel' : A single numeric or a matrix of the same dimensions as `angle`
+#' - `vel` : A single numeric or a matrix of the same dimensions as `angle`
 #'   giving the magnitude of velocity at each grid point.
 #' - `xlim` : The coordinate span of the vector field in the x direction.
 #' - `ylim` : The coordinate span of the vector field in the y direction.

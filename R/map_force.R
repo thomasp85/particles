@@ -2,9 +2,7 @@
 #'
 #' In mathematics, maps are a functions that translates its input into new
 #' values. In the context of particles a map is a translation function that
-#' translates the current particle positions to a new one and can e.g. be a
-#' strange attractor such as the Lorentz attractor. The particles packages comes
-#' with a range of map constructors to facilitate experimentation.
+#' translates the current particle positions to a new one
 #'
 #' Normally a map has no notion of velocity — it simply translates positions. In
 #' particles it is possible to decide whether positions should be modified
@@ -31,7 +29,7 @@ map_force <- structure(list(
 #' @export
 print.map_force <- function(x, ...) {
   cat('Map Force:\n')
-  cat('* A force that applies an evolution function to the particles\n')
+  cat('* A force that applies a mapping function to the particles\n')
 }
 #' @export
 train_force.map_force <- function(force, particles, map, fixed = FALSE, ...) {

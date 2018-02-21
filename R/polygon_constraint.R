@@ -1,17 +1,16 @@
-#' Fixes particles TODO DOC
+#' Fixes particles to be inside a polygon
 #'
-#' This constraint simply prevents particles from moving in the x direction. For
-#' particles where the constraint evaluates to `NA` this constraint is ignored.
-#' If the constraint is enforced the velocity in the x direction will be set to
-#' `0`.
+#' This constraint prevents particles from moving outside of one or more
+#' polygons. If a particle ventures outside it will be moved back to its closest
+#' point inside the specified polygon(s) and have its velocity set to zero.
 #'
 #' @section Training parameters:
 #' The following parameters defines the training of the constraint and can be
 #' passed along a call to [impose()]
 #'
-#' - `x` : The position on the x-axis to fix to.
-#' - `xmin` : The lowest permissable x-value. If `NULL` then `x` will be used.
-#' - `xmax` : The highest permissable x-value. If `NULL` then `x` will be used.
+#' - `polygon` : A two column matrix giving the polygon, or a list of matrices
+#'   to use multiple polygons. Overlapping polygons will be subtracted from each
+#'   other so it is possible to define polygons with holes.
 #'
 #' @family constraints
 #' @usage NULL

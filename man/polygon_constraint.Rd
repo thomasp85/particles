@@ -3,21 +3,20 @@
 \docType{data}
 \name{polygon_constraint}
 \alias{polygon_constraint}
-\title{Fixes particles TODO DOC}
+\title{Fixes particles to be inside a polygon}
 \description{
-This constraint simply prevents particles from moving in the x direction. For
-particles where the constraint evaluates to \code{NA} this constraint is ignored.
-If the constraint is enforced the velocity in the x direction will be set to
-\code{0}.
+This constraint prevents particles from moving outside of one or more
+polygons. If a particle ventures outside it will be moved back to its closest
+point inside the specified polygon(s) and have its velocity set to zero.
 }
 \section{Training parameters}{
 
 The following parameters defines the training of the constraint and can be
 passed along a call to \code{\link[=impose]{impose()}}
 \itemize{
-\item \code{x} : The position on the x-axis to fix to.
-\item \code{xmin} : The lowest permissable x-value. If \code{NULL} then \code{x} will be used.
-\item \code{xmax} : The highest permissable x-value. If \code{NULL} then \code{x} will be used.
+\item \code{polygon} : A two column matrix giving the polygon, or a list of matrices
+to use multiple polygons. Overlapping polygons will be subtracted from each
+other so it is possible to define polygons with holes.
 }
 }
 

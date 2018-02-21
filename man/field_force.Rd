@@ -17,9 +17,9 @@ along a call to \code{\link[=wield]{wield()}}
 \itemize{
 \item \code{x} : A matrix giving the velocity in the x direction at each grid point
 \item \code{y} : A matrix giving the velocity in the y direction at each grid point
-\item 'angle' : A matrix giving the direction of the velocity at each grid point.
+\item \code{angle} : A matrix giving the direction of the velocity at each grid point.
 Will only be considered if \code{x} and \code{y} are missing.
-\item 'vel' : A single numeric or a matrix of the same dimensions as \code{angle}
+\item \code{vel} : A single numeric or a matrix of the same dimensions as \code{angle}
 giving the magnitude of velocity at each grid point.
 \item \code{xlim} : The coordinate span of the vector field in the x direction.
 \item \code{ylim} : The coordinate span of the vector field in the y direction.
