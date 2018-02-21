@@ -2,6 +2,9 @@
 % Please edit documentation in R/particles-package.R
 \docType{package}
 \name{particles-package}
+\alias{particles-package}
+\alias{_PACKAGE}
+\alias{particles_package}
 \title{particles: A graph based particle simulator based on d3-force}
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
@@ -11,4 +14,20 @@ Simulating particle movement in 2D space has many application. The
 behind the 'd3-force' javascript library. 'particles' implements all forces
 defined in 'd3-force' as well as others such as vector fields, traps, and
 attractors.
+}
+\references{
+See also the \href{https://github.com/d3/d3-force}{GitHub page} for
+the original JavaScript implementation in D3 by Mike Bostock
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/thomasp85/particles}
+  \item Report bugs at \url{https://github.com/thomasp85/particles/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@gmail.com}
+
 }

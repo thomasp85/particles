@@ -2,7 +2,11 @@ Package: particles
 Type: Package
 Title: A graph based particle simulator based on d3-force
 Version: 0.1.0
-Author: Thomas Lin Pedersen
+Authors@R:
+    person(given = "Thomas Lin",
+           family = "Pedersen",
+           role = c("aut", "cre"),
+           email = "thomasp85@gmail.com")
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
 Description: Simulating particle movement in 2D space has many application. The
     'particles' package implements a particle simulator based on the ideas 
@@ -27,5 +31,8 @@ RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE)
 LinkingTo: Rcpp
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    ggraph
 VignetteBuilder: knitr
+URL: https://github.com/thomasp85/particles
+BugReports: https://github.com/thomasp85/particles/issues
