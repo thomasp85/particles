@@ -26,3 +26,6 @@ Imports: tidygraph,
 RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE)
 LinkingTo: Rcpp
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
