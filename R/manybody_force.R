@@ -50,6 +50,19 @@ train_force.manybody_force <- function(force, particles, strength = NULL, theta 
   force$max_dist <- max_dist %||% -1
   force
 }
+retrain_force.manybody_force <- function(force, particles, ...) {
+  dots <- quos(...)
+  particle_hash <- digest(particles)
+  new_particles <- particle_hash != force$particle_hash
+  force$particle_hash <- particle_hash
+  nodes <- as_tibble(particles, active = 'nodes')
+  force <- update_quo(force, 'include', dots, nodes, new_particles, TRUE)
+  force <- update_quo(force, 'strength', dots, nodes, new_particles, 1)
+  force <- update_unquo(force, 'theta', dots)
+  force <- update_unquo(force, 'min_dist', dots)
+  force <- update_unquo(force, 'max_dist', dots)
+  force
+}
 apply_force.manybody_force <- function(force, particles, pos, vel, alpha, ...) {
   vel_mod <- nbody(pos[force$include, , drop = FALSE], force$strength[force$include], force$theta, force$min_dist, force$max_dist, alpha)
   vel[force$include, ] <- vel[force$include, , drop = FALSE] + vel_mod
