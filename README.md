@@ -105,7 +105,8 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
-<img src="https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1">
+[Click here for resulting animation](https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1)
+(GitHub don't allow big gifs in readme)
 
 Installation
 ------------
