@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 particles <img src="man/figures/logo.png" align="right" />
-====================================================================
+==========================================================
 
 [![Travis-CI Build Status](https://travis-ci.org/thomasp85/particles.svg?branch=master)](https://travis-ci.org/thomasp85/particles) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/thomasp85/particles?branch=master&svg=true)](https://ci.appveyor.com/project/thomasp85/particles) [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
 
@@ -66,7 +66,7 @@ mis_graph <- miserable_data %>%
   as_tbl_graph()
 
 # Plotting with ggraph
-ggraph(mis_graph, 'manual', node.position = as_tibble(mis_graph)) + 
+ggraph(mis_graph, 'nicely') + 
   geom_edge_link(aes(width = sqrt(value)), colour = '#999999', alpha = 0.6) + 
   geom_node_point(aes(fill = group), shape = 21, colour = 'white', size = 4, 
                   stroke = 1.5) + 
@@ -105,7 +105,7 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
-![unnamed-chunk-4](man/figures/README-unnamed-chunk-4-.gif)
+![](https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1)
 
 Installation
 ------------

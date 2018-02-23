@@ -112,7 +112,7 @@ mis_graph <- miserable_data %>%
   as_tbl_graph()
 
 # Plotting with ggraph
-ggraph(mis_graph, 'manual', node.position = as_tibble(mis_graph)) + 
+ggraph(mis_graph, 'nicely') + 
   geom_edge_link(aes(width = sqrt(value)), colour = '#999999', alpha = 0.6) + 
   geom_node_point(aes(fill = group), shape = 21, colour = 'white', size = 4, 
                   stroke = 1.5) + 
@@ -126,7 +126,7 @@ If you intend to follow the steps of the simulation it is possible to attach an
 event handler that gets called ofter each generation of the simulation. If the
 handler produces a plot the result will be an animation of the simulation:
 
-```{r, fig.show='animate', results='hide'}
+```{r, eval=FALSE}
 # Random overlapping circles
 graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) %>% 
   mutate(x = runif(100) - 0.5, 
@@ -151,6 +151,7 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
+![](https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1)
 
 ## Installation
 
