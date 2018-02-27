@@ -113,7 +113,9 @@ apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
     )
     angle_mod <- angle_diff(vel_sub, direction) / pi + 1
     full_mod <- angle_mod * force$strength[particle_outside] / distance^force$distance_falloff[particle_outside]
-    vel[particle_outside, ] <- vel_sub + direction * cbind(full_mod, full_mod)
+    new_vel <- vel_sub + direction * cbind(full_mod, full_mod)
+    good_row <- rowSums(is.na(new_vel)) == 0
+    vel[particle_outside, ][good_row, ] <- new_vel[good_row,]
   }
   list(position = pos, velocity = vel)
 }
