@@ -8,27 +8,10 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-"
+  fig.path = "man/figures/README-",
+  ffmpeg.format='gif',
+  interval = 1/15
 )
-library(magick)
-knitr::opts_knit$set(animation.fun = function(x, options, format = "gif") {
-  x = c(knitr:::sans_ext(x), knitr:::file_ext(x))
-  fig.num = options$fig.num
-  format = sub("^[.]", "", format)
-  fig.fname = paste0(sub(paste0(fig.num, "$"), "*", x[1]), 
-                     ".", x[2])
-  mov.fname = paste0(sub(paste0(fig.num, "$"), "", x[1]), ".", 
-                     format)
-
-  # order correctly
-  figs <- Sys.glob(fig.fname)
-  figs <- figs[order(as.numeric(stringr::str_match(figs, paste0("(\\d+)\\.", x[2]))[, 2]))]
-  mov <- image_read(figs)
-  mov <- image_animate(mov, fps = 25)
-  image_write(mov, paste0(knitr::opts_knit$get("base.url"), mov.fname))
-  unlink(figs)
-  sprintf("![%s](%s)", options$label, paste0(knitr::opts_knit$get("base.url"), mov.fname))
-})
 ```
 
 # particles <img src="man/figures/logo.png" align="right" />

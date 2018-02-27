@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+set.seed(1)
 ```
 
 This document provides an introduction to the use of `particles` and the 
@@ -102,11 +103,10 @@ library(ggraph)
 ggraph(as_tbl_graph(sim)) + 
   geom_edge_link() + 
   geom_node_point() + 
-  theme_graph()
+  theme_void()
 ```
 
-(as we can see the simulation has almost unwinded the ring from its initial 
-random state)
+(as we can see the simulation has the ring from its initial random state)
 
 We could also change the simulation somehow and iterate some more on it:
 
@@ -120,7 +120,7 @@ sim <- sim %>%
 ggraph(as_tbl_graph(sim)) + 
   geom_edge_link() + 
   geom_node_point() + 
-  theme_graph()
+  theme_void()
 ```
 
 Let's unpack this. First we remove the second force (the repulsive manybody 
@@ -148,7 +148,8 @@ sim <- play_islands(3, 10, 0.6, 3) %>%
 ggraph(as_tbl_graph(sim)) + 
   geom_edge_link(aes(width = weight), alpha = 0.3, lineend = 'round') + 
   geom_node_point() + 
-  theme_graph()
+  theme_void() + 
+  theme(legend.position = 'none')
 ```
 
 The nice thing about using node and edge variables is that `particles` keeps
@@ -164,7 +165,8 @@ sim <- sim %>%
 ggraph(as_tbl_graph(sim)) + 
   geom_edge_link(aes(width = weight), alpha = 0.3, lineend = 'round') + 
   geom_node_point() + 
-  theme_graph()
+  theme_void() + 
+  theme(legend.position = 'none')
 ```
 
 Consult the documentation of each force and constraint to see which parameters
@@ -194,11 +196,10 @@ sim <- create_empty(1000) %>%
 
 traces <- data.frame(do.call(rbind, lapply(sim$history, position)))
 names(traces) <- c('x', 'y')
-traces$age <- rep(100:1, each = 1000)
 traces$particle <- rep(1:1000, 100)
 
 ggplot(traces) +
-  geom_path(aes(x, y, group = particle, alpha = age), size = 0.1) + 
+  geom_path(aes(x, y, group = particle), size = 0.1) + 
   theme_void() + 
   theme(legend.position = 'none')
 ```

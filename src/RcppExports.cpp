@@ -5,6 +5,21 @@
 
 using namespace Rcpp;
 
+// bilinear
+NumericVector bilinear(NumericVector x_breaks, NumericVector y_breaks, NumericMatrix grid, NumericVector x, NumericVector y);
+RcppExport SEXP _particles_bilinear(SEXP x_breaksSEXP, SEXP y_breaksSEXP, SEXP gridSEXP, SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x_breaks(x_breaksSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y_breaks(y_breaksSEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type grid(gridSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    rcpp_result_gen = Rcpp::wrap(bilinear(x_breaks, y_breaks, grid, x, y));
+    return rcpp_result_gen;
+END_RCPP
+}
 // collision
 NumericMatrix collision(NumericMatrix pos, NumericMatrix vel, NumericVector radii, double strength);
 RcppExport SEXP _particles_collision(SEXP posSEXP, SEXP velSEXP, SEXP radiiSEXP, SEXP strengthSEXP) {
@@ -75,6 +90,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_particles_bilinear", (DL_FUNC) &_particles_bilinear, 5},
     {"_particles_collision", (DL_FUNC) &_particles_collision, 4},
     {"_particles_nbody", (DL_FUNC) &_particles_nbody, 6},
     {"_particles_points_to_path", (DL_FUNC) &_particles_points_to_path, 3},

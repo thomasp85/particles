@@ -11,9 +11,9 @@
 
 Simulating particle movement in 2D space has many application. The
 'particles' package implements a particle simulator based on the ideas
-behind the 'd3-force' javascript library. 'particles' implements all forces
-defined in 'd3-force' as well as others such as vector fields, traps, and
-attractors.
+behind the 'd3-force' 'JavaScript' library. 'particles' implements all
+forces defined in 'd3-force' as well as others such as vector fields, traps,
+and attractors.
 }
 \references{
 See also the \href{https://github.com/d3/d3-force}{GitHub page} for
@@ -29,5 +29,10 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@gmail.com}
+
+Other contributors:
+\itemize{
+  \item Andrei Kashcha [contributor]
+}
 
 }
