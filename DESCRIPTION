@@ -1,8 +1,8 @@
 Package: particles
 Type: Package
 Title: A Graph Based Particle Simulator Based on D3-Force
-Version: 0.2.1.9999
-Date: 2018-02-22
+Version: 0.2.2
+Date: 2019-01-14
 Authors@R: 
     c(person(given = "Thomas Lin",
              family = "Pedersen",
@@ -30,7 +30,7 @@ Imports: tidygraph,
     mgcv,
     digest,
     dplyr
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 LinkingTo: Rcpp
 Suggests: knitr,
