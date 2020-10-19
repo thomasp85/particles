@@ -54,7 +54,7 @@ and adds a set of verbs that defines the simulation:
 ### Example
 A recreation of the Les Miserable network in <https://bl.ocks.org/mbostock/4062045>
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggraph)
 library(tidygraph)

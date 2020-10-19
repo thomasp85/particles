@@ -52,12 +52,7 @@ A recreation of the Les Miserable network in
 
 ``` r
 library(tidyverse)
-#> Warning: package 'tibble' was built under R version 4.0.2
-#> Warning: package 'tidyr' was built under R version 4.0.2
-#> Warning: package 'readr' was built under R version 4.0.2
-#> Warning: package 'dplyr' was built under R version 4.0.2
 library(ggraph)
-#> Warning: package 'ggraph' was built under R version 4.0.2
 library(tidygraph)
 library(particles)
 ```
