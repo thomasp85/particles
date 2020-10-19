@@ -33,9 +33,11 @@ Imports: tidygraph,
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 LinkingTo: Rcpp
-Suggests: knitr,
+Suggests: 
+    knitr,
     rmarkdown,
-    ggraph
+    ggraph,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/thomasp85/particles
 BugReports: https://github.com/thomasp85/particles/issues

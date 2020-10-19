@@ -1,33 +1,63 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-particles <img src="man/figures/logo.png" align="right" />
-==========================================================
 
-[![Travis-CI Build Status](https://travis-ci.org/thomasp85/particles.svg?branch=master)](https://travis-ci.org/thomasp85/particles) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/thomasp85/particles?branch=master&svg=true)](https://ci.appveyor.com/project/thomasp85/particles) [![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles) [![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
+# particles <img src="man/figures/logo.png" align="right" />
 
-------------------------------------------------------------------------
+<!-- badges: start -->
 
-This package implements the [d3-force](https://github.com/d3/d3-force) algorithm developed by Mike Bostock in R, thus providing a way to run many types of particle simulations using its versatile interface.
+[![R build
+status](https://github.com/thomasp85/particles/workflows/R-CMD-check/badge.svg)](https://github.com/thomasp85/particles/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/thomasp85/particles/branch/master/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=master)
+[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
+[![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
+<!-- badges: end -->
 
-While the first goal is to provide feature parity with its JavaScript origin, the intentions is to add more forces, constraints, etc. down the line. While d3-force is most well-known as a layout engine for visualising networks, it is capable of much more. Therefore, `particles` is provided as a very open framework to play with. Eventually [`ggraph`](https://github.com/thomasp85/ggraph) will provide some shortcut layouts based on `particles` with the aim of facilitating network visualisation.
+This package implements the [d3-force](https://github.com/d3/d3-force)
+algorithm developed by Mike Bostock in R, thus providing a way to run
+many types of particle simulations using its versatile interface.
 
-Usage
------
+While the first goal is to provide feature parity with its JavaScript
+origin, the intentions is to add more forces, constraints, etc. down the
+line. While d3-force is most well-known as a layout engine for
+visualising networks, it is capable of much more. Therefore, `particles`
+is provided as a very open framework to play with. Eventually
+[`ggraph`](https://github.com/thomasp85/ggraph) will provide some
+shortcut layouts based on `particles` with the aim of facilitating
+network visualisation.
 
-`particles` builds upon the framework provided by [`tidygraph`](https://github.com/thomasp85/tidygraph) and adds a set of verbs that defines the simulation:
+## Usage
 
--   `simulate()` : Creates a simulation based on the input graph, global parameters, and a genesis function that sets up the initial conditions of the simulation.
--   `wield()` : Adds a force to the simulation. All forces implemented in d3-force are available as well as some additionals.
--   `impose()` : Adds a constraint to the simulation. This function is a departure from d3-force, as d3-force only allowed for simple fixing of x and/or y coordinates through the use of the fx and fy accessors. `particles` formalises the use of simulation constraints and adds new functionalities.
--   `evolve()` : Progresses the simulation, either a predefined number of steps, or until the simulated annealing has cooled down.
+`particles` builds upon the framework provided by
+[`tidygraph`](https://github.com/thomasp85/tidygraph) and adds a set of
+verbs that defines the simulation:
+
+  - `simulate()` : Creates a simulation based on the input graph, global
+    parameters, and a genesis function that sets up the initial
+    conditions of the simulation.
+  - `wield()` : Adds a force to the simulation. All forces implemented
+    in d3-force are available as well as some additionals.
+  - `impose()` : Adds a constraint to the simulation. This function is a
+    departure from d3-force, as d3-force only allowed for simple fixing
+    of x and/or y coordinates through the use of the fx and fy
+    accessors. `particles` formalises the use of simulation constraints
+    and adds new functionalities.
+  - `evolve()` : Progresses the simulation, either a predefined number
+    of steps, or until the simulated annealing has cooled down.
 
 ### Example
 
-A recreation of the Les Miserable network in <https://bl.ocks.org/mbostock/4062045>
+A recreation of the Les Miserable network in
+<https://bl.ocks.org/mbostock/4062045>
 
 ``` r
 library(tidyverse)
+#> Warning: package 'tibble' was built under R version 4.0.2
+#> Warning: package 'tidyr' was built under R version 4.0.2
+#> Warning: package 'readr' was built under R version 4.0.2
+#> Warning: package 'dplyr' was built under R version 4.0.2
 library(ggraph)
+#> Warning: package 'ggraph' was built under R version 4.0.2
 library(tidygraph)
 library(particles)
 ```
@@ -76,9 +106,12 @@ ggraph(mis_graph, 'nicely') +
   theme_graph()
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)
+![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
 
-If you intend to follow the steps of the simulation it is possible to attach an event handler that gets called ofter each generation of the simulation. If the handler produces a plot the result will be an animation of the simulation:
+If you intend to follow the steps of the simulation it is possible to
+attach an event handler that gets called ofter each generation of the
+simulation. If the handler produces a plot the result will be an
+animation of the simulation:
 
 ``` r
 # Random overlapping circles
@@ -105,20 +138,27 @@ graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>%
   evolve(on_generation = graph_plot)
 ```
 
-[Click here for resulting animation](https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1) (GitHub don't allow big gifs in readme)
+[Click here for resulting
+animation](https://www.dropbox.com/s/c5fta49hk53ku0g/bubbles.gif?raw=1)
+(GitHub don’t allow big gifs in readme)
 
-Installation
-------------
+## Installation
 
-You can install particles from github with:
+You can install particles from CRAN using
+`install.packages("particles")` or alternatively install the development
+version from github with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("thomasp85/particles")
 ```
 
-Immense Thanks
---------------
+## Immense Thanks
 
--   A huge "Thank You" to Mike Bostock is in place. Without d3-force, `particles` wouldn't exist and without d3 in general the world would be a sadder place.
--   The C++ quad tree implementation that powers `manbody_force` and `collision_force` is a modification of the [implementation made by Andrei Kashcha](https://github.com/anvaka/quadtree.cc) and made available under MIT license. Big thanks to Andrei as well.
+  - A huge “Thank You” to Mike Bostock is in place. Without d3-force,
+    `particles` wouldn’t exist and without d3 in general the world would
+    be a sadder place.
+  - The C++ quad tree implementation that powers `manbody_force` and
+    `collision_force` is a modification of the [implementation made by
+    Andrei Kashcha](https://github.com/anvaka/quadtree.cc) and made
+    available under MIT license. Big thanks to Andrei as well.
