@@ -69,11 +69,26 @@ retrain_constraint.polygon_constraint <- function(constraint, particles, ...) {
 }
 #' @export
 apply_constraint.polygon_constraint <- function(constraint, particles, pos, vel, alpha, ...) {
+  tolerance <- 2e-308
   particle_outside <- !in.out(constraint$polygon_closed, pos)
   if (any(particle_outside)) {
     particle_sub <- pos[particle_outside, , drop = FALSE]
-    pos[particle_outside, ] <- points_to_path(particle_sub, constraint$polygon, TRUE)$projection
-    vel[particle_outside, ] <- 0
+    
+    particle_projections <- points_to_path(particle_sub, constraint$polygon, TRUE)
+    close_particles <- which(abs(particle_projections$distance) < tolerance)
+    
+    if(length(close_particles) > 0) {
+      wrong_outside <- which(particle_outside)[close_particles]
+      particle_outside[wrong_outside] <- FALSE 
+      particle_projections$projection <- particle_projections$projection[-close_particles,]
+      particle_projections$distance <- particle_projections$distance[-close_particles]
+    }
+    
+    if (any(particle_outside)) {
+      pos[particle_outside, ] <- particle_projections$projection
+      vel[particle_outside, ] <- 0
+    }
+
   }
   list(position = pos, velocity = vel)
 }
