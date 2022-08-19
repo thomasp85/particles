@@ -7,7 +7,7 @@
 
 [![R-CMD-check](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/thomasp85/particles/branch/main/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=main)
+coverage](https://codecov.io/gh/thomasp85/particles/branch/main/graph/badge.svg)](https://app.codecov.io/gh/thomasp85/particles?branch=main)
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
 [![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
 <!-- badges: end -->
