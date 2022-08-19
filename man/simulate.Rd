@@ -103,25 +103,25 @@ to \code{0}.
 }
 \section{Functions}{
 \itemize{
-\item \code{record}: Save the current state in the simulation's history
+\item \code{record()}: Save the current state in the simulation's history
 
-\item \code{clear_history}: Clear the current history from the simulation
+\item \code{clear_history()}: Clear the current history from the simulation
 
-\item \code{get_history}: Retrieve a simulation from the history
+\item \code{get_history()}: Retrieve a simulation from the history
 
-\item \code{history_length}: Get the number of versions stored in the history of the simulation
+\item \code{history_length()}: Get the number of versions stored in the history of the simulation
 
-\item \code{reheat}: set the cooling of the simulation to a new value
+\item \code{reheat()}: set the cooling of the simulation to a new value
 
-\item \code{particles}: Extract the particle graph from a simulation
+\item \code{particles()}: Extract the particle graph from a simulation
 
-\item \code{position}: Extract the position coordinates from a simulation
+\item \code{position()}: Extract the position coordinates from a simulation
 
-\item \code{velocity}: Extract the velocity verlets from a simulation
+\item \code{velocity()}: Extract the velocity verlets from a simulation
 
-\item \code{evolutions}: Get the number of generations the simulation has undergone
+\item \code{evolutions()}: Get the number of generations the simulation has undergone
+
 }}
-
 \examples{
 graph <- tidygraph::create_notable('folkman')
 graph \%>\%

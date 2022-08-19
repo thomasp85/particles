@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // bilinear
 NumericVector bilinear(NumericVector x_breaks, NumericVector y_breaks, NumericMatrix grid, NumericVector x, NumericVector y);
 RcppExport SEXP _particles_bilinear(SEXP x_breaksSEXP, SEXP y_breaksSEXP, SEXP gridSEXP, SEXP xSEXP, SEXP ySEXP) {

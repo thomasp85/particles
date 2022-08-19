@@ -30,7 +30,7 @@ Imports: tidygraph,
     mgcv,
     digest,
     dplyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 LinkingTo: Rcpp
 Suggests: 

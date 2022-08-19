@@ -47,17 +47,17 @@ which is also the default in d3-force.
 }
 \section{Functions}{
 \itemize{
-\item \code{phyllotactic_genesis}: Initiates particles in a phyllotactic arrangement with zero velocity
+\item \code{phyllotactic_genesis()}: Initiates particles in a phyllotactic arrangement with zero velocity
 
-\item \code{predefined_genesis}: Uses information from the node data to set position and velocity.
+\item \code{predefined_genesis()}: Uses information from the node data to set position and velocity.
 
-\item \code{bigbang_genesis}: Initiates particles at center position and a random velocity
+\item \code{bigbang_genesis()}: Initiates particles at center position and a random velocity
 
-\item \code{aquarium_genesis}: Places particles randomly in a rectangle and gives them a random velocity
+\item \code{aquarium_genesis()}: Places particles randomly in a rectangle and gives them a random velocity
 
-\item \code{petridish_genesis}: Places particles randomly on a disc and gives them a random velocity
+\item \code{petridish_genesis()}: Places particles randomly on a disc and gives them a random velocity
+
 }}
-
 \examples{
 # A contrieved example
 graph <- tidygraph::create_notable('bull')
