@@ -151,12 +151,15 @@ position <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$position
 }
+set_position <- function(sim, val) {
+  sim$position <- val
+  sim
+}
 `position<-` <- function(simulation, value) {
   stopifnot(is.simulation(simulation))
   stopifnot(is.matrix(value))
   stopifnot(dim(position(simulation)) == dim(value))
-  simulation$position <- value
-  simulation
+  set_position(simulation, value)
 }
 #' @describeIn simulate Extract the velocity verlets from a simulation
 #' @export
@@ -164,12 +167,15 @@ velocity <- function(simulation) {
   stopifnot(is.simulation(simulation))
   simulation$velocity
 }
+set_velocity <- function(sim, val) {
+  sim$velocity <- val
+  sim
+}
 `velocity<-` <- function(simulation, value) {
   stopifnot(is.simulation(simulation))
   stopifnot(is.matrix(value))
   stopifnot(dim(velocity(simulation)) == dim(value))
-  simulation$velocity <- value
-  simulation
+  set_velocity(simulation, value)
 }
 #' @describeIn simulate Get the number of generations the simulation has undergone
 #' @export

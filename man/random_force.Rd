@@ -14,18 +14,24 @@ during initialisation.
 The following parameters defines the training of the force and can be passed
 along a call to \code{\link[=wield]{wield()}}
 \itemize{
-\item \code{xmin, xmax} : The bounds of the modification in the horizontal direction
-\item \code{ymin, ymax} : The bounds of the modification in the vertical direction
+\item \verb{xmin, xmax} : The bounds of the modification in the horizontal direction
+\item \verb{ymin, ymax} : The bounds of the modification in the vertical direction
 }
 }
 
 \seealso{
-Other forces: \code{\link{center_force}},
-  \code{\link{collision_force}}, \code{\link{field_force}},
-  \code{\link{link_force}}, \code{\link{manybody_force}},
-  \code{\link{map_force}}, \code{\link{mean_force}},
-  \code{\link{reset_force}}, \code{\link{trap_force}},
-  \code{\link{x_force}}, \code{\link{y_force}}
+Other forces: 
+\code{\link{center_force}},
+\code{\link{collision_force}},
+\code{\link{field_force}},
+\code{\link{link_force}},
+\code{\link{manybody_force}},
+\code{\link{map_force}},
+\code{\link{mean_force}},
+\code{\link{reset_force}},
+\code{\link{trap_force}},
+\code{\link{x_force}},
+\code{\link{y_force}}
 }
 \concept{forces}
 \keyword{datasets}

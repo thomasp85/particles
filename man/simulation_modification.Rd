@@ -3,10 +3,13 @@
 \name{simulation_modification}
 \alias{simulation_modification}
 \alias{add_particles}
+\alias{replace_particles}
 \alias{add_interaction}
 \title{Modify the particles in a simulation}
 \usage{
 add_particles(.data, ..., interactions = NULL, setup = NULL)
+
+replace_particles(.data, particles, setup = NULL)
 
 add_interaction(.data, ...)
 }
@@ -24,6 +27,8 @@ velocity encoded in the \code{x}, \code{y}, \code{x_vel}, and \code{y_vel} colum
 will have NA. The function must return a position and velocity for all
 particles even though the values for the current particles will be discarded.
 If NULL it will use the genesis function used when creating the simulation.}
+
+\item{particles}{A \code{tbl_graph} or an object coercible to one}
 }
 \value{
 A simulation object
@@ -41,7 +46,7 @@ to the last activated datatype. The simulation is automatically retrained
 after modifying the state of the particles and their interactions.
 }
 \seealso{
-\code{\link[dplyr:mutate]{dplyr::mutate()}}, \code{\link[dplyr:mutate_at]{dplyr::mutate_at()}}, \code{\link[dplyr:mutate_all]{dplyr::mutate_all()}},
+\code{\link[dplyr:mutate]{dplyr::mutate()}}, \code{\link[dplyr:mutate_all]{dplyr::mutate_at()}}, \code{\link[dplyr:mutate_all]{dplyr::mutate_all()}},
 \code{\link[dplyr:filter]{dplyr::filter()}}, \code{\link[dplyr:slice]{dplyr::slice()}}, \code{\link[tidygraph:activate]{tidygraph::activate()}},
-\code{\link[tidygraph:bind_nodes]{tidygraph::bind_nodes()}}, \code{\link[tidygraph:bind_edges]{tidygraph::bind_edges()}}
+\code{\link[tidygraph:bind_graphs]{tidygraph::bind_nodes()}}, \code{\link[tidygraph:bind_graphs]{tidygraph::bind_edges()}}
 }

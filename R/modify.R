@@ -13,6 +13,8 @@
 #'
 #' @param .data A simulation object
 #'
+#' @param particles A `tbl_graph` or an object coercible to one
+#'
 #' @param ... Parameters passed on to the main verbs in tidygraph/dplyr
 #'
 #' @param interactions A data.frame of interactions/edges to add along with the
@@ -36,7 +38,7 @@
 NULL
 
 #' @rdname simulation_modification
-#' @importFrom tidygraph bind_nodes bind_edges
+#' @importFrom tidygraph bind_nodes bind_edges as_tbl_graph
 #' @importFrom igraph gorder
 #' @export
 add_particles <- function(.data, ..., interactions = NULL, setup = NULL) {
@@ -46,8 +48,21 @@ add_particles <- function(.data, ..., interactions = NULL, setup = NULL) {
   particles(.data) <- bind_nodes(particles(.data), ...)
   particles(.data) <- bind_edges(particles(.data), interactions)
   genesis <- setup(as_tbl_graph(.data), universe(.data)$parameters)
-  position(.data) <- rbind(position(.data), genesis$position[-seq_len(n_particles), , drop = FALSE])
-  velocity(.data) <- rbind(velocity(.data), genesis$velocity[-seq_len(n_particles), , drop = FALSE])
+  .data <- set_position(.data, rbind(position(.data), genesis$position[-seq_len(n_particles), , drop = FALSE]))
+  .data <- set_velocity(.data, rbind(velocity(.data), genesis$velocity[-seq_len(n_particles), , drop = FALSE]))
+  retrain(.data)
+}
+#' @rdname simulation_modification
+#' @importFrom tidygraph as_tbl_graph
+#' @export
+replace_particles <- function(.data, particles, setup = NULL) {
+  stopifnot(is.simulation(.data))
+  particles <- as_tbl_graph(particles)
+  setup <- setup %||% universe(.data)$genesis
+  particles(.data) <- particles
+  genesis <- setup(particles, universe(.data)$parameters)
+  .data <- set_position(.data, genesis$position)
+  .data <- set_velocity(.data, genesis$velocity)
   retrain(.data)
 }
 #' @rdname simulation_modification

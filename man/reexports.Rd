@@ -17,8 +17,8 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{magrittr}{\code{\link[magrittr]{\%>\%}}}
+  \item{magrittr}{\code{\link[magrittr:pipe]{\%>\%}}}
 
-  \item{tidygraph}{\code{\link[tidygraph]{filter}}, \code{\link[tidygraph]{slice}}, \code{\link[tidygraph]{mutate}}, \code{\link[tidygraph]{mutate_at}}, \code{\link[tidygraph]{mutate_all}}, \code{\link[tidygraph]{activate}}}
+  \item{tidygraph}{\code{\link[tidygraph]{activate}}, \code{\link[tidygraph:reexports]{filter}}, \code{\link[tidygraph:reexports]{mutate}}, \code{\link[tidygraph:reexports]{mutate_all}}, \code{\link[tidygraph:reexports]{mutate_at}}, \code{\link[tidygraph:reexports]{slice}}}
 }}
 

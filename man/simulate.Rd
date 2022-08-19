@@ -15,9 +15,16 @@
 \alias{evolutions}
 \title{Start a simulation based on a graph}
 \usage{
-simulate(graph, alpha = 1, alpha_min = 0.001, alpha_decay = 1 -
-  alpha_min^(1/300), alpha_target = 0, velocity_decay = 0.4,
-  setup = phyllotactic_genesis(), ...)
+simulate(
+  graph,
+  alpha = 1,
+  alpha_min = 0.001,
+  alpha_decay = 1 - alpha_min^(1/300),
+  alpha_target = 0,
+  velocity_decay = 0.4,
+  setup = phyllotactic_genesis(),
+  ...
+)
 
 is.simulation(x)
 
@@ -70,7 +77,7 @@ A simulation object
 }
 \description{
 This function initiates a simulation based on the provided graph and
-parameters. Any graph structure with a \code{\link[tidygraph:as_tbl_graph]{tidygraph::as_tbl_graph()}} method
+parameters. Any graph structure with a \code{\link[tidygraph:tbl_graph]{tidygraph::as_tbl_graph()}} method
 is supported as input. This function does not start the simulation but merely
 sets it up.
 }

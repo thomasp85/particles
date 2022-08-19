@@ -22,11 +22,13 @@ passed along a call to \code{\link[=impose]{impose()}}
 }
 
 \seealso{
-Other constraints: \code{\link{dominator_constraint}},
-  \code{\link{infinity_constraint}},
-  \code{\link{path_constraint}},
-  \code{\link{polygon_constraint}},
-  \code{\link{x_constraint}}, \code{\link{y_constraint}}
+Other constraints: 
+\code{\link{dominator_constraint}},
+\code{\link{infinity_constraint}},
+\code{\link{path_constraint}},
+\code{\link{polygon_constraint}},
+\code{\link{x_constraint}},
+\code{\link{y_constraint}}
 }
 \concept{constraints}
 \keyword{datasets}

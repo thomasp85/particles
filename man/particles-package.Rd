@@ -7,7 +7,7 @@
 \alias{particles_package}
 \title{particles: A Graph Based Particle Simulator Based on D3-Force}
 \description{
-\if{html}{\figure{logo.png}{options: align='right'}}
+\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
 
 Simulating particle movement in 2D space has many application. The
     'particles' package implements a particle simulator based on the ideas 
