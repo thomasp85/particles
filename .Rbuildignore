@@ -6,3 +6,4 @@
 ^README-.*\.png$
 ^codecov\.yml$
 ^\.github$
+^cran-comments\.md$
