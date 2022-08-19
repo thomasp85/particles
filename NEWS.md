@@ -1,4 +1,4 @@
-# particles (development version)
+# particles 0.2.3
 
 * Fix a bug in trap_force with incorrect indexing in certain circumstances
 * Added `replace_particles()`
