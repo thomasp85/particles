@@ -119,7 +119,7 @@ graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) %>%
 # Plotting function
 graph_plot <- . %>% {
   gr <- as_tbl_graph(.)
-  p <- ggraph(gr, 'manual', node.position = as_tibble(gr)) +
+  p <- ggraph(gr, layout = as_tibble(gr)) +
     geom_node_circle(aes(r = radius), fill = 'forestgreen', alpha = 0.5) + 
     coord_fixed(xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5)) + 
     theme_graph()
