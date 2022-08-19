@@ -1,7 +1,7 @@
 Package: particles
 Type: Package
 Title: A Graph Based Particle Simulator Based on D3-Force
-Version: 0.2.3
+Version: 0.2.3.9000
 Authors@R: 
     c(person(given = "Thomas Lin",
              family = "Pedersen",
