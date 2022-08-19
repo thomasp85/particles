@@ -13,11 +13,24 @@
 
 #ifndef __primitives_h
 #define __primitives_h
-#include <Rcpp.h>
 #include <cmath>        // std::abs
 #include <vector>
+#include <Rinternals.h>
+#include <R_ext/Random.h>
+#include <Rmath.h>
 
 using namespace std;
+
+class local_rng {
+public:
+  local_rng() {
+    GetRNGstate();
+  }
+
+  ~local_rng(){
+    PutRNGstate();
+  }
+};
 
 struct IVector {
   virtual double& operator [](size_t idx) = 0;
@@ -129,8 +142,9 @@ struct VectorN : public IVector {
     return this;
   }
   VectorN* relax() {
+    local_rng rng_state;
     for (int i = 0; i < size; ++i) {
-      if (coord[i] == 0) coord[i] = R::runif(-0.5, 0.5) * 1e-6;
+      if (coord[i] == 0) coord[i] = Rf_runif(-0.5, 0.5) * 1e-6;
     }
     return this;
   }
@@ -266,9 +280,10 @@ struct VectorN<3> : public IVector {
     return this;
   }
   VectorN* relax() {
-    if (coord[0] == 0) coord[0] = R::runif(-0.5, 0.5) * 1e-6;
-    if (coord[1] == 0) coord[1] = R::runif(-0.5, 0.5) * 1e-6;
-    if (coord[2] == 0) coord[2] = R::runif(-0.5, 0.5) * 1e-6;
+    local_rng rng_state;
+    if (coord[0] == 0) coord[0] = Rf_runif(-0.5, 0.5) * 1e-6;
+    if (coord[1] == 0) coord[1] = Rf_runif(-0.5, 0.5) * 1e-6;
+    if (coord[2] == 0) coord[2] = Rf_runif(-0.5, 0.5) * 1e-6;
     return this;
   }
   double distSquared(const VectorN &other) {
@@ -387,8 +402,9 @@ struct VectorN<2> : public IVector {
     return this;
   }
   VectorN* relax() {
-    if (coord[0] == 0) coord[0] = R::runif(-0.5, 0.5) * 1e-6;
-    if (coord[1] == 0) coord[1] = R::runif(-0.5, 0.5) * 1e-6;
+    local_rng rng_state;
+    if (coord[0] == 0) coord[0] = Rf_runif(-0.5, 0.5) * 1e-6;
+    if (coord[1] == 0) coord[1] = Rf_runif(-0.5, 0.5) * 1e-6;
     return this;
   }
   double distSquared(const VectorN &other) {

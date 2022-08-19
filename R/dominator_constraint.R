@@ -94,3 +94,10 @@ apply_constraint.dominator_constraint <- function(constraint, particles, pos, ve
   pos[as.integer(names(child_mod)), ] <- mod_sum
   list(position = pos, velocity = vel)
 }
+
+points_to_lines <- function(line1, line2, point) {
+  storage.mode(line1) <- 'double'
+  storage.mode(line2) <- 'double'
+  storage.mode(point) <- 'double'
+  points_to_lines_c(line1, line2, point)
+}

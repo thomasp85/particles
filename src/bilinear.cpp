@@ -1,6 +1,6 @@
-#include <Rcpp.h>
+#include <cpp11/doubles.hpp>
+#include <cpp11/matrix.hpp>
 #include <algorithm>
-using namespace Rcpp;
 
 double interpret(double q11, double q12, double q21, double q22, double x1, double x2, double y1, double y2, double x, double y) {
   double x2x1, y2y1, x2x, y2y, yy1, xx1;
@@ -18,19 +18,19 @@ double interpret(double q11, double q12, double q21, double q22, double x1, doub
   );
 }
 
-//[[Rcpp::export]]
-NumericVector bilinear(NumericVector x_breaks, NumericVector y_breaks,
-                       NumericMatrix grid, NumericVector x, NumericVector y) {
+[[cpp11::register]]
+cpp11::writable::doubles bilinear_c(cpp11::doubles x_breaks, cpp11::doubles y_breaks,
+                                    cpp11::doubles_matrix<> grid,
+                                    cpp11::doubles x, cpp11::doubles y) {
   if (x.size() != y.size()) {
-    stop("x and y must be of same length");
+    cpp11::stop("x and y must be of same length");
   }
   if (x_breaks.size() != grid.ncol() || y_breaks.size() != grid.nrow()) {
-    stop("x_breaks and y_breaks must match the dimensions of the grid");
+    cpp11::stop("x_breaks and y_breaks must match the dimensions of the grid");
   }
-  NumericVector interp(x.size());
+  cpp11::writable::doubles interp(x.size());
 
   int i, x1, x2, y1, y2;
-  NumericVector::iterator it;
 
   for (i = 0; i < x.size(); ++i) {
     if (x[i] < x_breaks[0] || x[i] > x_breaks[x_breaks.size() - 1] ||
@@ -38,7 +38,7 @@ NumericVector bilinear(NumericVector x_breaks, NumericVector y_breaks,
       interp[i] = 0;
       continue;
     }
-    it = std::lower_bound(x_breaks.begin(), x_breaks.end(), x[i]);
+    auto it = std::lower_bound(x_breaks.begin(), x_breaks.end(), x[i]);
     x1 = it - x_breaks.begin();
     x2 = x1 + 1;
     if (x2 == x_breaks.size()) {

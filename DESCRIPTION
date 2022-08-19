@@ -26,13 +26,13 @@ Imports: tidygraph,
     igraph,
     stats,
     magrittr,
-    Rcpp,
     mgcv,
     digest,
     dplyr
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
-LinkingTo: Rcpp
+LinkingTo: 
+    cpp11
 Suggests: 
     knitr,
     rmarkdown,

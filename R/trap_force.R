@@ -120,3 +120,9 @@ apply_force.trap_force <- function(force, particles, pos, vel, alpha, ...) {
   }
   list(position = pos, velocity = vel)
 }
+
+angle_diff <- function(a, b) {
+  storage.mode(a) <- 'double'
+  storage.mode(b) <- 'double'
+  angle_diff_c(a, b)
+}

@@ -1,8 +1,11 @@
-#include <Rcpp.h>
+#include <cpp11/doubles.hpp>
+#include <cpp11/matrix.hpp>
+#include <cpp11/list.hpp>
+#include <cpp11/list_of.hpp>
 #include <math.h>
 #include "vector.h"
 
-using namespace Rcpp;
+using namespace cpp11::literals;
 
 VectorN<2> projection(VectorN<2> a, VectorN<2> b, VectorN<2> p, bool clamp) {
   if (a.sameAs(b)) return a;
@@ -15,7 +18,7 @@ VectorN<2> projection(VectorN<2> a, VectorN<2> b, VectorN<2> p, bool clamp) {
   norm.multiplyScalar(t);
   return a + norm;
 }
-void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<double> &res, bool closed_poly) {
+void dist_to_path(double x, double y, cpp11::list_of< cpp11::doubles_matrix<> > path, std::vector<double> &res, bool closed_poly) {
   int i, j, k;
   double dist, shortest_dist = -1;
   VectorN<2> point, a, b, close, closest;
@@ -43,30 +46,34 @@ void dist_to_path(double x, double y, ListOf<NumericMatrix> path, std::vector<do
   res.push_back(shortest_dist);
 }
 
-//[[Rcpp::export]]
-List points_to_path(NumericMatrix pos, ListOf<NumericMatrix> path, bool close) {
+[[cpp11::register]]
+cpp11::writable::list points_to_path_c(cpp11::doubles_matrix<> pos,
+                                       cpp11::list_of< cpp11::doubles_matrix<> > path,
+                                       bool close) {
   std::vector<double> res_container;
-  NumericMatrix proj(pos.nrow(), 2);
-  NumericVector dist(pos.nrow());
+  cpp11::writable::doubles_matrix<> proj(pos.nrow(), 2);
+  cpp11::writable::doubles dist(pos.nrow());
   for (int i = 0; i < pos.nrow(); ++i) {
     dist_to_path(pos(i, 0), pos(i, 1), path, res_container, close);
     proj(i, 0) = res_container[0];
     proj(i, 1) = res_container[1];
     dist[i] = res_container[2];
   }
-  return List::create(
-    _["projection"] = proj,
-    _["distance"] = dist
-  );
+  return cpp11::writable::list({
+    "projection"_nm = proj,
+    "distance"_nm = dist
+  });
 }
 
-//[[Rcpp::export]]
-List points_to_lines(NumericMatrix line1, NumericMatrix line2, NumericMatrix point) {
+[[cpp11::register]]
+cpp11::writable::list points_to_lines_c(cpp11::doubles_matrix<> line1,
+                                        cpp11::doubles_matrix<> line2,
+                                        cpp11::doubles_matrix<> point) {
   if (point.nrow() != line1.nrow() || point.nrow() != line2.nrow()) {
-    stop("Line and point matrices must have same dimensions");
+    cpp11::stop("Line and point matrices must have same dimensions");
   }
-  NumericMatrix proj(point.nrow(), 2);
-  NumericVector dist(point.nrow());
+  cpp11::writable::doubles_matrix<> proj(point.nrow(), 2);
+  cpp11::writable::doubles dist(point.nrow());
   VectorN<2> p, a, b, project;
   for (int i = 0; i < point.nrow(); ++i) {
     a.coord[0] = line1(i, 0);
@@ -80,19 +87,20 @@ List points_to_lines(NumericMatrix line1, NumericMatrix line2, NumericMatrix poi
     proj(i, 1) = project.coord[1];
     dist[i] = std::sqrt(p.distSquared(project));
   }
-  return List::create(
-    _["projection"] = proj,
-    _["distance"] = dist
-  );
+  return cpp11::writable::list({
+    "projection"_nm = proj,
+    "distance"_nm = dist
+  });
 }
-//[[Rcpp::export]]
-NumericVector angle_diff(NumericMatrix a, NumericMatrix b) {
+[[cpp11::register]]
+cpp11::writable::doubles angle_diff_c(cpp11::doubles_matrix<> a,
+                                      cpp11::doubles_matrix<> b) {
   double cosine;
   if (a.nrow() != b.nrow())
-    stop("a and b must have same dimensions");
+    cpp11::stop("a and b must have same dimensions");
   if (a.ncol() != 2 || b.ncol() != 2)
-    stop("a and b must have two columns");
-  NumericVector res(a.nrow());
+    cpp11::stop("a and b must have two columns");
+  cpp11::writable::doubles res(a.nrow());
   VectorN<2> vec_a, vec_b;
   for (int i = 0; i < a.nrow(); ++i) {
     vec_a.coord[0] = a(i, 0);

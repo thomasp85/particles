@@ -73,3 +73,8 @@ apply_force.manybody_force <- function(force, particles, pos, vel, alpha, ...) {
   vel[force$include, ] <- vel[force$include, , drop = FALSE] + vel_mod
   list(position = pos, velocity = vel)
 }
+
+nbody <- function(pos, strength, theta, min_dist, max_dist, alpha) {
+  storage.mode(pos) <- 'double'
+  nbody_c(pos, as.numeric(strength), as.numeric(theta), as.numeric(min_dist), as.numeric(max_dist), as.numeric(alpha))
+}

@@ -65,3 +65,9 @@ apply_force.collision_force <- function(force, particles, pos, vel, alpha, ...) 
   }
   list(position = pos, velocity = vel)
 }
+
+collision <- function(pos, vel, radii, strength) {
+  storage.mode(pos) <- 'double'
+  storage.mode(vel) <- 'double'
+  collision_c(pos, vel, as.numeric(radii), as.numeric(strength))
+}

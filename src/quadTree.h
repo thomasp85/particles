@@ -15,9 +15,10 @@
 #define __quadTree__
 
 #include <vector>
+#include <deque>
 #include <cmath>
 #include <functional>
-#include <Rcpp.h>
+#include <cpp11/protect.hpp>
 
 #include "vector.h"
 const double min_double = std::numeric_limits<double>::min();
@@ -281,7 +282,7 @@ public:
         // spot, cannot do anything, but hope that next iteration will fix it
       }
     }
-    Rcpp::stop("Could not insert bodies: Not enought tree precision");
+    cpp11::stop("Could not insert bodies: Not enought tree precision");
   }
   void updateBodyForce(Body<N> *sourceBody) {
     VectorN<N> force;

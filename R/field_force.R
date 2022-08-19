@@ -93,3 +93,8 @@ apply_force.field_force <- function(force, particles, pos, vel, alpha, ...) {
   vel <- vel + cbind(vel_x, vel_y)
   list(position = pos, velocity = vel)
 }
+
+bilinear <- function(x_breaks, y_breaks, grid, x, y) {
+  storage.mode(grid) <- 'double'
+  bilinear_c(as.numeric(x_breaks), as.numeric(y_breaks), grid, as.numeric(x), as.numeric(y))
+}

@@ -4,7 +4,6 @@
 \name{particles-package}
 \alias{particles-package}
 \alias{_PACKAGE}
-\alias{particles_package}
 \title{particles: A Graph Based Particle Simulator Based on D3-Force}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
@@ -32,3 +31,4 @@ Other contributors:
 }
 
 }
+\keyword{internal}

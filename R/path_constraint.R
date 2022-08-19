@@ -59,7 +59,10 @@ retrain_constraint.path_constraint <- function(constraint, particles, ...) {
     if (!all(vapply(path, ncol, integer(1)) == 2)) {
       stop('Path matrices must contain two columns', call. = FALSE)
     }
-    constraint$path <- path
+    constraint$path <- lapply(path, function(x) {
+      storage.mode(x) <- 'double'
+      x
+    })
   }
   constraint <- update_unquo(constraint, 'closed', dots)
   constraint
@@ -69,4 +72,13 @@ apply_constraint.path_constraint <- function(constraint, particles, pos, vel, al
   pos <- points_to_path(pos, constraint$path, constraint$closed)
   vel[] <- 0
   list(position = pos, velocity = vel)
+}
+
+points_to_path <- function(pos, path, close) {
+  storage.mode(pos) <- 'double'
+  path <- lapply(path, function(x) {
+    storage.mode(x) <- 'double'
+    x
+  })
+  points_to_path_c(pos, path, as.logical(close))
 }
