@@ -2,7 +2,6 @@ Package: particles
 Type: Package
 Title: A Graph Based Particle Simulator Based on D3-Force
 Version: 0.2.2.9000
-Date: 2019-01-14
 Authors@R: 
     c(person(given = "Thomas Lin",
              family = "Pedersen",
@@ -20,12 +19,10 @@ Description: Simulating particle movement in 2D space has many application. The
 License: MIT + file LICENSE
 SystemRequirements: C++11
 Encoding: UTF-8
-LazyData: true
 Imports: tidygraph,
     rlang,
     igraph,
     stats,
-    magrittr,
     mgcv,
     digest,
     dplyr

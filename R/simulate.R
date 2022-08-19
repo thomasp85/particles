@@ -51,7 +51,7 @@
 #'
 #' @examples
 #' graph <- tidygraph::create_notable('folkman')
-#' graph %>%
+#' graph |>
 #'   simulate()
 #'
 simulate <- function(graph, alpha = 1, alpha_min = 0.001,

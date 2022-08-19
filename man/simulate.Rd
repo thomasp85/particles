@@ -124,7 +124,7 @@ to \code{0}.
 }}
 \examples{
 graph <- tidygraph::create_notable('folkman')
-graph \%>\%
+graph |>
   simulate()
 
 }

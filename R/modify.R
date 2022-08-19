@@ -72,7 +72,8 @@ add_interaction <- function(.data, ...) {
   particles(.data) <- bind_edges(particles(.data), ...)
   retrain(.data)
 }
-#' @importFrom tidygraph filter active
+#' @importFrom tidygraph active
+#' @importFrom dplyr filter
 #' @export
 filter.simulation <- function(.data, ...) {
   par <- particles(.data)
@@ -86,10 +87,11 @@ filter.simulation <- function(.data, ...) {
   }
   retrain(.data)
 }
-#' @importFrom tidygraph filter
+#' @importFrom dplyr filter
 #' @export
-tidygraph::filter
-#' @importFrom tidygraph slice active
+dplyr::filter
+#' @importFrom tidygraph active
+#' @importFrom dplyr slice
 #' @export
 slice.simulation <- function(.data, ...) {
   par <- particles(.data)
@@ -103,24 +105,24 @@ slice.simulation <- function(.data, ...) {
   }
   retrain(.data)
 }
-#' @importFrom tidygraph slice
+#' @importFrom dplyr slice
 #' @export
-tidygraph::slice
-#' @importFrom tidygraph mutate
+dplyr::slice
+#' @importFrom dplyr mutate
 #' @export
 mutate.simulation <- function(.data, ...) {
   particles(.data) <- mutate(particles(.data), ...)
   retrain(.data)
 }
-#' @importFrom tidygraph mutate
+#' @importFrom dplyr mutate
 #' @export
-tidygraph::mutate
-#' @importFrom tidygraph mutate_at
+dplyr::mutate
+#' @importFrom dplyr mutate_at
 #' @export
-tidygraph::mutate_at
-#' @importFrom tidygraph mutate_all
+dplyr::mutate_at
+#' @importFrom dplyr mutate_all
 #' @export
-tidygraph::mutate_all
+dplyr::mutate_all
 #' @importFrom rlang quo_text enquo
 #' @importFrom tidygraph activate
 #' @export

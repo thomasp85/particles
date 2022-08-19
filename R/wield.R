@@ -39,8 +39,8 @@
 #'
 #' @examples
 #' graph <- tidygraph::create_notable('folkman')
-#' graph %>%
-#'   simulate() %>%
+#' graph |>
+#'   simulate() |>
 #'   wield(link_force)
 #'
 wield <- function(simulation, force, ..., name, include = TRUE) {

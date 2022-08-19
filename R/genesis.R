@@ -19,7 +19,7 @@
 #' genesis(graph)
 #'
 #' # Usually used as an argument to simulate
-#' graph %>%
+#' graph |>
 #'   simulate(setup = phyllotactic_genesis())
 #'
 NULL

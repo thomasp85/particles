@@ -39,18 +39,18 @@
 #'
 #' @examples
 #' graph <- tidygraph::create_notable('folkman')
-#' sim <- graph %>%
-#'   simulate() %>%
-#'   wield(link_force) %>%
+#' sim <- graph |>
+#'   simulate() |>
+#'   wield(link_force) |>
 #'   wield(manybody_force)
 #'
 #' # Take 5 steps and tell about it
-#' sim %>% evolve(5, function(sim) {
+#' sim |> evolve(5, function(sim) {
 #'   cat('Generation: ', evolutions(sim), '\n', sep = '')
 #' })
 #'
 #' # Run evolution until alpha_min is reached
-#' sim %>% evolve(NULL)
+#' sim |> evolve(NULL)
 #'
 evolve <- function(simulation, steps = NULL, on_generation = NULL, ...) {
   stopifnot(is.simulation(simulation))

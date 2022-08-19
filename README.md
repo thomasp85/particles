@@ -57,7 +57,6 @@ library(particles)
 ```
 
 ``` r
-
 # Data preparation
 d3_col <- c(
   '0' = "#98df8a",
@@ -76,17 +75,17 @@ d3_col <- c(
 raw_data <- 'https://gist.githubusercontent.com/mbostock/4062045/raw/5916d145c8c048a6e3086915a6be464467391c62/miserables.json'
 miserable_data <- jsonlite::read_json(raw_data, simplifyVector = TRUE)
 miserable_data$nodes$group <- as.factor(miserable_data$nodes$group)
-miserable_data$links <- miserable_data$links %>% 
+miserable_data$links <- miserable_data$links |>  
   mutate(from = match(source, miserable_data$nodes$id),
          to = match(target, miserable_data$nodes$id))
 
 # Actual particles part
-mis_graph <- miserable_data %>% 
-  simulate() %>% 
-  wield(link_force) %>% 
-  wield(manybody_force) %>% 
-  wield(center_force) %>% 
-  evolve() %>% 
+mis_graph <- miserable_data |> 
+  simulate() |> 
+  wield(link_force) |> 
+  wield(manybody_force) |> 
+  wield(center_force) |> 
+  evolve() |> 
   as_tbl_graph()
 
 # Plotting with ggraph
@@ -110,14 +109,14 @@ animation of the simulation:
 
 ``` r
 # Random overlapping circles
-graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) %>% 
+graph <- as_tbl_graph(igraph::erdos.renyi.game(100, 0)) |> 
   mutate(x = runif(100) - 0.5, 
          y = runif(100) - 0.5, 
          radius = runif(100, min = 0.1, 0.2))
 
 # Plotting function
-graph_plot <- . %>% {
-  gr <- as_tbl_graph(.)
+graph_plot <- function(sim) {
+  gr <- as_tbl_graph(sim)
   p <- ggraph(gr, layout = as_tibble(gr)) +
     geom_node_circle(aes(r = radius), fill = 'forestgreen', alpha = 0.5) + 
     coord_fixed(xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5)) + 
@@ -126,10 +125,10 @@ graph_plot <- . %>% {
 }
 
 # Simulation
-graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) %>% 
-  wield(collision_force, radius = radius, n_iter = 2) %>% 
-  wield(x_force, x = 0, strength = 0.002) %>% 
-  wield(y_force, y = 0, strength = 0.002) %>% 
+graph %>% simulate(velocity_decay = 0.7, setup = predefined_genesis(x, y)) |> 
+  wield(collision_force, radius = radius, n_iter = 2) |> 
+  wield(x_force, x = 0, strength = 0.002) |> 
+  wield(y_force, y = 0, strength = 0.002) |> 
   evolve(on_generation = graph_plot)
 ```
 
