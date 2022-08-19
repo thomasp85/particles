@@ -5,12 +5,11 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/thomasp85/particles/workflows/R-CMD-check/badge.svg)](https://github.com/thomasp85/particles/actions)
+[![R-CMD-check](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/thomasp85/particles/branch/master/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=master)
-[![CRAN\_Release\_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
-[![CRAN\_Download\_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
+coverage](https://codecov.io/gh/thomasp85/particles/branch/main/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=main)
+[![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
+[![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
 <!-- badges: end -->
 
 This package implements the [d3-force](https://github.com/d3/d3-force)
@@ -32,17 +31,17 @@ network visualisation.
 [`tidygraph`](https://github.com/thomasp85/tidygraph) and adds a set of
 verbs that defines the simulation:
 
-  - `simulate()` : Creates a simulation based on the input graph, global
+-   `simulate()` : Creates a simulation based on the input graph, global
     parameters, and a genesis function that sets up the initial
     conditions of the simulation.
-  - `wield()` : Adds a force to the simulation. All forces implemented
+-   `wield()` : Adds a force to the simulation. All forces implemented
     in d3-force are available as well as some additionals.
-  - `impose()` : Adds a constraint to the simulation. This function is a
+-   `impose()` : Adds a constraint to the simulation. This function is a
     departure from d3-force, as d3-force only allowed for simple fixing
     of x and/or y coordinates through the use of the fx and fy
     accessors. `particles` formalises the use of simulation constraints
     and adds new functionalities.
-  - `evolve()` : Progresses the simulation, either a predefined number
+-   `evolve()` : Progresses the simulation, either a predefined number
     of steps, or until the simulated annealing has cooled down.
 
 ### Example
@@ -99,6 +98,7 @@ ggraph(mis_graph, 'nicely') +
   scale_edge_width('Value', range = c(0.5, 3)) + 
   coord_fixed() +
   theme_graph()
+#> Warning: Existing variables `x`, `y` overwritten by layout variables
 ```
 
 ![](man/figures/README-unnamed-chunk-3-1.png)<!-- -->
@@ -150,10 +150,10 @@ devtools::install_github("thomasp85/particles")
 
 ## Immense Thanks
 
-  - A huge “Thank You” to Mike Bostock is in place. Without d3-force,
+-   A huge “Thank You” to Mike Bostock is in place. Without d3-force,
     `particles` wouldn’t exist and without d3 in general the world would
     be a sadder place.
-  - The C++ quad tree implementation that powers `manbody_force` and
+-   The C++ quad tree implementation that powers `manbody_force` and
     `collision_force` is a modification of the [implementation made by
     Andrei Kashcha](https://github.com/anvaka/quadtree.cc) and made
     available under MIT license. Big thanks to Andrei as well.

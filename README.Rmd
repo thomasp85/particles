@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
 # particles <img src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
-[![R build status](https://github.com/thomasp85/particles/workflows/R-CMD-check/badge.svg)](https://github.com/thomasp85/particles/actions)
-[![Codecov test coverage](https://codecov.io/gh/thomasp85/particles/branch/master/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=master)
+[![R-CMD-check](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thomasp85/particles/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/thomasp85/particles/branch/main/graph/badge.svg)](https://codecov.io/gh/thomasp85/particles?branch=main)
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
 [![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
-  <!-- badges: end -->
+<!-- badges: end -->
 
 This package implements the [d3-force](https://github.com/d3/d3-force) algorithm 
 developed by Mike Bostock in R, thus providing a way to run many types of 
