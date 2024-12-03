@@ -14,6 +14,7 @@
 #ifndef __quadTree__
 #define __quadTree__
 
+#include <cstdint>
 #include <vector>
 #include <deque>
 #include <cmath>
