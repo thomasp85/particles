@@ -1,4 +1,4 @@
-# particles (development version)
+# particles 0.2.4
 
 * Upkeep and prep for gcc 15
 
