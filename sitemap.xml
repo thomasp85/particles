@@ -1,105 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>/articles/intro.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/center_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/collision_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dominator_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/evolve.html</loc>
-  </url>
-  <url>
-    <loc>/reference/field_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/genesis.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/infinity_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/link_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/manybody_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/map_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/mean_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/particles-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/path_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/polygon_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/random_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/reexports.html</loc>
-  </url>
-  <url>
-    <loc>/reference/reset_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simulate.html</loc>
-  </url>
-  <url>
-    <loc>/reference/simulation_modification.html</loc>
-  </url>
-  <url>
-    <loc>/reference/trap_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/velocity_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/wield.html</loc>
-  </url>
-  <url>
-    <loc>/reference/x_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/x_force.html</loc>
-  </url>
-  <url>
-    <loc>/reference/y_constraint.html</loc>
-  </url>
-  <url>
-    <loc>/reference/y_force.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>/404.html</loc></url>
+<url><loc>/LICENSE-text.html</loc></url>
+<url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/intro.html</loc></url>
+<url><loc>/authors.html</loc></url>
+<url><loc>/index.html</loc></url>
+<url><loc>/news/index.html</loc></url>
+<url><loc>/reference/center_force.html</loc></url>
+<url><loc>/reference/collision_force.html</loc></url>
+<url><loc>/reference/dominator_constraint.html</loc></url>
+<url><loc>/reference/evolve.html</loc></url>
+<url><loc>/reference/field_force.html</loc></url>
+<url><loc>/reference/genesis.html</loc></url>
+<url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/infinity_constraint.html</loc></url>
+<url><loc>/reference/link_force.html</loc></url>
+<url><loc>/reference/manybody_force.html</loc></url>
+<url><loc>/reference/map_force.html</loc></url>
+<url><loc>/reference/mean_force.html</loc></url>
+<url><loc>/reference/particles-package.html</loc></url>
+<url><loc>/reference/path_constraint.html</loc></url>
+<url><loc>/reference/polygon_constraint.html</loc></url>
+<url><loc>/reference/random_force.html</loc></url>
+<url><loc>/reference/reexports.html</loc></url>
+<url><loc>/reference/reset_force.html</loc></url>
+<url><loc>/reference/simulate.html</loc></url>
+<url><loc>/reference/simulation_modification.html</loc></url>
+<url><loc>/reference/trap_force.html</loc></url>
+<url><loc>/reference/velocity_constraint.html</loc></url>
+<url><loc>/reference/wield.html</loc></url>
+<url><loc>/reference/x_constraint.html</loc></url>
+<url><loc>/reference/x_force.html</loc></url>
+<url><loc>/reference/y_constraint.html</loc></url>
+<url><loc>/reference/y_force.html</loc></url>
 </urlset>
+

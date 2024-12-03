@@ -6,27 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to Particles • particles</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to Particles">
-<meta property="og:description" content="particles">
-<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -52,7 +44,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -69,7 +61,7 @@
 <li>
   <a href="https://github.com/thomasp85/particles/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -80,42 +72,67 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to Particles</h1>
-                        <h4 data-toc-skip class="author">Thomas Lin Pedersen</h4>
+                        <h4 data-toc-skip class="author">Thomas Lin
+Pedersen</h4>
             
-            <h4 data-toc-skip class="date">2022-08-19</h4>
+            <h4 data-toc-skip class="date">2024-12-03</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/thomasp85/particles/blob/HEAD/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/thomasp85/particles/blob/main/vignettes/intro.Rmd" class="external-link"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
 
     </div>
 
     
     
-<p>This document provides an introduction to the use of <code>particles</code> and the underlying algorithm it gives the users access to. <code>particles</code> is an R implementation of The <code>d3-force</code> algorithm developed by Mike Bostock and can be used to simulate many different types of interactions between particles and the world. While <code>particles</code> can be used as a simple physics engine it has not been developed with this in mind and accuracy, in terms of how well it behaves like the physical world, has not been a main priority during development.</p>
+<p>This document provides an introduction to the use of
+<code>particles</code> and the underlying algorithm it gives the users
+access to. <code>particles</code> is an R implementation of The
+<code>d3-force</code> algorithm developed by Mike Bostock and can be
+used to simulate many different types of interactions between particles
+and the world. While <code>particles</code> can be used as a simple
+physics engine it has not been developed with this in mind and accuracy,
+in terms of how well it behaves like the physical world, has not been a
+main priority during development.</p>
 <div class="section level2">
 <h2 id="what-is-particles">What is particles?<a class="anchor" aria-label="anchor" href="#what-is-particles"></a>
 </h2>
-<p>In it’s essence <code>particles</code> provides a way of defining a set of spherical or dimensionless object, potentially connected with each other, a world governed by a set of rules, and then set the objects free in the world and see how they behaves. The use cases for this are many, and include network visualisation, generative art, animation, and - most importantly - fun!</p>
-<p><code>particles</code> is build on top of <code>tidygraph</code> and uses it as the main representation of the particles and their relations. Even so, there is no need to be experienced in network analysis and manipulation. <code>particles</code> can easily be used without any of the objects being connected with each other and the objects can thus be thought of as stored in a simple data frame.</p>
+<p>In it’s essence <code>particles</code> provides a way of defining a
+set of spherical or dimensionless object, potentially connected with
+each other, a world governed by a set of rules, and then set the objects
+free in the world and see how they behaves. The use cases for this are
+many, and include network visualisation, generative art, animation, and
+- most importantly - fun!</p>
+<p><code>particles</code> is build on top of <code>tidygraph</code> and
+uses it as the main representation of the particles and their relations.
+Even so, there is no need to be experienced in network analysis and
+manipulation. <code>particles</code> can easily be used without any of
+the objects being connected with each other and the objects can thus be
+thought of as stored in a simple data frame.</p>
 </div>
 <div class="section level2">
 <h2 id="setting-up-a-simulation">Setting up a simulation<a class="anchor" aria-label="anchor" href="#setting-up-a-simulation"></a>
 </h2>
-<p>Central to the use of <code>particles</code> is the simulation, that is, setting the objects free in the world you’ve defined. There are several parts to a simulation:</p>
+<p>Central to the use of <code>particles</code> is the simulation, that
+is, setting the objects free in the world you’ve defined. There are
+several parts to a simulation:</p>
 <ul>
 <li>A description of the objects you wish to simulate</li>
 <li>An initialisation of the position and velocity of the objects</li>
-<li>A specification of how the simulation progress over time (e.g. a cooling, letting the simulation slowly stabilise)</li>
-<li>A number of forces and constraints that governs how the objects behave in the system</li>
-<li>A specification of how many iterations the simulation should evolve</li>
+<li>A specification of how the simulation progress over time (e.g. a
+cooling, letting the simulation slowly stabilise)</li>
+<li>A number of forces and constraints that governs how the objects
+behave in the system</li>
+<li>A specification of how many iterations the simulation should
+evolve</li>
 </ul>
-<p>All of these steps can be specified using dedicated verbs and piped together. Let’s look at an example:</p>
+<p>All of these steps can be specified using dedicated verbs and piped
+together. Let’s look at an example:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/thomasp85/particles" class="external-link">particles</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidygraph.data-imaginist.com" class="external-link">tidygraph</a></span><span class="op">)</span></span>
@@ -127,11 +144,31 @@
 <span>  <span class="fu"><a href="../reference/wield.html">impose</a></span><span class="op">(</span><span class="va">polygon_constraint</span>, </span>
 <span>         polygon <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>, <span class="op">-</span><span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">100</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">100</span>, <span class="fl">100</span>, <span class="fl">100</span>, <span class="op">-</span><span class="fl">100</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/evolve.html">evolve</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></code></pre></div>
-<p>So what’s going on here? First we create a <code>tbl_graph</code> using the <code><a href="https://tidygraph.data-imaginist.com/reference/create_graphs.html" class="external-link">create_ring()</a></code> function from <code>tidygraph</code>, which basically creates a circular graph. Then we use it to create a simulation using the <code><a href="../reference/simulate.html">simulate()</a></code> function. In there we can set how fast the velocity decays over time, as well how particles should be initialised. We use the <code><a href="../reference/genesis.html">petridish_genesis()</a></code> to place the particles randomly on a disc. Then we begin to define the forces that makes up the simulation using the <code><a href="../reference/wield.html">wield()</a></code> function. We first add a link force that makes connected particles attract each other, and then a manybody force that pushes particles away from each others (unless the strength is set to a positive value in which case it works like gravity, attracting particles to each other). We also adds a constraint to the system using the <code><a href="../reference/wield.html">impose()</a></code> function. Here we defines that particles must remain inside a 200x200 square.</p>
+<p>So what’s going on here? First we create a <code>tbl_graph</code>
+using the <code><a href="https://tidygraph.data-imaginist.com/reference/create_graphs.html" class="external-link">create_ring()</a></code> function from
+<code>tidygraph</code>, which basically creates a circular graph. Then
+we use it to create a simulation using the <code><a href="../reference/simulate.html">simulate()</a></code>
+function. In there we can set how fast the velocity decays over time, as
+well how particles should be initialised. We use the
+<code><a href="../reference/genesis.html">petridish_genesis()</a></code> to place the particles randomly on a
+disc. Then we begin to define the forces that makes up the simulation
+using the <code><a href="../reference/wield.html">wield()</a></code> function. We first add a link force that
+makes connected particles attract each other, and then a manybody force
+that pushes particles away from each others (unless the strength is set
+to a positive value in which case it works like gravity, attracting
+particles to each other). We also adds a constraint to the system using
+the <code><a href="../reference/wield.html">impose()</a></code> function. Here we defines that particles must
+remain inside a 200x200 square.</p>
 <blockquote>
-<p>The distinction between forces and constraints are a bit vague but generally forces will adjust the velocity of particles while constraints defines hard boundaries for the position and velocity of the particles.</p>
+<p>The distinction between forces and constraints are a bit vague but
+generally forces will adjust the velocity of particles while constraints
+defines hard boundaries for the position and velocity of the
+particles.</p>
 </blockquote>
-<p>Lastly we set the simulation to run for 100 iterations. If we did not specify a number of iterations the simulation would run until it had cooled down (which happens after 300 iterations using the default settings). We now have a simulation that has progressed a bit:</p>
+<p>Lastly we set the simulation to run for 100 iterations. If we did not
+specify a number of iterations the simulation would run until it had
+cooled down (which happens after 300 iterations using the default
+settings). We now have a simulation that has progressed a bit:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sim</span></span>
 <span><span class="co">#&gt; A particle simulation:</span></span>
@@ -149,10 +186,12 @@
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_link.html" class="external-link">geom_edge_link</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html" class="external-link">geom_node_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Existing variables `x`, `y` overwritten by layout variables</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Existing variables `x` and `y` overwritten by layout variables</span></span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-<p>(as we can see the simulation has the ring from its initial random state)</p>
-<p>We could also change the simulation somehow and iterate some more on it:</p>
+<p>(as we can see the simulation has the ring from its initial random
+state)</p>
+<p>We could also change the simulation somehow and iterate some more on
+it:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="va">sim</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="../reference/wield.html">unwield</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -164,14 +203,24 @@
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_link.html" class="external-link">geom_edge_link</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html" class="external-link">geom_node_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Existing variables `x`, `y` overwritten by layout variables</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Existing variables `x` and `y` overwritten by layout variables</span></span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
-<p>Let’s unpack this. First we remove the second force (the repulsive manybody force) and then we add a new manybody force that attracts instead. Then we heat up the system again (setting alpha back to the original value) and let it evolve until it has cooled down. The result is a struggle between the link force and the manybody force over dominance of the system.</p>
+<p>Let’s unpack this. First we remove the second force (the repulsive
+manybody force) and then we add a new manybody force that attracts
+instead. Then we heat up the system again (setting alpha back to the
+original value) and let it evolve until it has cooled down. The result
+is a struggle between the link force and the manybody force over
+dominance of the system.</p>
 </div>
 <div class="section level2">
 <h2 id="tidy-eval">Tidy eval<a class="anchor" aria-label="anchor" href="#tidy-eval"></a>
 </h2>
-<p>Many of the different forces and constraints let you set parameters on a per particle or per connection basis - e.g. for the link force discussed above we could let the strength of the force be related to the weight of the edge. <code>particles</code> let you reference node and edge variables directly when specifying the force or constraint, e.g.</p>
+<p>Many of the different forces and constraints let you set parameters
+on a per particle or per connection basis - e.g. for the link force
+discussed above we could let the strength of the force be related to the
+weight of the edge. <code>particles</code> let you reference node and
+edge variables directly when specifying the force or constraint,
+e.g.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/component_games.html" class="external-link">play_islands</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">0.6</span>, <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/group_graph.html" class="external-link">group_infomap</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -186,9 +235,16 @@
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html" class="external-link">geom_node_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Existing variables `x`, `y` overwritten by layout variables</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Existing variables `x` and `y` overwritten by layout variables</span></span>
+<span><span class="co">#&gt; Warning: The `trans` argument of `continuous_scale()` is deprecated as of ggplot2 3.5.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use the `transform` argument instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
-<p>The nice thing about using node and edge variables is that <code>particles</code> keeps track of them and if you change them the force will get retrained:</p>
+<p>The nice thing about using node and edge variables is that
+<code>particles</code> keeps track of them and if you change them the
+force will get retrained:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="va">sim</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/activate.html" class="external-link">activate</a></span><span class="op">(</span><span class="va">edges</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -201,14 +257,28 @@
 <span>  <span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html" class="external-link">geom_node_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Existing variables `x`, `y` overwritten by layout variables</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Existing variables `x` and `y` overwritten by layout variables</span></span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
-<p>Consult the documentation of each force and constraint to see which parameters that are tidy evaled.</p>
+<p>Consult the documentation of each force and constraint to see which
+parameters that are tidy evaled.</p>
 </div>
 <div class="section level2">
 <h2 id="iteration-callback">Iteration callback<a class="anchor" aria-label="anchor" href="#iteration-callback"></a>
 </h2>
-<p>Sometimes you are more interested in the process than the end point. In that case you might want to look at the state of the simulation at each step it goes through. Luckily, the <code><a href="../reference/evolve.html">evolve()</a></code> function comes with a powerful callback mechanism that allows you to do all sorts of things. If the callback function returns a simulation object it will replace the current simulation, otherwise the return value will be discarded and the side-effects, such as plots, will be the only effect of it. As you can imagine you can do many things with this capability, such as removing or adding new particles and connections, or changing forces midway. If the callback plots the current state it can be used directly with the <code>animation</code> package to produce animated views of your simulation. Lastly, it can be used to record the state so the it can easily be retrieved later on. For this you can use the predefined <code><a href="../reference/simulate.html">record()</a></code> function:</p>
+<p>Sometimes you are more interested in the process than the end point.
+In that case you might want to look at the state of the simulation at
+each step it goes through. Luckily, the <code><a href="../reference/evolve.html">evolve()</a></code> function
+comes with a powerful callback mechanism that allows you to do all sorts
+of things. If the callback function returns a simulation object it will
+replace the current simulation, otherwise the return value will be
+discarded and the side-effects, such as plots, will be the only effect
+of it. As you can imagine you can do many things with this capability,
+such as removing or adding new particles and connections, or changing
+forces midway. If the callback plots the current state it can be used
+directly with the <code>animation</code> package to produce animated
+views of your simulation. Lastly, it can be used to record the state so
+the it can easily be retrieved later on. For this you can use the
+predefined <code><a href="../reference/simulate.html">record()</a></code> function:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">volcano_field</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">volcano</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">volcano</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html" class="external-link">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="va">volcano</span><span class="op">)</span><span class="op">)</span> <span class="op">*</span> <span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span></span>
 <span><span class="va">sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/create_graphs.html" class="external-link">create_empty</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -224,23 +294,38 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">traces</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_path</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, group <span class="op">=</span> <span class="va">particle</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">'none'</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
 <p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
-<p>In this example we define a field force based on our beloved volcano data set. The field force applies a velocity based on a given vector field. We define that the simulation has no cooling (<code>alpha_decay = 0</code>) and that the particles should be placed randomly in a rectangle. Besides the field force we also add a reset force that sets the velocity to zero in each iteration so that the vector field does not accumulate. When all this is done we run the simulation for 100 iterations and saves each state with the <code><a href="../reference/simulate.html">record()</a></code> function.</p>
-<p>To get the plot we extract the positions from each iteration and simply plots the trajectory of each particle.</p>
+<p>In this example we define a field force based on our beloved volcano
+data set. The field force applies a velocity based on a given vector
+field. We define that the simulation has no cooling
+(<code>alpha_decay = 0</code>) and that the particles should be placed
+randomly in a rectangle. Besides the field force we also add a reset
+force that sets the velocity to zero in each iteration so that the
+vector field does not accumulate. When all this is done we run the
+simulation for 100 iterations and saves each state with the
+<code><a href="../reference/simulate.html">record()</a></code> function.</p>
+<p>To get the plot we extract the positions from each iteration and
+simply plots the trajectory of each particle.</p>
 </div>
 <div class="section level2">
 <h2 id="summing-up">Summing up<a class="anchor" aria-label="anchor" href="#summing-up"></a>
 </h2>
-<p>Hopefully you have gotten a taste of what is possible with <code>particles</code>, but there are many more options and possibilities. The package is developed both for practical use and for having fun — with luck you can do both simultaneously.</p>
+<p>Hopefully you have gotten a taste of what is possible with
+<code>particles</code>, but there are many more options and
+possibilities. The package is developed both for practical use and for
+having fun — with luck you can do both simultaneously.</p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
@@ -253,16 +338,16 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
