@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/thomasp85/particles/branch/main/graph/badge.svg)](https://app.codecov.io/gh/thomasp85/particles?branch=main)
 [![CRAN_Release_Badge](http://www.r-pkg.org/badges/version-ago/particles)](https://CRAN.R-project.org/package=particles)
 [![CRAN_Download_Badge](http://cranlogs.r-pkg.org/badges/particles)](https://CRAN.R-project.org/package=particles)
+[![Codecov test coverage](https://codecov.io/gh/thomasp85/particles/graph/badge.svg)](https://app.codecov.io/gh/thomasp85/particles)
 <!-- badges: end -->
 
 This package implements the [d3-force](https://github.com/d3/d3-force) algorithm 
