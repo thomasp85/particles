@@ -1,7 +1,7 @@
 Type: Package
 Package: particles
 Title: A Graph Based Particle Simulator Based on D3-Force
-Version: 0.2.4
+Version: 0.2.4.9000
 Authors@R: c(
     person("Thomas Lin", "Pedersen", , "thomasp85@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-5147-4711")),
