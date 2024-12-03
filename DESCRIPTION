@@ -1,40 +1,39 @@
-Package: particles
 Type: Package
+Package: particles
 Title: A Graph Based Particle Simulator Based on D3-Force
 Version: 0.2.3.9000
-Authors@R: 
-    c(person(given = "Thomas Lin",
-             family = "Pedersen",
-             role = c("aut", "cre"),
-             email = "thomasp85@gmail.com"),
-      person(given = "Andrei",
-             family = "Kashcha",
-             role = "ctb"))
+Authors@R: c(
+    person("Thomas Lin", "Pedersen", , "thomasp85@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5147-4711")),
+    person("Andrei", "Kashcha", role = "ctb")
+  )
 Maintainer: Thomas Lin Pedersen <thomasp85@gmail.com>
-Description: Simulating particle movement in 2D space has many application. The
-    'particles' package implements a particle simulator based on the ideas 
-    behind the 'd3-force' 'JavaScript' library. 'particles' implements all 
-    forces defined in 'd3-force' as well as others such as vector fields, traps, 
-    and attractors.
+Description: Simulating particle movement in 2D space has many
+    application. The 'particles' package implements a particle simulator
+    based on the ideas behind the 'd3-force' 'JavaScript' library.
+    'particles' implements all forces defined in 'd3-force' as well as
+    others such as vector fields, traps, and attractors.
 License: MIT + file LICENSE
-SystemRequirements: C++11
-Encoding: UTF-8
-Imports: tidygraph,
-    rlang,
-    igraph,
-    stats,
-    mgcv,
-    digest,
-    dplyr
-RoxygenNote: 7.2.1
-Roxygen: list(markdown = TRUE)
-LinkingTo: 
-    cpp11
-Suggests: 
-    knitr,
-    rmarkdown,
-    ggraph,
-    covr
-VignetteBuilder: knitr
 URL: https://github.com/thomasp85/particles
 BugReports: https://github.com/thomasp85/particles/issues
+Imports:
+    digest,
+    dplyr,
+    igraph,
+    mgcv,
+    rlang,
+    stats,
+    tidygraph
+Suggests:
+    covr,
+    ggraph,
+    knitr,
+    rmarkdown
+LinkingTo:
+    cpp11
+VignetteBuilder:
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Config/build/compilation-database: true
