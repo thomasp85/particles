@@ -2,10 +2,12 @@ is.force <- function(x) inherits(x, 'force')
 train_force <- function(force, particles, ...) {
   UseMethod('train_force')
 }
+#' @export
 train_force.default <- function(force, particles, ...) {
   stop('The provided object is not a force', call. = FALSE)
 }
 #' @importFrom digest digest
+#' @export
 train_force.force <- function(force, particles, include, ...) {
   force$include_quo <- include
   nodes <- as_tibble(particles, active = 'nodes')
@@ -17,18 +19,22 @@ train_force.force <- function(force, particles, include, ...) {
 retrain_force <- function(force, particles, ...) {
   UseMethod('retrain_force')
 }
+#' @export
 retrain_force.default <- function(force, particles, ...) {
   stop('The provided object is not a force', call. = FALSE)
 }
+#' @export
 retrain_force.force <- function(force, particles, ...) {
   stop('The provided force does not have a retrain method', call. = FALSE)
 }
 apply_force <- function(force, particles, pos, vel, alpha, ...) {
   UseMethod('apply_force')
 }
+#' @export
 apply_force.default <- function(force, particles, pos, vel, alpha, ...) {
   stop('The provided object is not a force', call. = FALSE)
 }
+#' @export
 apply_force.force <- function(force, particles, pos, vel, alpha, ...) {
   stop('The provided force does not implement an apply method', call. = FALSE)
 }

@@ -3,7 +3,6 @@
 \docType{package}
 \name{particles-package}
 \alias{particles-package}
-\alias{_PACKAGE}
 \title{particles: A Graph Based Particle Simulator Based on D3-Force}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
@@ -23,7 +22,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@gmail.com}
+\strong{Maintainer}: Thomas Lin Pedersen \email{thomasp85@gmail.com} (\href{https://orcid.org/0000-0002-5147-4711}{ORCID})
 
 Other contributors:
 \itemize{
